@@ -1,6 +1,7 @@
 import { Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { CtaBanner } from "@/components/marketing/cta-banner";
 import { PageHero } from "@/components/marketing/page-hero";
+import { Reveal } from "@/components/marketing/reveal";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 
@@ -60,21 +61,20 @@ export default async function ContactPage() {
       <section className="section-shell">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="grid gap-5 sm:grid-cols-2">
-            {contactBlocks.map((block) => {
+            {contactBlocks.map((block, index) => {
               const Icon = block.icon;
               return (
-                <article
-                  key={block.title}
-                  className="rounded-[28px] border border-white/70 bg-white/80 p-6 shadow-[0_16px_40px_rgba(16,45,63,0.08)]"
-                >
-                  <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-secondary text-primary">
-                    <Icon className="size-5" />
-                  </div>
-                  <p className="mt-5 text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                    {block.title}
-                  </p>
-                  <p className="mt-3 text-lg leading-7 text-foreground/86">{block.value}</p>
-                </article>
+                <Reveal key={block.title} delay={index * 70}>
+                  <article className="premium-card p-6">
+                    <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-muted text-primary">
+                      <Icon className="size-5" />
+                    </div>
+                    <p className="mt-5 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                      {block.title}
+                    </p>
+                    <p className="mt-3 text-lg leading-7 text-foreground/86">{block.value}</p>
+                  </article>
+                </Reveal>
               );
             })}
           </div>

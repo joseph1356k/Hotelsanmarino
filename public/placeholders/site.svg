@@ -1,7 +1,21 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" fill="#1D2B2E"/>
-  <rect x="66" y="66" width="1068" height="498" rx="32" fill="#0F766E"/>
-  <rect x="124" y="168" width="360" height="34" rx="17" fill="#FFF9F0" fill-opacity="0.65"/>
-  <rect x="124" y="240" width="540" height="72" rx="18" fill="#FFF9F0"/>
-  <rect x="124" y="344" width="440" height="30" rx="15" fill="#FFF9F0" fill-opacity="0.7"/>
+  <rect width="1200" height="630" fill="#102D3F"/>
+  <rect width="1200" height="630" fill="url(#seaMist)"/>
+  <rect x="70" y="70" width="1060" height="490" rx="36" fill="url(#ocean)"/>
+  <circle cx="965" cy="178" r="136" fill="#EEF2F1" fill-opacity="0.1"/>
+  <circle cx="900" cy="420" r="182" fill="#EEF2F1" fill-opacity="0.06"/>
+  <rect x="128" y="164" width="208" height="26" rx="13" fill="#EEF2F1" fill-opacity="0.42"/>
+  <rect x="128" y="230" width="462" height="82" rx="18" fill="#F7F3EC"/>
+  <rect x="128" y="342" width="386" height="28" rx="14" fill="#F7F3EC" fill-opacity="0.72"/>
+  <rect x="128" y="398" width="186" height="46" rx="23" fill="#C96E57"/>
+  <defs>
+    <linearGradient id="ocean" x1="70" y1="70" x2="1114.84" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#153B52"/>
+      <stop offset="1" stop-color="#123247"/>
+    </linearGradient>
+    <radialGradient id="seaMist" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1048 88) rotate(143.621) scale(676.214 723.768)">
+      <stop stop-color="#EEF2F1" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#102D3F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
 </svg>

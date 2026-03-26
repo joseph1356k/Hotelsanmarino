@@ -17,7 +17,7 @@ export function PlanCard({
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-[30px] border border-white/70 bg-white/75 shadow-[0_16px_40px_rgba(16,45,63,0.08)]",
+        "premium-card overflow-hidden",
         className,
       )}
     >

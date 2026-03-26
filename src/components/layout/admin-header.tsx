@@ -64,7 +64,7 @@ export function AdminHeader() {
           </div>
         ))}
       </div>
-      <div className="rounded-[1.5rem] border border-border/80 bg-card px-6 py-5 shadow-[0_14px_40px_rgba(29,43,46,0.06)]">
+      <div className="mist-panel px-6 py-5">
         <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
           Admin workspace
         </p>

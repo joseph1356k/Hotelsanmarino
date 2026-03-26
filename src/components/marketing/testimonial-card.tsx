@@ -7,7 +7,7 @@ export function TestimonialCard({
   testimonial: Testimonial;
 }) {
   return (
-    <article className="h-full rounded-[28px] border border-white/70 bg-white/78 p-6 shadow-[0_16px_40px_rgba(16,45,63,0.08)]">
+    <article className="premium-card h-full p-6">
       <div className="flex items-center gap-1 text-[var(--coral)]">
         {Array.from({ length: testimonial.rating }).map((_, index) => (
           <Star key={`${testimonial.id}-${index}`} className="size-4 fill-current" />

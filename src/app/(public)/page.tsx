@@ -12,6 +12,7 @@ import {
 import { CtaBanner } from "@/components/marketing/cta-banner";
 import { GalleryGrid } from "@/components/marketing/gallery-grid";
 import { PageHero } from "@/components/marketing/page-hero";
+import { Reveal } from "@/components/marketing/reveal";
 import { RoomCard } from "@/components/marketing/room-card";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { ServiceCard } from "@/components/marketing/service-card";
@@ -69,7 +70,7 @@ export default async function HomePage() {
             />
             <Link
               href="/habitaciones"
-              className="inline-flex items-center justify-center rounded-full border border-primary/18 bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:border-primary/35 hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex items-center justify-center rounded-full border border-white/22 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-primary"
             >
               Ver habitaciones
             </Link>
@@ -77,8 +78,8 @@ export default async function HomePage() {
         }
         aside={
           <div className="space-y-5">
-            <div className="overflow-hidden rounded-[28px] border border-white/70 bg-white/70 p-3 shadow-[0_20px_60px_rgba(16,45,63,0.08)]">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[22px]">
+            <div className="mist-panel overflow-hidden p-3">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
                 <Image
                   src={resolveEntityImage("room", heroImage)}
                   alt="Hotel San Marino Tumaco"
@@ -86,11 +87,11 @@ export default async function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 34vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#102d3f]/55 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#102d3f]/58 via-[#153b52]/18 to-transparent" />
               </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[24px] bg-secondary px-5 py-4">
+              <div className="mist-panel px-5 py-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                   Contacto
                 </p>
@@ -98,7 +99,7 @@ export default async function HomePage() {
                   WhatsApp directo
                 </p>
               </div>
-              <div className="rounded-[24px] bg-white/80 px-5 py-4">
+              <div className="mist-panel px-5 py-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                   Ubicacion
                 </p>
@@ -114,211 +115,240 @@ export default async function HomePage() {
       <section className="container-shell pt-8 md:pt-10">
         <div className="grid gap-3 md:grid-cols-4">
           {trustHighlights.map((item, index) => (
-            <div
-              key={item}
-              className="rounded-full border border-border/70 bg-white/72 px-5 py-3 text-center text-xs uppercase tracking-[0.24em] text-foreground/82"
-            >
-              <span className="mr-3 text-[var(--coral)]">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              {item}
-            </div>
+            <Reveal key={item} delay={index * 80}>
+              <div className="rounded-full border border-primary/10 bg-white/82 px-5 py-3 text-center text-xs uppercase tracking-[0.24em] text-foreground/82 shadow-[0_14px_34px_rgba(16,45,63,0.05)]">
+                <span className="mr-3 text-[var(--coral)]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                {item}
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="section-shell">
-        <SectionHeading
-          eyebrow="Por que San Marino"
-          title={hero?.subtitle ?? "Calma con identidad, sin vueltas innecesarias"}
-          description="La promesa no es llenar de promesas el sitio. Es mostrar con claridad una estadia bien resuelta, con mejor contexto, mejor ritmo y una salida comercial directa."
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Por que San Marino"
+            title={hero?.subtitle ?? "Calma con identidad, contacto directo y una estadia mejor presentada."}
+            description="La propuesta no depende de frases grandilocuentes. Se sostiene en claridad, ubicacion, descanso y una presentacion mucho mas cuidada que la media."
+          />
+        </Reveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {valuePillars.map((pillar) => (
-            <article
-              key={pillar.title}
-              className="rounded-[28px] border border-white/70 bg-white/78 p-7 shadow-[0_18px_40px_rgba(16,45,63,0.08)]"
-            >
-              <h3 className="text-3xl leading-none">{pillar.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                {pillar.description}
-              </p>
-            </article>
+          {valuePillars.map((pillar, index) => (
+            <Reveal key={pillar.title} delay={index * 90}>
+              <article className="premium-card h-full p-7">
+                <div className="mb-6 h-px w-20 bg-[linear-gradient(90deg,#153b52,#5f7264)]" />
+                <h3 className="text-3xl leading-none">{pillar.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                  {pillar.description}
+                </p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="section-shell">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeading
-            eyebrow="Habitaciones destacadas"
-            title={featuredBlock?.title ?? "Encuentra una forma simple de elegir"}
-            description={
-              featuredBlock?.body ??
-              "Habitaciones mostradas con imagen, capacidad y detalles claros para decidir sin friccion."
-            }
-          />
-          <Link
-            href="/habitaciones"
-            className="text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
-          >
-            Ver todas
-          </Link>
+          <Reveal>
+            <SectionHeading
+              eyebrow="Habitaciones destacadas"
+              title={featuredBlock?.title ?? "Habitaciones para elegir con calma"}
+              description={
+                featuredBlock?.body ??
+                "Imagen, capacidad y contexto para decidir mejor, sin parecer un catalogo frio."
+              }
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <Link
+              href="/habitaciones"
+              className="text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
+            >
+              Ver todas
+            </Link>
+          </Reveal>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {featuredRooms.map((room) => (
-            <RoomCard key={room.id} room={room} primaryCta={primaryCta} />
+          {featuredRooms.map((room, index) => (
+            <Reveal key={room.id} delay={index * 90}>
+              <RoomCard room={room} primaryCta={primaryCta} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="section-shell">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="space-y-6">
-            <SectionHeading
-              eyebrow={liveElMorroSection.eyebrow}
-              title={liveElMorroSection.title}
-              description={liveElMorroSection.description}
-            />
-            <div className="space-y-4">
-              {liveElMorroSection.points.map((point) => (
-                <div
-                  key={point}
-                  className="flex items-start gap-3 rounded-[24px] bg-white/70 px-5 py-4"
-                >
-                  <Sparkles className="mt-1 size-4 shrink-0 text-[var(--coral)]" />
-                  <p className="text-sm leading-6 text-muted-foreground">{point}</p>
-                </div>
-              ))}
-            </div>
+        <div className="ocean-panel relative overflow-hidden px-6 py-8 md:px-10 md:py-10 lg:px-12">
+          <div className="absolute inset-0">
+            <div className="absolute left-0 top-0 h-52 w-52 rounded-full bg-white/6 blur-3xl" />
+            <div className="absolute bottom-[-4rem] right-[-2rem] h-56 w-56 rounded-full bg-[var(--coral)]/10 blur-[120px]" />
           </div>
-          <div className="relative overflow-hidden rounded-[34px]">
-            <Image
-              src={resolveEntityImage("room", galleryItems[1]?.src ?? heroImage)}
-              alt="Vista editorial de Hotel San Marino"
-              width={1200}
-              height={900}
-              className="aspect-[5/4] w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#102d3f]/60 via-transparent to-transparent" />
+          <div className="relative grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <Reveal className="space-y-6">
+              <SectionHeading
+                eyebrow={liveElMorroSection.eyebrow}
+                title={liveElMorroSection.title}
+                description={liveElMorroSection.description}
+                className="text-white [&_p]:text-white/72 [&_p:first-child]:text-white/58 [&_h2]:text-white"
+              />
+              <div className="space-y-4">
+                {liveElMorroSection.points.map((point, index) => (
+                  <Reveal key={point} delay={index * 90}>
+                    <div className="flex items-start gap-3 rounded-[24px] border border-white/10 bg-white/7 px-5 py-4 backdrop-blur-sm">
+                      <Sparkles className="mt-1 size-4 shrink-0 text-[var(--coral)]" />
+                      <p className="text-sm leading-6 text-white/74">{point}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={150} distance={40}>
+              <div className="relative overflow-hidden rounded-[34px]">
+                <Image
+                  src={resolveEntityImage("room", galleryItems[1]?.src ?? heroImage)}
+                  alt="Vista editorial de Hotel San Marino"
+                  width={1200}
+                  height={900}
+                  className="aspect-[5/4] w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#102d3f]/66 via-[#153b52]/20 to-transparent" />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="section-shell">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-          <div className="order-2 lg:order-1">
+          <Reveal className="order-2 lg:order-1">
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[28px] bg-white/75 p-6 shadow-[0_18px_40px_rgba(16,45,63,0.08)]">
+              <div className="premium-card p-6">
                 <Fish className="size-6 text-[var(--coral)]" />
                 <h3 className="mt-5 text-3xl">Cocina de mar</h3>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  Pescado, camarones y langostino en una propuesta sencilla,
-                  cercana y bien presentada.
+                  Pescado, camarones y langostino en una propuesta serena, local y
+                  mejor presentada.
                 </p>
               </div>
-              <div className="rounded-[28px] bg-secondary p-6">
+              <div className="rounded-[28px] border border-primary/8 bg-muted p-6 shadow-[0_18px_40px_rgba(16,45,63,0.06)]">
                 <Waves className="size-6 text-primary" />
                 <h3 className="mt-5 text-3xl">Ritmo costero</h3>
                 <p className="mt-3 text-sm leading-6 text-foreground/78">
-                  Un restaurante que acompaña la estadia sin volverla ruidosa.
+                  Un restaurante que acompaña la estadia sin volverla pesada ni
+                  artificial.
                 </p>
               </div>
             </div>
-          </div>
-          <div className="order-1 space-y-6 lg:order-2">
+          </Reveal>
+          <Reveal className="order-1 space-y-6 lg:order-2" delay={120}>
             <SectionHeading
               eyebrow="Restaurante"
               title="Comer bien tambien hace parte de la estadia"
               description="San Marino suma restaurante con desayuno, almuerzo y cena para que la experiencia del hotel se sienta completa desde lo cotidiano."
             />
             <div className="space-y-3">
-              {restaurantHighlights.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-3 border-b border-border/60 py-3"
-                >
-                  <Fish className="mt-1 size-4 shrink-0 text-[var(--coral)]" />
-                  <p className="text-sm leading-6 text-muted-foreground">{item}</p>
-                </div>
+              {restaurantHighlights.map((item, index) => (
+                <Reveal key={item} delay={index * 90}>
+                  <div className="flex items-start gap-3 border-b border-border/60 py-3">
+                    <Fish className="mt-1 size-4 shrink-0 text-[var(--coral)]" />
+                    <p className="text-sm leading-6 text-muted-foreground">{item}</p>
+                  </div>
+                </Reveal>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="section-shell">
-        <SectionHeading
-          eyebrow="Servicios"
-          title="Comodidades que ordenan mejor la estadia"
-          description="Servicios pensados para que el hotel resuelva lo importante con mas claridad: descanso, apoyo practico y contacto directo cuando hace falta."
-        />
+      <section className="section-shell bg-[rgba(238,242,241,0.72)]">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Servicios"
+            title="Comodidades que ordenan mejor la estadia"
+            description="Servicios pensados para que el hotel resuelva lo importante con mas claridad: descanso, apoyo practico y contacto directo cuando hace falta."
+          />
+        </Reveal>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {servicesCatalog.slice(0, 8).map((service) => (
-            <ServiceCard key={service.title} {...service} />
+          {servicesCatalog.slice(0, 8).map((service, index) => (
+            <Reveal key={service.title} delay={index * 70}>
+              <ServiceCard {...service} />
+            </Reveal>
           ))}
         </div>
-        <div className="mt-8 flex flex-wrap gap-3 text-sm text-muted-foreground">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2">
-            <Wifi className="size-4 text-primary" />
-            WiFi
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2">
-            <ParkingCircle className="size-4 text-primary" />
-            Parqueadero
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2">
-            <MapPin className="size-4 text-primary" />
-            Tours con terceros
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2">
-            <MessageCircle className="size-4 text-primary" />
-            Atencion directa
-          </span>
-        </div>
+        <Reveal delay={120}>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm text-muted-foreground">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+              <Wifi className="size-4 text-primary" />
+              WiFi
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+              <ParkingCircle className="size-4 text-primary" />
+              Parqueadero
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+              <MapPin className="size-4 text-primary" />
+              Tours con terceros
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+              <MessageCircle className="size-4 text-primary" />
+              Atencion directa
+            </span>
+          </div>
+        </Reveal>
       </section>
 
       <section className="section-shell">
-        <SectionHeading
-          eyebrow="Testimonios"
-          title="Confianza desde voces reales"
-          description="Los testimonios se administran desde DB y sostienen una idea simple: el sitio debe transmitir confianza sin volverse grandilocuente."
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Testimonios"
+            title="Confianza desde voces reales"
+            description="Una capa de prueba social limpia, creible y mejor integrada al ritmo editorial del sitio."
+          />
+        </Reveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {content.testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+          {content.testimonials.map((testimonial, index) => (
+            <Reveal key={testimonial.id} delay={index * 100}>
+              <TestimonialCard testimonial={testimonial} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="section-shell">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeading
-            eyebrow="Galeria"
-            title="Una mirada limpia a los espacios"
-            description="Media real o fallback editorial, siempre con una presentacion controlada y lista para crecer."
-          />
-          <Link
-            href="/galeria"
-            className="text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
-          >
-            Ver galeria completa
-          </Link>
+          <Reveal>
+            <SectionHeading
+              eyebrow="Galeria"
+              title="Una mirada curada a los espacios"
+              description="Media real o fallback editorial, siempre con una presentacion controlada, atmosferica y lista para crecer."
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <Link
+              href="/galeria"
+              className="text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
+            >
+              Ver galeria completa
+            </Link>
+          </Reveal>
         </div>
-        <div className="mt-10">
+        <Reveal className="mt-10" delay={120}>
           <GalleryGrid items={galleryItems} limit={6} />
-        </div>
+        </Reveal>
       </section>
 
       <section className="section-shell">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="space-y-5">
+          <Reveal className="space-y-5">
             <SectionHeading
               eyebrow="Ubicacion"
               title="El hotel se entiende mejor con contexto"
               description="San Marino se conecta con El Morro y Tumaco desde una idea de cercania, acceso simple y contacto directo para resolver cualquier duda de llegada."
             />
-            <div className="rounded-[28px] bg-white/78 p-6 shadow-[0_18px_40px_rgba(16,45,63,0.08)]">
+            <div className="premium-card p-6">
               <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 Referencia base
               </p>
@@ -328,23 +358,25 @@ export default async function HomePage() {
                 llegada, lo mejor es escribir por WhatsApp.
               </p>
             </div>
-          </div>
-          <div className="rounded-[34px] border border-white/70 bg-white/78 p-8 shadow-[0_18px_40px_rgba(16,45,63,0.08)]">
-            <div className="aspect-[4/3] rounded-[26px] bg-muted p-6">
-              <div className="flex h-full flex-col items-start justify-between rounded-[20px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(21,59,82,0.06),rgba(95,114,100,0.08))] p-6">
-                <MapPin className="size-8 text-primary" />
-                <div className="space-y-3">
-                  <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                    Tumaco · El Morro
-                  </p>
-                  <p className="max-w-sm text-lg leading-7 text-foreground/86">
-                    Bloque de mapa preparado para usar `maps_embed_url` desde DB
-                    cuando el dato editorial este disponible.
-                  </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="mist-panel p-8">
+              <div className="aspect-[4/3] rounded-[26px] bg-muted p-6">
+                <div className="flex h-full flex-col items-start justify-between rounded-[20px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(21,59,82,0.08),rgba(238,242,241,0.5))] p-6">
+                  <MapPin className="size-8 text-primary" />
+                  <div className="space-y-3">
+                    <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                      Tumaco · El Morro
+                    </p>
+                    <p className="max-w-sm text-lg leading-7 text-foreground/86">
+                      Bloque de mapa preparado para usar `maps_embed_url` desde DB
+                      cuando el dato editorial este disponible.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -358,7 +390,7 @@ export default async function HomePage() {
               phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
               message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
               label={primaryCta?.label ?? "Consultar por WhatsApp"}
-              className="bg-white text-primary hover:bg-white/92"
+              className="bg-[var(--coral)] text-[var(--ivory)] hover:bg-[var(--accent-hover)]"
             />
           }
         />

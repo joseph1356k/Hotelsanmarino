@@ -18,7 +18,7 @@ export function RoomCard({
   return (
     <article
       className={cn(
-        "group overflow-hidden rounded-[30px] border border-white/70 bg-white/75 shadow-[0_18px_40px_rgba(16,45,63,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(16,45,63,0.12)]",
+        "premium-card group overflow-hidden",
         className,
       )}
     >
@@ -43,7 +43,7 @@ export function RoomCard({
               {room.short_description}
             </p>
           </div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-foreground">
+          <div className="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-foreground">
             <Users className="size-3.5" />
             {room.capacity} personas
           </div>
@@ -65,7 +65,7 @@ export function RoomCard({
           <div className="flex flex-wrap gap-3">
             <Link
               href={`/habitaciones/${room.slug}`}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-5 py-3 text-sm font-semibold text-primary transition hover:border-primary/35 hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-5 py-3 text-sm font-semibold text-primary transition duration-300 hover:border-primary/35 hover:bg-primary hover:text-primary-foreground"
             >
               Ver habitacion
               <ArrowRight className="size-4" />

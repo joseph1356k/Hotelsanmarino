@@ -1,6 +1,7 @@
 import { CtaBanner } from "@/components/marketing/cta-banner";
 import { PageHero } from "@/components/marketing/page-hero";
 import { PlanCard } from "@/components/marketing/plan-card";
+import { Reveal } from "@/components/marketing/reveal";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 
@@ -35,8 +36,10 @@ export default async function PlansPage() {
 
       <section className="section-shell">
         <div className="grid gap-6 lg:grid-cols-2">
-          {content.plans.map((plan) => (
-            <PlanCard key={plan.id} plan={plan} primaryCta={primaryCta} />
+          {content.plans.map((plan, index) => (
+            <Reveal key={plan.id} delay={index * 90}>
+              <PlanCard plan={plan} primaryCta={primaryCta} />
+            </Reveal>
           ))}
         </div>
       </section>

@@ -1,6 +1,21 @@
 <svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="800" fill="#EFE4D1"/>
-  <rect x="64" y="64" width="672" height="672" rx="40" fill="#FFF9F0" stroke="#D9CDBD" stroke-width="6"/>
-  <path d="M180 560L320 400L430 500L560 320L640 560H180Z" fill="#D8C7AA"/>
-  <circle cx="270" cy="254" r="58" fill="#0F766E" fill-opacity="0.22"/>
+  <rect width="800" height="800" fill="#F7F3EC"/>
+  <rect width="800" height="800" fill="url(#fog)"/>
+  <rect x="58" y="58" width="684" height="684" rx="42" fill="#FAF8F4" stroke="#D7D0C4" stroke-width="4"/>
+  <rect x="106" y="106" width="588" height="354" rx="30" fill="url(#sea)"/>
+  <path d="M122 510C174 472 222 458 294 458C382 458 432 514 514 514C581 514 636 476 678 442V632H122V510Z" fill="#E9DFCF"/>
+  <circle cx="256" cy="230" r="52" fill="#EEF2F1" fill-opacity="0.3"/>
+  <rect x="140" y="674" width="178" height="18" rx="9" fill="#153B52" fill-opacity="0.12"/>
+  <rect x="140" y="710" width="284" height="14" rx="7" fill="#1F2A30" fill-opacity="0.1"/>
+  <defs>
+    <linearGradient id="sea" x1="106" y1="106" x2="693.313" y2="454.62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#153B52"/>
+      <stop offset="0.6" stop-color="#275471"/>
+      <stop offset="1" stop-color="#97B1BD"/>
+    </linearGradient>
+    <radialGradient id="fog" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(641 115) rotate(131.291) scale(395.212 489.531)">
+      <stop stop-color="#EEF2F1"/>
+      <stop offset="1" stop-color="#F7F3EC" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
 </svg>

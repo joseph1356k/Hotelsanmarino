@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, Users } from "lucide-react";
 import { CtaBanner } from "@/components/marketing/cta-banner";
+import { Reveal } from "@/components/marketing/reveal";
 import { RoomCard } from "@/components/marketing/room-card";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import { getPublicSiteContent } from "@/lib/content/public-content";
@@ -32,15 +33,17 @@ export default async function RoomDetailPage({
   return (
     <div className="pb-16 md:pb-24">
       <section className="container-shell pt-10 md:pt-14">
-        <Link
-          href="/habitaciones"
-          className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
-        >
-          <ArrowLeft className="size-4" />
-          Volver a habitaciones
-        </Link>
+        <Reveal>
+          <Link
+            href="/habitaciones"
+            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
+          >
+            <ArrowLeft className="size-4" />
+            Volver a habitaciones
+          </Link>
+        </Reveal>
         <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <div className="space-y-5">
+          <Reveal className="space-y-5">
             <p className="text-xs uppercase tracking-[0.3em] text-[var(--mangrove)]">
               Habitacion
             </p>
@@ -51,39 +54,43 @@ export default async function RoomDetailPage({
               {room.short_description}
             </p>
             <div className="flex flex-wrap gap-3">
-              <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm text-foreground">
+              <div className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2 text-sm text-foreground">
                 <Users className="size-4 text-primary" />
                 Hasta {room.capacity} personas
               </div>
-              <div className="rounded-full bg-white/80 px-4 py-2 text-sm text-muted-foreground">
+              <div className="rounded-full bg-white/84 px-4 py-2 text-sm text-muted-foreground">
                 Estado administrativo: {room.status}
               </div>
             </div>
-          </div>
-          <aside className="editorial-panel p-6 md:p-7">
-            <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
-              Tarifa referencial
-            </p>
-            <p className="mt-3 text-4xl text-primary">{formatCurrency(room.price)}</p>
-            <p className="mt-4 text-sm leading-6 text-muted-foreground">
-              Esta web no muestra disponibilidad real ni reserva online. Si quieres
-              revisar la habitacion, el siguiente paso es WhatsApp.
-            </p>
-            <div className="mt-6">
-              <WhatsappCta
-                phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-                message={`${primaryCta?.message ?? content.contactInfo.whatsapp_default_message} para ${room.name}`}
-                label="Consultar esta habitacion"
-                className="w-full justify-center"
-              />
-            </div>
-          </aside>
+          </Reveal>
+          <Reveal delay={140}>
+            <aside className="ocean-panel p-6 md:p-7">
+              <p className="text-xs uppercase tracking-[0.24em] text-white/58">
+                Tarifa referencial
+              </p>
+              <p className="mt-3 text-4xl text-[var(--ivory)]">
+                {formatCurrency(room.price)}
+              </p>
+              <p className="mt-4 text-sm leading-6 text-white/72">
+                Esta web no muestra disponibilidad real ni reserva online. Si quieres
+                revisar la habitacion, el siguiente paso es WhatsApp.
+              </p>
+              <div className="mt-6">
+                <WhatsappCta
+                  phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
+                  message={`${primaryCta?.message ?? content.contactInfo.whatsapp_default_message} para ${room.name}`}
+                  label="Consultar esta habitacion"
+                  className="w-full justify-center"
+                />
+              </div>
+            </aside>
+          </Reveal>
         </div>
       </section>
 
       <section className="section-shell">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-12">
-          <div className="relative overflow-hidden rounded-[32px] bg-muted md:col-span-2 lg:col-span-7">
+          <Reveal className="relative overflow-hidden rounded-[34px] bg-muted md:col-span-2 lg:col-span-7">
             <Image
               src={resolveEntityImage("room", room.primary_image)}
               alt={room.name}
@@ -91,7 +98,8 @@ export default async function RoomDetailPage({
               height={1000}
               className="aspect-[5/4] h-full w-full object-cover"
             />
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#102d3f]/34 via-transparent to-transparent" />
+          </Reveal>
           <div className="grid gap-4 md:grid-cols-2 lg:col-span-5">
             {(galleryImages.length > 0
               ? galleryImages
@@ -104,9 +112,10 @@ export default async function RoomDetailPage({
                 ]
             )
               .slice(0, 4)
-              .map((image) => (
-                <div
+              .map((image, index) => (
+                <Reveal
                   key={image.id}
+                  delay={index * 90}
                   className="relative overflow-hidden rounded-[28px] bg-muted"
                 >
                   <Image
@@ -114,9 +123,9 @@ export default async function RoomDetailPage({
                     alt={image.alt_text ?? room.name}
                     width={900}
                     height={720}
-                    className="aspect-[4/3] h-full w-full object-cover"
+                    className="aspect-[4/3] h-full w-full object-cover transition duration-700 hover:scale-[1.03]"
                   />
-                </div>
+                </Reveal>
               ))}
           </div>
         </div>
@@ -124,24 +133,26 @@ export default async function RoomDetailPage({
 
       <section className="section-shell">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-6">
-            <div className="rounded-[30px] bg-white/80 p-7 shadow-[0_18px_40px_rgba(16,45,63,0.08)]">
+          <Reveal className="space-y-6">
+            <div className="premium-card p-7">
               <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 Amenidades
               </p>
               <div className="mt-5 grid gap-3">
-                {room.amenities.map((amenity) => (
-                  <div key={amenity.id} className="inline-flex items-center gap-3">
-                    <Check className="size-4 text-[var(--mangrove)]" />
-                    <span className="text-sm leading-6 text-foreground/86">
-                      {amenity.name}
-                    </span>
-                  </div>
+                {room.amenities.map((amenity, index) => (
+                  <Reveal key={amenity.id} delay={index * 70}>
+                    <div className="inline-flex items-center gap-3">
+                      <Check className="size-4 text-[var(--mangrove)]" />
+                      <span className="text-sm leading-6 text-foreground/86">
+                        {amenity.name}
+                      </span>
+                    </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
-          </div>
-          <div className="space-y-6">
+          </Reveal>
+          <Reveal className="space-y-6" delay={120}>
             <div>
               <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 Descripcion
@@ -150,7 +161,7 @@ export default async function RoomDetailPage({
                 {room.long_description}
               </p>
             </div>
-            <div className="rounded-[30px] bg-secondary p-7">
+            <div className="mist-panel p-7">
               <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 Lo esencial
               </p>
@@ -169,33 +180,35 @@ export default async function RoomDetailPage({
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {relatedRooms.length > 0 ? (
         <section className="section-shell">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="space-y-4">
-              <p className="text-xs uppercase tracking-[0.3em] text-[var(--mangrove)]">
-                Otras habitaciones
-              </p>
-              <h2 className="text-4xl md:text-5xl">Tambien podria interesarte</h2>
-            </div>
-            <Link
-              href="/habitaciones"
-              className="text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
-            >
-              Ver mas habitaciones
-            </Link>
+            <Reveal>
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.3em] text-[var(--mangrove)]">
+                  Otras habitaciones
+                </p>
+                <h2 className="text-4xl md:text-5xl">Tambien podria interesarte</h2>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <Link
+                href="/habitaciones"
+                className="text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
+              >
+                Ver mas habitaciones
+              </Link>
+            </Reveal>
           </div>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {relatedRooms.map((relatedRoom) => (
-              <RoomCard
-                key={relatedRoom.id}
-                room={relatedRoom}
-                primaryCta={primaryCta}
-              />
+            {relatedRooms.map((relatedRoom, index) => (
+              <Reveal key={relatedRoom.id} delay={index * 90}>
+                <RoomCard room={relatedRoom} primaryCta={primaryCta} />
+              </Reveal>
             ))}
           </div>
         </section>
@@ -211,7 +224,7 @@ export default async function RoomDetailPage({
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={`${primaryCta?.message ?? content.contactInfo.whatsapp_default_message} para ${room.name}`}
             label="Hablar por WhatsApp"
-            className="bg-white text-primary hover:bg-white/92"
+            className="bg-[var(--coral)] text-[var(--ivory)] hover:bg-[var(--accent-hover)]"
           />
         }
       />

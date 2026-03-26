@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
 import { PageHero } from "@/components/marketing/page-hero";
+import { Reveal } from "@/components/marketing/reveal";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import { locationContext } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
@@ -55,21 +56,20 @@ export default async function LocationPage() {
               </p>
             </div>
             <div className="grid gap-4">
-              {locationContext.map((item) => {
+              {locationContext.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <article
-                    key={item.title}
-                    className="rounded-[26px] bg-white/80 p-6 shadow-[0_16px_40px_rgba(16,45,63,0.08)]"
-                  >
-                    <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-secondary text-primary">
-                      <Icon className="size-5" />
-                    </div>
-                    <h2 className="mt-5 text-3xl">{item.title}</h2>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                      {item.description}
-                    </p>
-                  </article>
+                  <Reveal key={item.title} delay={index * 80}>
+                    <article className="premium-card p-6">
+                      <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-muted text-primary">
+                        <Icon className="size-5" />
+                      </div>
+                      <h2 className="mt-5 text-3xl">{item.title}</h2>
+                      <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                        {item.description}
+                      </p>
+                    </article>
+                  </Reveal>
                 );
               })}
             </div>

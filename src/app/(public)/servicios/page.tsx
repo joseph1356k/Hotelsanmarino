@@ -1,5 +1,6 @@
 import { CtaBanner } from "@/components/marketing/cta-banner";
 import { PageHero } from "@/components/marketing/page-hero";
+import { Reveal } from "@/components/marketing/reveal";
 import { ServiceCard } from "@/components/marketing/service-card";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import {
@@ -38,8 +39,10 @@ export default async function ServicesPage() {
 
       <section className="section-shell">
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {servicesCatalog.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+          {servicesCatalog.map((service, index) => (
+            <Reveal key={service.title} delay={index * 70}>
+              <ServiceCard {...service} />
+            </Reveal>
           ))}
         </div>
       </section>

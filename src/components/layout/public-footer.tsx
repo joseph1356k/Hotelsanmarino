@@ -84,7 +84,7 @@ export function PublicFooter({
             phoneNumber={whatsappPhone}
             message={whatsappMessage}
             label={whatsappLabel}
-            className="bg-white text-[var(--footer)] hover:bg-white/90"
+            className="bg-[var(--coral)] text-[var(--ivory)] hover:bg-[var(--accent-hover)]"
           />
         </div>
       </div>

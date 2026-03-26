@@ -1,5 +1,6 @@
 import { GalleryGrid } from "@/components/marketing/gallery-grid";
 import { PageHero } from "@/components/marketing/page-hero";
+import { Reveal } from "@/components/marketing/reveal";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 
 export default async function GalleryPage() {
@@ -16,11 +17,13 @@ export default async function GalleryPage() {
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Galeria"
-        title="Imagenes tratadas con ritmo y aire"
-        description="La galeria toma room_images desde DB y las presenta con una composicion editorial limpia, preparada para crecer sin volverse un collage caotico."
+        title="Imagenes tratadas con ritmo, aire y profundidad"
+        description="La galeria toma room_images desde DB y las presenta con una composicion editorial limpia, atmosferica y lista para crecer sin verse como plugin."
       />
       <section className="section-shell">
-        <GalleryGrid items={galleryImages} limit={18} />
+        <Reveal>
+          <GalleryGrid items={galleryImages} limit={18} />
+        </Reveal>
       </section>
     </div>
   );

@@ -1,4 +1,5 @@
 import { PageHero } from "@/components/marketing/page-hero";
+import { Reveal } from "@/components/marketing/reveal";
 import { TestimonialCard } from "@/components/marketing/testimonial-card";
 import { aboutNarrative } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
@@ -16,21 +17,20 @@ export default async function AboutPage() {
 
       <section className="section-shell">
         <div className="grid gap-6 lg:grid-cols-3">
-          {aboutNarrative.pillars.map((pillar) => {
+          {aboutNarrative.pillars.map((pillar, index) => {
             const Icon = pillar.icon;
             return (
-              <article
-                key={pillar.title}
-                className="rounded-[28px] border border-white/70 bg-white/80 p-7 shadow-[0_18px_40px_rgba(16,45,63,0.08)]"
-              >
-                <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary">
-                  <Icon className="size-5" />
-                </div>
-                <h2 className="mt-6 text-3xl">{pillar.title}</h2>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                  {pillar.description}
-                </p>
-              </article>
+              <Reveal key={pillar.title} delay={index * 90}>
+                <article className="premium-card p-7">
+                  <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-muted text-primary">
+                    <Icon className="size-5" />
+                  </div>
+                  <h2 className="mt-6 text-3xl">{pillar.title}</h2>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                    {pillar.description}
+                  </p>
+                </article>
+              </Reveal>
             );
           })}
         </div>
@@ -52,8 +52,10 @@ export default async function AboutPage() {
             </p>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
-            {content.testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            {content.testimonials.map((testimonial, index) => (
+              <Reveal key={testimonial.id} delay={index * 90}>
+                <TestimonialCard testimonial={testimonial} />
+              </Reveal>
             ))}
           </div>
         </div>

@@ -31,8 +31,8 @@ export function PublicHeader({
   const whatsappLabel = primaryCta?.label ?? "Consultar por WhatsApp";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl">
-      <div className="border-b border-border/60 bg-white/45">
+    <header className="sticky top-0 z-50 border-b border-primary/8 bg-[rgba(247,243,236,0.82)] backdrop-blur-xl">
+      <div className="border-b border-primary/8 bg-[rgba(238,242,241,0.86)]">
         <div className="container-shell hidden items-center justify-between py-2 text-xs text-muted-foreground md:flex">
           <p className="tracking-[0.24em] uppercase">
             {contactInfo.city} · {siteSettings.site_tagline}
@@ -46,16 +46,18 @@ export function PublicHeader({
           </a>
         </div>
       </div>
+
       <div className="container-shell flex items-center justify-between gap-4 py-4 md:py-5">
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border bg-white/80 text-foreground transition hover:bg-white lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-primary/10 bg-white/88 text-foreground transition hover:bg-white lg:hidden"
             onClick={() => setIsOpen((current) => !current)}
             aria-label={isOpen ? "Cerrar menu" : "Abrir menu"}
           >
             {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
+
           <Link href="/" className="group space-y-0.5">
             <p className="font-serif text-3xl leading-none tracking-[0.02em] text-primary">
               San Marino
@@ -78,11 +80,17 @@ export function PublicHeader({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-sm tracking-[0.16em] uppercase text-muted-foreground transition-colors hover:text-foreground",
+                  "relative text-sm tracking-[0.16em] uppercase text-muted-foreground transition-colors hover:text-foreground",
                   isActive && "text-foreground",
                 )}
               >
                 {item.label}
+                <span
+                  className={cn(
+                    "absolute inset-x-0 -bottom-2 h-px bg-primary transition-opacity",
+                    isActive ? "opacity-100" : "opacity-0",
+                  )}
+                />
               </Link>
             );
           })}
@@ -99,7 +107,7 @@ export function PublicHeader({
       </div>
 
       {isOpen ? (
-        <div className="border-t border-border/70 bg-background lg:hidden">
+        <div className="border-t border-primary/10 bg-[linear-gradient(180deg,#153b52_0%,#102d3f_100%)] lg:hidden">
           <div className="container-shell space-y-4 py-5">
             <nav className="grid gap-2">
               {publicNavigation.map((item) => {
@@ -113,8 +121,8 @@ export function PublicHeader({
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "rounded-2xl border border-transparent px-4 py-3 text-sm uppercase tracking-[0.18em] text-muted-foreground transition hover:border-border hover:bg-white/70 hover:text-foreground",
-                      isActive && "border-border bg-white text-foreground",
+                      "rounded-2xl border border-white/8 px-4 py-3 text-sm uppercase tracking-[0.18em] text-white/72 transition hover:border-white/20 hover:bg-white/8 hover:text-white",
+                      isActive && "border-white/18 bg-white text-[#102d3f]",
                     )}
                     onClick={() => setIsOpen(false)}
                   >
