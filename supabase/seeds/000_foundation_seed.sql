@@ -1,20 +1,18 @@
--- Seed audit for foundation layer
--- Populated entities:
+-- Seed audit for functional layer
+-- Populated entities after running this file:
 --   site_settings: 1
 --   contact_info: 1
 --   whatsapp_ctas: 1
 --   home_sections: 2
---   amenities: 3
---   rooms: 2
---   room_images: 2
---   room_amenities: 5
+--   amenities: 8
+--   rooms: 32
+--   room_images: 32
+--   room_amenities: 96
 --   plans: 2
---   testimonials: 1
+--   testimonials: 2
 -- Not populated in this seed:
---   admin_users: 0 (must be created from auth.users explicitly)
---   media_assets: 0 (phase 2 when uploads exist)
--- Remaining inventory for phase 2:
---   rooms pending load: 30 of 32
+--   admin_users: 0
+--   media_assets: 0
 
 insert into public.site_settings (
   id, site_name, site_tagline, seo_title, seo_description, default_share_image
@@ -81,16 +79,16 @@ insert into public.home_sections (
   'Hotel San Marino Tumaco',
   'Base comercial enfocada en conversacion directa por WhatsApp.',
   'Sin reservas online en esta fase. Sin formularios publicos. La conversion central es abrir conversacion con el hotel.',
-  '{"eyebrow":"Foundation layer","ctaLabel":"Consultar por WhatsApp"}'::jsonb,
+  '{"eyebrow":"Hotel San Marino","ctaLabel":"Consultar por WhatsApp"}'::jsonb,
   'published',
   1
 ),
 (
   '8db85849-f64b-40bb-9aa5-4d7c253a1377',
   'featured_rooms',
-  'Habitaciones editables desde base de datos',
-  'La arquitectura queda lista para crecer hasta 32 habitaciones.',
-  'Cada habitacion soporta amenities, imagenes relacionadas, SEO basico y orden de despliegue.',
+  'Habitaciones provisionales listas para administracion',
+  'Inventario semilla completo con 32 habitaciones.',
+  'Cada habitacion soporta amenities, imagen principal, galeria, SEO basico y orden de despliegue.',
   '{}'::jsonb,
   'published',
   2
@@ -106,45 +104,78 @@ on conflict (key) do update set
 insert into public.amenities (id, name, slug, icon_name, display_order) values
 ('c0f12625-6925-4f38-9916-56095ddce923', 'Aire acondicionado', 'aire-acondicionado', 'snowflake', 1),
 ('a0cad8d8-cc9b-4bcb-bd9f-a13f242bf3f1', 'WiFi', 'wifi', 'wifi', 2),
-('c56c9c07-d790-4c58-bc6d-2eddb03d6f8a', 'TV', 'tv', 'tv', 3)
+('c56c9c07-d790-4c58-bc6d-2eddb03d6f8a', 'TV', 'tv', 'tv', 3),
+('f4e0ab09-f9ab-4f1a-9c6a-2b5d4b7ab101', 'Bano privado', 'bano-privado', 'bath', 4),
+('b9fd773c-62d6-4ef2-9b49-e34a456d7202', 'Agua caliente', 'agua-caliente', 'droplets', 5),
+('d0fbda8a-f95a-4c23-bf53-f55b49f52e12', 'Mini nevera', 'mini-nevera', 'refrigerator', 6),
+('b9153c09-9de9-4fd4-b98a-2780dc0d8a63', 'Escritorio', 'escritorio', 'briefcase', 7),
+('cb0dfc11-eac1-4c06-b693-c9d315f7e4a1', 'Ventilador', 'ventilador', 'fan', 8)
 on conflict (slug) do update set
   name = excluded.name,
   icon_name = excluded.icon_name,
   display_order = excluded.display_order;
 
-insert into public.rooms (
-  id, name, slug, short_description, long_description, price, capacity, status, is_featured, display_order, primary_image, seo_title, seo_description
-) values
-(
-  '4e3c9d4d-77f5-4fba-a521-4ca47b3405db',
-  'Habitacion Estandar',
-  'habitacion-estandar',
-  'Solucion operativa para viajeros que priorizan descanso y ubicacion.',
-  'Habitacion semilla para validar el flujo DB-first del sitio y su panel administrativo.',
-  180000,
-  2,
-  'available',
-  true,
-  1,
-  '/placeholders/room.svg',
-  'Habitacion Estandar | Hotel San Marino Tumaco',
-  'Habitacion base editable desde admin para la arquitectura inicial.'
-),
-(
-  '6f8f059c-2f71-4960-901e-f5966521f5f2',
-  'Habitacion Familiar',
-  'habitacion-familiar',
-  'Configuracion provisional para grupos pequenos o familias.',
-  'Habitacion semilla para comprobar relaciones entre habitaciones, amenities e imagenes.',
-  320000,
-  4,
-  'available',
-  true,
-  2,
-  '/placeholders/room.svg',
-  'Habitacion Familiar | Hotel San Marino Tumaco',
-  'Habitacion familiar provisional orientada a edicion desde base de datos.'
+with room_seed as (
+  select
+    gs as room_number,
+    (
+      substr(md5('room-' || gs::text), 1, 8) || '-' ||
+      substr(md5('room-' || gs::text), 9, 4) || '-' ||
+      substr(md5('room-' || gs::text), 13, 4) || '-' ||
+      substr(md5('room-' || gs::text), 17, 4) || '-' ||
+      substr(md5('room-' || gs::text), 21, 12)
+    )::uuid as id,
+    lpad(gs::text, 2, '0') as room_code,
+    case
+      when gs between 1 and 8 then 2
+      when gs between 9 and 20 then 3
+      else 4
+    end as capacity_value,
+    case
+      when gs between 1 and 8 then 175000
+      when gs between 9 and 20 then 225000
+      else 310000
+    end as price_value,
+    case
+      when gs in (7, 14, 21, 28) then 'maintenance'
+      else 'available'
+    end as status_value,
+    case
+      when gs <= 8 then true
+      else false
+    end as featured_value
+  from generate_series(1, 32) as gs
 )
+insert into public.rooms (
+  id,
+  name,
+  slug,
+  short_description,
+  long_description,
+  price,
+  capacity,
+  status,
+  is_featured,
+  display_order,
+  primary_image,
+  seo_title,
+  seo_description
+)
+select
+  id,
+  'Habitacion ' || room_code,
+  'habitacion-' || room_code,
+  'Habitacion provisional ' || room_code || ' para la fase operativa del sitio.',
+  'Habitacion ' || room_code || ' sembrada para validar lectura publica real, administracion persistente y relaciones con amenidades e imagenes.',
+  price_value,
+  capacity_value,
+  status_value,
+  featured_value,
+  room_number,
+  '/placeholders/room.svg',
+  'Habitacion ' || room_code || ' | Hotel San Marino Tumaco',
+  'Habitacion provisional ' || room_code || ' administrada desde base de datos.'
+from room_seed
 on conflict (slug) do update set
   name = excluded.name,
   short_description = excluded.short_description,
@@ -158,23 +189,87 @@ on conflict (slug) do update set
   seo_title = excluded.seo_title,
   seo_description = excluded.seo_description;
 
+with room_seed as (
+  select
+    gs as room_number,
+    (
+      substr(md5('room-' || gs::text), 1, 8) || '-' ||
+      substr(md5('room-' || gs::text), 9, 4) || '-' ||
+      substr(md5('room-' || gs::text), 13, 4) || '-' ||
+      substr(md5('room-' || gs::text), 17, 4) || '-' ||
+      substr(md5('room-' || gs::text), 21, 12)
+    )::uuid as room_id,
+    (
+      substr(md5('room-image-' || gs::text), 1, 8) || '-' ||
+      substr(md5('room-image-' || gs::text), 9, 4) || '-' ||
+      substr(md5('room-image-' || gs::text), 13, 4) || '-' ||
+      substr(md5('room-image-' || gs::text), 17, 4) || '-' ||
+      substr(md5('room-image-' || gs::text), 21, 12)
+    )::uuid as image_id,
+    lpad(gs::text, 2, '0') as room_code
+  from generate_series(1, 32) as gs
+)
 insert into public.room_images (
   id, room_id, storage_path, alt_text, is_primary, display_order
-) values
-('7ae36933-fcf4-4f8d-976b-b4ddb52e250f', '4e3c9d4d-77f5-4fba-a521-4ca47b3405db', '/placeholders/room.svg', 'Placeholder habitacion estandar', true, 1),
-('44f1db1e-c3b6-4da4-9393-dac573ec3ee1', '6f8f059c-2f71-4960-901e-f5966521f5f2', '/placeholders/room.svg', 'Placeholder habitacion familiar', true, 1)
+)
+select
+  image_id,
+  room_id,
+  '/placeholders/room.svg',
+  'Placeholder habitacion ' || room_code,
+  true,
+  1
+from room_seed
 on conflict (id) do update set
   storage_path = excluded.storage_path,
   alt_text = excluded.alt_text,
   is_primary = excluded.is_primary,
   display_order = excluded.display_order;
 
-insert into public.room_amenities (room_id, amenity_id) values
-('4e3c9d4d-77f5-4fba-a521-4ca47b3405db', 'c0f12625-6925-4f38-9916-56095ddce923'),
-('4e3c9d4d-77f5-4fba-a521-4ca47b3405db', 'a0cad8d8-cc9b-4bcb-bd9f-a13f242bf3f1'),
-('6f8f059c-2f71-4960-901e-f5966521f5f2', 'c0f12625-6925-4f38-9916-56095ddce923'),
-('6f8f059c-2f71-4960-901e-f5966521f5f2', 'a0cad8d8-cc9b-4bcb-bd9f-a13f242bf3f1'),
-('6f8f059c-2f71-4960-901e-f5966521f5f2', 'c56c9c07-d790-4c58-bc6d-2eddb03d6f8a')
+with room_seed as (
+  select
+    gs as room_number,
+    (
+      substr(md5('room-' || gs::text), 1, 8) || '-' ||
+      substr(md5('room-' || gs::text), 9, 4) || '-' ||
+      substr(md5('room-' || gs::text), 13, 4) || '-' ||
+      substr(md5('room-' || gs::text), 17, 4) || '-' ||
+      substr(md5('room-' || gs::text), 21, 12)
+    )::uuid as room_id
+  from generate_series(1, 32) as gs
+),
+amenity_cycle as (
+  select * from (
+    values
+      (1, 'c0f12625-6925-4f38-9916-56095ddce923'::uuid),
+      (2, 'a0cad8d8-cc9b-4bcb-bd9f-a13f242bf3f1'::uuid),
+      (3, 'c56c9c07-d790-4c58-bc6d-2eddb03d6f8a'::uuid),
+      (4, 'f4e0ab09-f9ab-4f1a-9c6a-2b5d4b7ab101'::uuid),
+      (5, 'b9fd773c-62d6-4ef2-9b49-e34a456d7202'::uuid),
+      (6, 'd0fbda8a-f95a-4c23-bf53-f55b49f52e12'::uuid),
+      (7, 'b9153c09-9de9-4fd4-b98a-2780dc0d8a63'::uuid),
+      (8, 'cb0dfc11-eac1-4c06-b693-c9d315f7e4a1'::uuid)
+  ) as amenity_cycle(idx, amenity_id)
+)
+insert into public.room_amenities (room_id, amenity_id)
+select room_id, amenity_id
+from (
+  select
+    room_seed.room_id,
+    amenity_cycle.amenity_id,
+    row_number() over (
+      partition by room_seed.room_id
+      order by amenity_cycle.idx
+    ) as rn
+  from room_seed
+  join amenity_cycle
+    on amenity_cycle.idx in (
+      ((room_seed.room_number - 1) % 8) + 1,
+      ((room_seed.room_number + 1) % 8) + 1,
+      ((room_seed.room_number + 3) % 8) + 1
+    )
+) seeded_relations
+where rn <= 3
 on conflict do nothing;
 
 insert into public.plans (
@@ -185,7 +280,7 @@ insert into public.plans (
   'Plan Corporativo',
   'plan-corporativo',
   'Tarifa provisional para viajeros de trabajo.',
-  'Plan semilla para validar persistencia minima real y despliegue en rutas publicas.',
+  'Plan operativo para validar persistencia real, lectura publica y administracion desde el panel.',
   'Desde $210.000 por noche',
   true,
   1,
@@ -197,7 +292,7 @@ insert into public.plans (
   'Plan Escapada',
   'plan-escapada',
   'Contenido inicial para estadias cortas.',
-  'Plan semilla para la arquitectura DB-first sin reservas ni checkout.',
+  'Plan semilla para el flujo DB-first sin reservas ni checkout.',
   'Consulta por WhatsApp',
   false,
   2,
@@ -216,14 +311,25 @@ on conflict (slug) do update set
 
 insert into public.testimonials (
   id, guest_name, guest_origin, quote, rating, is_featured, display_order, status
-) values (
+) values
+(
   '4c4feb18-c263-4283-8186-b1f920a52fda',
-  'Cliente provisional',
+  'Cliente provisional 01',
   'Tumaco',
-  'Testimonio semilla para validar el modulo mientras llega el contenido editorial definitivo.',
+  'Semilla inicial para validar el modulo de testimonios desde base de datos.',
   5,
   true,
   1,
+  'published'
+),
+(
+  '7073ad4b-e5da-46fc-91d6-f911987529c0',
+  'Cliente provisional 02',
+  'Pasto',
+  'Segundo testimonio semilla para comprobar orden, estado y actualizacion desde admin.',
+  4,
+  false,
+  2,
   'published'
 )
 on conflict (id) do update set

@@ -7,6 +7,7 @@ import { getPublicSiteContent } from "@/lib/content/public-content";
 export default async function HomePage() {
   const content = await getPublicSiteContent();
   const hero = content.homeSections.find((section) => section.key === "hero");
+  const primaryCta = content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
 
   return (
     <div className="subtle-grid">
@@ -20,17 +21,17 @@ export default async function HomePage() {
           <Card className="bg-primary text-primary-foreground">
             <CardHeader>
               <CardTitle className="font-sans text-xl">
-                Único CTA comercial de esta fase
+                Unico CTA comercial de esta fase
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-primary-foreground/80">
-                Sin formularios públicos, sin checkout y sin reservas online. La salida comercial es conversación directa por WhatsApp.
+                Sin formularios publicos, sin checkout y sin reservas online. La salida comercial es conversacion directa por WhatsApp.
               </p>
               <WhatsappCta
-                phoneNumber={content.contactInfo.whatsapp_number}
-                message={content.contactInfo.whatsapp_default_message}
-                label={String(hero?.payload.ctaLabel ?? "Consultar por WhatsApp")}
+                phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
+                message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+                label={String(hero?.payload.ctaLabel ?? primaryCta?.label ?? "Consultar por WhatsApp")}
                 className="bg-card text-foreground hover:bg-card/90"
               />
             </CardContent>
@@ -43,7 +44,7 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Habitaciones"
             title="Base lista para escalar a 32 habitaciones"
-            description="El detalle real llegará en fase 2; la estructura de contenido y relaciones ya está definida."
+            description="El detalle real llegara en fase 2; la estructura de contenido y relaciones ya esta definida."
           />
         </div>
         <div className="grid gap-6 md:grid-cols-2">

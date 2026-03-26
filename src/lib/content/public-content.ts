@@ -26,6 +26,7 @@ import {
   isDevelopmentContentFallbackEnabled,
   MissingContentError,
 } from "@/lib/content/runtime";
+import { resolveStoragePublicUrl } from "@/lib/storage";
 import type {
   ContactInfo,
   HomeSection,
@@ -79,7 +80,13 @@ function validateRooms(rawRooms: unknown[]): RoomWithRelations[] {
     };
 
     const images = (candidate.room_images ?? []).map((item) =>
-      roomImageSchema.parse(item),
+      ({
+        ...roomImageSchema.parse(item),
+        storage_path: resolveStoragePublicUrl(
+          "hotel-media",
+          roomImageSchema.parse(item).storage_path,
+        ),
+      }),
     );
 
     const amenities = (candidate.room_amenities ?? [])
@@ -94,6 +101,7 @@ function validateRooms(rawRooms: unknown[]): RoomWithRelations[] {
 
     return {
       ...parsedRoom,
+      primary_image: resolveStoragePublicUrl("hotel-media", parsedRoom.primary_image),
       images,
       amenities,
     };
@@ -205,7 +213,10 @@ export async function getPublicSiteContent(): Promise<PublicSiteContent> {
       whatsappCtas: whatsappCtaSchema.array().parse(ctasResult.data ?? []),
       homeSections: homeSectionSchema.array().parse(homeResult.data ?? []),
       rooms: validateRooms(roomsResult.data ?? []),
-      plans: planSchema.array().parse(plansResult.data ?? []),
+      plans: planSchema.array().parse(plansResult.data ?? []).map((plan) => ({
+        ...plan,
+        image_path: resolveStoragePublicUrl("hotel-media", plan.image_path),
+      })),
       testimonials: testimonialSchema.array().parse(testimonialsResult.data ?? []),
     };
   } catch (error) {

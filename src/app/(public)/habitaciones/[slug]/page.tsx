@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
-import { getRoomBySlug } from "@/lib/content/public-content";
+import { getPublicSiteContent } from "@/lib/content/public-content";
 import { resolveEntityImage } from "@/lib/media";
 import { formatCurrency } from "@/lib/utils";
 
@@ -12,7 +12,8 @@ export default async function RoomDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const room = await getRoomBySlug(slug);
+  const content = await getPublicSiteContent();
+  const room = content.rooms.find((item) => item.slug === slug) ?? null;
 
   if (!room) {
     notFound();
@@ -36,6 +37,20 @@ export default async function RoomDetailPage({
               </Badge>
             ))}
           </div>
+          {room.images.length > 1 ? (
+            <div className="grid gap-4 md:grid-cols-3">
+              {room.images.map((image) => (
+                <Image
+                  key={image.id}
+                  src={resolveEntityImage("room", image.storage_path)}
+                  alt={image.alt_text ?? room.name}
+                  width={600}
+                  height={450}
+                  className="aspect-[4/3] w-full rounded-[var(--radius)] border object-cover"
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
         <div className="space-y-6">
           <Badge>{room.status}</Badge>
@@ -45,12 +60,12 @@ export default async function RoomDetailPage({
             <p className="text-sm text-muted-foreground">Tarifa referencial</p>
             <p className="mt-2 text-3xl font-semibold">{formatCurrency(room.price)}</p>
             <p className="mt-3 text-sm text-muted-foreground">
-              Estado administrativo únicamente. No existe lógica de disponibilidad ni reservas en esta fase.
+              Estado administrativo unicamente. No existe logica de disponibilidad ni reservas en esta fase.
             </p>
             <div className="mt-6">
               <WhatsappCta
-                phoneNumber="+573154974576"
-                message="Hola, quiero consultar disponibilidad"
+                phoneNumber={content.contactInfo.whatsapp_number}
+                message={content.contactInfo.whatsapp_default_message}
               />
             </div>
           </div>
