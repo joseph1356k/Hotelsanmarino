@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { resolveEntityImage } from "@/lib/media";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { resolveStoragePublicUrl } from "@/lib/storage";
@@ -23,10 +24,10 @@ export function RoomForm({
   selectedAmenityIds?: string[];
   roomImages?: RoomImage[];
 }) {
-  const previewImage =
-    resolveStoragePublicUrl("hotel-media", room?.primary_image) ??
-    room?.primary_image ??
-    "/placeholders/room.svg";
+  const previewImage = resolveEntityImage(
+    "room",
+    resolveStoragePublicUrl("hotel-media", room?.primary_image) ?? room?.primary_image,
+  );
 
   return (
     <form action={action} className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">

@@ -3,6 +3,7 @@ import { deleteRoomImageAction, setRoomPrimaryImageAction } from "@/lib/actions/
 import { AdminEmptyState } from "@/components/admin/admin-empty-state";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { resolveEntityImage } from "@/lib/media";
 import { resolveStoragePublicUrl } from "@/lib/storage";
 import type { RoomImage } from "@/types/domain";
 
@@ -29,10 +30,11 @@ export function RoomImagesManager({
             {images.map((image, index) => (
               <div key={image.id} className="rounded-2xl border p-3">
                 <Image
-                  src={
+                  src={resolveEntityImage(
+                    "room",
                     resolveStoragePublicUrl("hotel-media", image.storage_path) ??
-                    "/placeholders/room.svg"
-                  }
+                      image.storage_path,
+                  )}
                   alt={image.alt_text ?? "Imagen de habitacion"}
                   width={1200}
                   height={900}

@@ -22,7 +22,7 @@ insert into public.site_settings (
   'El Morro se vive aqui.',
   'Hotel San Marino Tumaco',
   'Una forma clara, comoda y cercana de vivir El Morro con atencion directa por WhatsApp.',
-  '/placeholders/site.svg'
+  '/images/fallbacks/site-fallback.jpg'
 )
 on conflict (id) do update set
   site_name = excluded.site_name,
@@ -172,7 +172,7 @@ select
   status_value,
   featured_value,
   room_number,
-  '/placeholders/room.svg',
+  '/images/fallbacks/room-fallback.jpg',
   'Habitacion ' || room_code || ' | Hotel San Marino Tumaco',
   'Habitacion ' || room_code || ' con contenido provisional administrado desde base de datos.'
 from room_seed
@@ -215,7 +215,7 @@ insert into public.room_images (
 select
   image_id,
   room_id,
-  '/placeholders/room.svg',
+  '/images/fallbacks/room-fallback.jpg',
   'Placeholder habitacion ' || room_code,
   true,
   1
@@ -284,7 +284,7 @@ insert into public.plans (
   'Desde $210.000 por noche',
   true,
   1,
-  '/placeholders/plan.svg',
+  '/images/fallbacks/plan-fallback.jpg',
   'published'
 ),
 (
@@ -296,7 +296,7 @@ insert into public.plans (
   'Consulta por WhatsApp',
   false,
   2,
-  '/placeholders/plan.svg',
+  '/images/fallbacks/plan-fallback.jpg',
   'published'
 )
 on conflict (slug) do update set

@@ -4,6 +4,7 @@ import { AdminNotice } from "@/components/admin/admin-notice";
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAdminMediaAssets } from "@/lib/content/admin-content";
+import { resolveEntityImage } from "@/lib/media";
 import { resolveStoragePublicUrl } from "@/lib/storage";
 
 const mediaFilters = [
@@ -60,10 +61,11 @@ export default async function AdminMediaPage({
             <Card key={asset.id}>
               <CardContent className="space-y-4 p-4">
                 <Image
-                  src={
+                  src={resolveEntityImage(
+                    asset.entity_type,
                     resolveStoragePublicUrl(asset.bucket, asset.storage_path) ??
-                    "/placeholders/gallery.svg"
-                  }
+                      asset.storage_path,
+                  )}
                   alt={asset.alt_text ?? asset.storage_path}
                   width={1200}
                   height={900}
