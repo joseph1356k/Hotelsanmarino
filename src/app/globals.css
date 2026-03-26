@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f1e8;
+  --foreground: #1d2b2e;
+  --card: #fffaf3;
+  --card-foreground: #1d2b2e;
+  --popover: #fffaf3;
+  --popover-foreground: #1d2b2e;
+  --primary: #0f766e;
+  --primary-foreground: #f8fffe;
+  --secondary: #d8c7aa;
+  --secondary-foreground: #263537;
+  --muted: #ebe0cf;
+  --muted-foreground: #55686b;
+  --accent: #b75d39;
+  --accent-foreground: #fffaf3;
+  --destructive: #b42318;
+  --border: #d9cdbd;
+  --input: #d9cdbd;
+  --ring: #0f766e;
+  --radius: 1rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-playfair);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-playfair), serif;
+  }
+}
+
+@utility container-shell {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility subtle-grid {
+  background-image:
+    linear-gradient(rgba(29, 43, 46, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 43, 46, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@utility panel {
+  @apply rounded-[var(--radius)] border bg-card text-card-foreground shadow-[0_12px_40px_rgba(29,43,46,0.08)];
+}
