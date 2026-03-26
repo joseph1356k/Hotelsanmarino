@@ -17,11 +17,15 @@ export async function getAdminUser(): Promise<AdminUser | null> {
     return null;
   }
 
-  const { data: adminProfile } = await supabase
+  const { data: adminProfile, error } = await supabase
     .from("admin_users")
     .select("id, email, full_name, role, created_at, updated_at")
     .eq("id", user.id)
     .single();
+
+  if (error) {
+    return null;
+  }
 
   return (adminProfile as AdminUser | null) ?? null;
 }

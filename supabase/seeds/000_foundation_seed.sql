@@ -1,11 +1,29 @@
+-- Seed audit for foundation layer
+-- Populated entities:
+--   site_settings: 1
+--   contact_info: 1
+--   whatsapp_ctas: 1
+--   home_sections: 2
+--   amenities: 3
+--   rooms: 2
+--   room_images: 2
+--   room_amenities: 5
+--   plans: 2
+--   testimonials: 1
+-- Not populated in this seed:
+--   admin_users: 0 (must be created from auth.users explicitly)
+--   media_assets: 0 (phase 2 when uploads exist)
+-- Remaining inventory for phase 2:
+--   rooms pending load: 30 of 32
+
 insert into public.site_settings (
   id, site_name, site_tagline, seo_title, seo_description, default_share_image
 ) values (
   'default',
   'Hotel San Marino Tumaco',
-  'Estadía frente al Pacífico con operación simple y contenido editable.',
+  'Estadia frente al Pacifico con operacion simple y contenido editable.',
   'Hotel San Marino Tumaco',
-  'Sitio institucional con contenido editable desde Supabase y CTA comercial único vía WhatsApp.',
+  'Sitio institucional con contenido editable desde Supabase y CTA comercial unico via WhatsApp.',
   '/placeholders/site.svg'
 )
 on conflict (id) do update set
@@ -22,7 +40,7 @@ insert into public.contact_info (
   '+57 315 4974576',
   '+57 315 4974576',
   'Hola, quiero consultar disponibilidad',
-  'Tumaco, Nariño',
+  'Tumaco, Narino',
   'Tumaco',
   '15:00',
   '12:00'
@@ -61,8 +79,8 @@ insert into public.home_sections (
   '1d0a6ffc-0b25-4b09-bc51-f9156c5d0ea6',
   'hero',
   'Hotel San Marino Tumaco',
-  'Base comercial enfocada en conversación directa por WhatsApp.',
-  'Sin reservas online en esta fase. Sin formularios públicos. La conversión central es abrir conversación con el hotel.',
+  'Base comercial enfocada en conversacion directa por WhatsApp.',
+  'Sin reservas online en esta fase. Sin formularios publicos. La conversion central es abrir conversacion con el hotel.',
   '{"eyebrow":"Foundation layer","ctaLabel":"Consultar por WhatsApp"}'::jsonb,
   'published',
   1
@@ -72,7 +90,7 @@ insert into public.home_sections (
   'featured_rooms',
   'Habitaciones editables desde base de datos',
   'La arquitectura queda lista para crecer hasta 32 habitaciones.',
-  'Cada habitación soporta amenities, imágenes relacionadas, SEO básico y orden de despliegue.',
+  'Cada habitacion soporta amenities, imagenes relacionadas, SEO basico y orden de despliegue.',
   '{}'::jsonb,
   'published',
   2
@@ -99,33 +117,33 @@ insert into public.rooms (
 ) values
 (
   '4e3c9d4d-77f5-4fba-a521-4ca47b3405db',
-  'Habitación Estándar',
+  'Habitacion Estandar',
   'habitacion-estandar',
-  'Solución operativa para viajeros que priorizan descanso y ubicación.',
-  'Habitación provisional para la fase fundacional del sitio. La arquitectura queda preparada para sustituir textos, fotos y precio por data real desde admin sin tocar código.',
+  'Solucion operativa para viajeros que priorizan descanso y ubicacion.',
+  'Habitacion semilla para validar el flujo DB-first del sitio y su panel administrativo.',
   180000,
   2,
   'available',
   true,
   1,
   '/placeholders/room.svg',
-  'Habitación Estándar | Hotel San Marino Tumaco',
-  'Habitación base editable desde admin para la nueva arquitectura del sitio.'
+  'Habitacion Estandar | Hotel San Marino Tumaco',
+  'Habitacion base editable desde admin para la arquitectura inicial.'
 ),
 (
   '6f8f059c-2f71-4960-901e-f5966521f5f2',
-  'Habitación Familiar',
+  'Habitacion Familiar',
   'habitacion-familiar',
-  'Configuración provisional para grupos pequeños o familias.',
-  'Preparada para crecer hasta 32 habitaciones sin cambiar el modelo de dominio. El estado es puramente administrativo y no representa disponibilidad real.',
+  'Configuracion provisional para grupos pequenos o familias.',
+  'Habitacion semilla para comprobar relaciones entre habitaciones, amenities e imagenes.',
   320000,
   4,
   'available',
   true,
   2,
   '/placeholders/room.svg',
-  'Habitación Familiar | Hotel San Marino Tumaco',
-  'Habitación familiar provisional orientada a edición desde base de datos.'
+  'Habitacion Familiar | Hotel San Marino Tumaco',
+  'Habitacion familiar provisional orientada a edicion desde base de datos.'
 )
 on conflict (slug) do update set
   name = excluded.name,
@@ -143,8 +161,8 @@ on conflict (slug) do update set
 insert into public.room_images (
   id, room_id, storage_path, alt_text, is_primary, display_order
 ) values
-('7ae36933-fcf4-4f8d-976b-b4ddb52e250f', '4e3c9d4d-77f5-4fba-a521-4ca47b3405db', '/placeholders/room.svg', 'Placeholder de habitación estándar', true, 1),
-('44f1db1e-c3b6-4da4-9393-dac573ec3ee1', '6f8f059c-2f71-4960-901e-f5966521f5f2', '/placeholders/room.svg', 'Placeholder de habitación familiar', true, 1)
+('7ae36933-fcf4-4f8d-976b-b4ddb52e250f', '4e3c9d4d-77f5-4fba-a521-4ca47b3405db', '/placeholders/room.svg', 'Placeholder habitacion estandar', true, 1),
+('44f1db1e-c3b6-4da4-9393-dac573ec3ee1', '6f8f059c-2f71-4960-901e-f5966521f5f2', '/placeholders/room.svg', 'Placeholder habitacion familiar', true, 1)
 on conflict (id) do update set
   storage_path = excluded.storage_path,
   alt_text = excluded.alt_text,
@@ -167,7 +185,7 @@ insert into public.plans (
   'Plan Corporativo',
   'plan-corporativo',
   'Tarifa provisional para viajeros de trabajo.',
-  'Bloque editable pensado para destacar valor comercial y derivar la conversación a WhatsApp.',
+  'Plan semilla para validar persistencia minima real y despliegue en rutas publicas.',
   'Desde $210.000 por noche',
   true,
   1,
@@ -178,8 +196,8 @@ insert into public.plans (
   '4d1ebd48-f570-4697-b564-f7bcbccb3158',
   'Plan Escapada',
   'plan-escapada',
-  'Contenido inicial para estadías cortas.',
-  'La fase 1 define estructura, validaciones y persistencia; el detalle comercial fino llega en fase 2.',
+  'Contenido inicial para estadias cortas.',
+  'Plan semilla para la arquitectura DB-first sin reservas ni checkout.',
   'Consulta por WhatsApp',
   false,
   2,
@@ -202,7 +220,7 @@ insert into public.testimonials (
   '4c4feb18-c263-4283-8186-b1f920a52fda',
   'Cliente provisional',
   'Tumaco',
-  'La base del sitio está lista para que los testimonios se administren desde panel sin hardcodear el contenido final.',
+  'Testimonio semilla para validar el modulo mientras llega el contenido editorial definitivo.',
   5,
   true,
   1,

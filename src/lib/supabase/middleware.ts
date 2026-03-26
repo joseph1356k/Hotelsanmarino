@@ -43,5 +43,20 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
+  if (isAdminRoute && !isLoginRoute && user) {
+    const { data: adminProfile } = await supabase
+      .from("admin_users")
+      .select("id")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    if (!adminProfile) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = "/admin/login";
+      redirectUrl.searchParams.set("reason", "not-authorized");
+      return NextResponse.redirect(redirectUrl);
+    }
+  }
+
   return response;
 }

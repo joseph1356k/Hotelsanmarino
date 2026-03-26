@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { requireAdmin } from "@/lib/auth/admin";
 import { signOutAdmin } from "@/lib/actions/auth";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminProtectedLayout({
   children,
 }: {

@@ -10,7 +10,8 @@ import type {
 } from "@/types/domain";
 import { siteConfig } from "@/lib/constants/site";
 
-export const fallbackAmenities: Amenity[] = [
+// Development-only defaults. These are not the production source of truth.
+export const devDefaultAmenities: Amenity[] = [
   {
     id: "c0f12625-6925-4f38-9916-56095ddce923",
     name: "Aire acondicionado",
@@ -37,22 +38,22 @@ export const fallbackAmenities: Amenity[] = [
   },
 ];
 
-export const fallbackRooms: RoomWithRelations[] = [
+export const devDefaultRooms: RoomWithRelations[] = [
   {
     id: "4e3c9d4d-77f5-4fba-a521-4ca47b3405db",
-    name: "Habitación Estándar",
+    name: "Habitacion Estandar",
     slug: "habitacion-estandar",
-    short_description: "Solución operativa para viajeros que priorizan descanso y ubicación.",
+    short_description: "Solucion operativa para viajeros que priorizan descanso y ubicacion.",
     long_description:
-      "Habitación provisional para la fase fundacional del sitio. La arquitectura queda preparada para sustituir textos, fotos y precio por data real desde admin sin tocar código.",
+      "Habitacion provisional para desarrollo local. En produccion la fuente editable real debe ser la base de datos.",
     price: 180000,
     capacity: 2,
     status: "available",
     is_featured: true,
     display_order: 1,
     primary_image: "/placeholders/room.svg",
-    seo_title: "Habitación Estándar | Hotel San Marino Tumaco",
-    seo_description: "Habitación base editable desde admin para la nueva arquitectura del sitio.",
+    seo_title: "Habitacion Estandar | Hotel San Marino Tumaco",
+    seo_description: "Default temporal de desarrollo para validar la arquitectura.",
     created_at: "2026-03-26T00:00:00.000Z",
     updated_at: "2026-03-26T00:00:00.000Z",
     images: [
@@ -61,29 +62,29 @@ export const fallbackRooms: RoomWithRelations[] = [
         room_id: "4e3c9d4d-77f5-4fba-a521-4ca47b3405db",
         asset_id: null,
         storage_path: "/placeholders/room.svg",
-        alt_text: "Placeholder de habitación estándar",
+        alt_text: "Placeholder habitacion estandar",
         is_primary: true,
         display_order: 1,
         created_at: "2026-03-26T00:00:00.000Z",
       },
     ],
-    amenities: fallbackAmenities.slice(0, 2),
+    amenities: devDefaultAmenities.slice(0, 2),
   },
   {
     id: "6f8f059c-2f71-4960-901e-f5966521f5f2",
-    name: "Habitación Familiar",
+    name: "Habitacion Familiar",
     slug: "habitacion-familiar",
-    short_description: "Configuración provisional para grupos pequeños o familias.",
+    short_description: "Configuracion provisional para grupos pequenos o familias.",
     long_description:
-      "Preparada para crecer hasta 32 habitaciones sin cambiar el modelo de dominio. El estado es puramente administrativo y no representa disponibilidad real.",
+      "Default local para no bloquear desarrollo mientras la base no esta conectada.",
     price: 320000,
     capacity: 4,
     status: "available",
     is_featured: true,
     display_order: 2,
     primary_image: "/placeholders/room.svg",
-    seo_title: "Habitación Familiar | Hotel San Marino Tumaco",
-    seo_description: "Habitación familiar provisional orientada a edición desde base de datos.",
+    seo_title: "Habitacion Familiar | Hotel San Marino Tumaco",
+    seo_description: "Default temporal de desarrollo para validar relaciones.",
     created_at: "2026-03-26T00:00:00.000Z",
     updated_at: "2026-03-26T00:00:00.000Z",
     images: [
@@ -92,24 +93,24 @@ export const fallbackRooms: RoomWithRelations[] = [
         room_id: "6f8f059c-2f71-4960-901e-f5966521f5f2",
         asset_id: null,
         storage_path: "/placeholders/room.svg",
-        alt_text: "Placeholder de habitación familiar",
+        alt_text: "Placeholder habitacion familiar",
         is_primary: true,
         display_order: 1,
         created_at: "2026-03-26T00:00:00.000Z",
       },
     ],
-    amenities: fallbackAmenities,
+    amenities: devDefaultAmenities,
   },
 ];
 
-export const fallbackPlans: Plan[] = [
+export const devDefaultPlans: Plan[] = [
   {
     id: "22b94f1c-2f6d-4a66-8180-85cb487663c6",
     name: "Plan Corporativo",
     slug: "plan-corporativo",
     short_description: "Tarifa provisional para viajeros de trabajo.",
     long_description:
-      "Bloque editable pensado para destacar valor comercial y derivar la conversación a WhatsApp.",
+      "Contenido temporal para desarrollo. La fuente editable final debe ser la base de datos.",
     price_label: "Desde $210.000 por noche",
     is_featured: true,
     display_order: 1,
@@ -122,9 +123,9 @@ export const fallbackPlans: Plan[] = [
     id: "4d1ebd48-f570-4697-b564-f7bcbccb3158",
     name: "Plan Escapada",
     slug: "plan-escapada",
-    short_description: "Contenido inicial para estadías cortas.",
+    short_description: "Contenido inicial para estadias cortas.",
     long_description:
-      "La fase 1 define estructura, validaciones y persistencia; el detalle comercial fino llega en fase 2.",
+      "Default de desarrollo para validar lectura de tarjetas y ordenamiento.",
     price_label: "Consulta por WhatsApp",
     is_featured: false,
     display_order: 2,
@@ -135,13 +136,12 @@ export const fallbackPlans: Plan[] = [
   },
 ];
 
-export const fallbackTestimonials: Testimonial[] = [
+export const devDefaultTestimonials: Testimonial[] = [
   {
     id: "4c4feb18-c263-4283-8186-b1f920a52fda",
     guest_name: "Cliente provisional",
     guest_origin: "Tumaco",
-    quote:
-      "La base del sitio está lista para que los testimonios se administren desde panel sin hardcodear el contenido final.",
+    quote: "Default local para validar el modulo de testimonios antes de cargar contenido real.",
     rating: 5,
     is_featured: true,
     display_order: 1,
@@ -151,16 +151,16 @@ export const fallbackTestimonials: Testimonial[] = [
   },
 ];
 
-export const fallbackHomeSections: HomeSection[] = [
+export const devDefaultHomeSections: HomeSection[] = [
   {
     id: "1d0a6ffc-0b25-4b09-bc51-f9156c5d0ea6",
     key: "hero",
     title: "Hotel San Marino Tumaco",
-    subtitle: "Base comercial enfocada en conversación directa por WhatsApp.",
+    subtitle: "Default local para desarrollo con CTA unico por WhatsApp.",
     body:
-      "Sin reservas online en esta fase. Sin formularios públicos. La conversión central es abrir conversación con el hotel.",
+      "Sin reservas online en esta fase. Sin formularios publicos. La conversion central es abrir conversacion con el hotel.",
     payload: {
-      eyebrow: "Foundation layer",
+      eyebrow: "Development fallback",
       ctaLabel: "Consultar por WhatsApp",
     },
     status: "published",
@@ -173,7 +173,8 @@ export const fallbackHomeSections: HomeSection[] = [
     key: "featured_rooms",
     title: "Habitaciones editables desde base de datos",
     subtitle: "La arquitectura queda lista para crecer hasta 32 habitaciones.",
-    body: "Cada habitación soporta amenities, imágenes relacionadas, SEO básico y orden de despliegue.",
+    body:
+      "Cada habitacion soporta amenities, imagenes relacionadas, SEO basico y orden de despliegue.",
     payload: {},
     status: "published",
     display_order: 2,
@@ -182,25 +183,25 @@ export const fallbackHomeSections: HomeSection[] = [
   },
 ];
 
-export const fallbackSiteSettings: SiteSettings = {
+export const devDefaultSiteSettings: SiteSettings = {
   id: "default",
   site_name: siteConfig.siteName,
   site_tagline: siteConfig.siteTagline,
   seo_title: "Hotel San Marino Tumaco",
   seo_description:
-    "Sitio institucional con contenido editable desde Supabase y CTA comercial único vía WhatsApp.",
+    "Default local para desarrollo. En produccion este contenido debe venir de Supabase.",
   logo_path: null,
   default_share_image: "/placeholders/site.svg",
   created_at: "2026-03-26T00:00:00.000Z",
   updated_at: "2026-03-26T00:00:00.000Z",
 };
 
-export const fallbackContactInfo: ContactInfo = {
+export const devDefaultContactInfo: ContactInfo = {
   id: "default",
   phone: "+57 315 4974576",
   whatsapp_number: "+57 315 4974576",
   whatsapp_default_message: siteConfig.whatsappMessage,
-  address: "Tumaco, Nariño",
+  address: "Tumaco, Narino",
   city: "Tumaco",
   maps_embed_url: null,
   email: null,
@@ -210,7 +211,7 @@ export const fallbackContactInfo: ContactInfo = {
   updated_at: "2026-03-26T00:00:00.000Z",
 };
 
-export const fallbackWhatsappCtas: WhatsappCta[] = [
+export const devDefaultWhatsappCtas: WhatsappCta[] = [
   {
     id: "d9a666fd-fd7f-4e76-97a7-386d3f132767",
     key: "primary",

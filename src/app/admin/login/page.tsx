@@ -3,6 +3,8 @@ import { AdminLoginForm } from "@/components/admin/login-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAdminUser } from "@/lib/auth/admin";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminLoginPage() {
   const admin = await getAdminUser();
 
