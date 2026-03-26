@@ -79,7 +79,7 @@ export default async function ContactPage() {
             })}
           </div>
           <div className="space-y-5">
-            <div className="rounded-[32px] bg-white/82 p-7 shadow-[0_18px_40px_rgba(16,45,63,0.08)]">
+            <div className="mist-panel p-7">
               <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 Mensaje base
               </p>
@@ -95,7 +95,7 @@ export default async function ContactPage() {
                 />
               </div>
             </div>
-            <div className="rounded-[32px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(21,59,82,0.06),rgba(95,114,100,0.08))] p-7">
+            <div className="rounded-[32px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(238,242,241,0.78),rgba(247,243,236,0.94))] p-7">
               <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 Mapa y referencia
               </p>

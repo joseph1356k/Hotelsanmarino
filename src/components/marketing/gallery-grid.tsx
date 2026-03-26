@@ -36,7 +36,7 @@ export function GalleryGrid({
             height={900}
             className="aspect-[4/3] h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#102d3f]/28 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#153B52]/24 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
         </div>
       ))}
     </div>

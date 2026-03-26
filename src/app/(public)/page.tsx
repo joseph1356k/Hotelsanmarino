@@ -87,7 +87,7 @@ export default async function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 34vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#102d3f]/58 via-[#153b52]/18 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#153B52]/55 via-[#153B52]/18 to-transparent" />
               </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -184,7 +184,7 @@ export default async function HomePage() {
         <div className="ocean-panel relative overflow-hidden px-6 py-8 md:px-10 md:py-10 lg:px-12">
           <div className="absolute inset-0">
             <div className="absolute left-0 top-0 h-52 w-52 rounded-full bg-white/6 blur-3xl" />
-            <div className="absolute bottom-[-4rem] right-[-2rem] h-56 w-56 rounded-full bg-[var(--coral)]/10 blur-[120px]" />
+            <div className="absolute bottom-[-4rem] right-[-2rem] h-56 w-56 rounded-full bg-[var(--coral)]/8 blur-[120px]" />
           </div>
           <div className="relative grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <Reveal className="space-y-6">
@@ -214,7 +214,7 @@ export default async function HomePage() {
                   height={900}
                   className="aspect-[5/4] w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#102d3f]/66 via-[#153b52]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#153B52]/62 via-[#153B52]/18 to-transparent" />
               </div>
             </Reveal>
           </div>
@@ -280,19 +280,19 @@ export default async function HomePage() {
         </div>
         <Reveal delay={120}>
           <div className="mt-8 flex flex-wrap gap-3 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(247,243,236,0.92)] px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
               <Wifi className="size-4 text-primary" />
               WiFi
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(247,243,236,0.92)] px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
               <ParkingCircle className="size-4 text-primary" />
               Parqueadero
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(247,243,236,0.92)] px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
               <MapPin className="size-4 text-primary" />
               Tours con terceros
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/86 px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(247,243,236,0.92)] px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
               <MessageCircle className="size-4 text-primary" />
               Atencion directa
             </span>
@@ -362,7 +362,7 @@ export default async function HomePage() {
           <Reveal delay={150}>
             <div className="mist-panel p-8">
               <div className="aspect-[4/3] rounded-[26px] bg-muted p-6">
-                <div className="flex h-full flex-col items-start justify-between rounded-[20px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(21,59,82,0.08),rgba(238,242,241,0.5))] p-6">
+                <div className="flex h-full flex-col items-start justify-between rounded-[20px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(238,242,241,0.74),rgba(247,243,236,0.92))] p-6">
                   <MapPin className="size-8 text-primary" />
                   <div className="space-y-3">
                     <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">

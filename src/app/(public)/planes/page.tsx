@@ -18,13 +18,13 @@ export default async function PlansPage() {
         description="Los planes se administran desde DB y se presentan como una capa comercial flexible para campañas, escapadas o necesidades puntuales."
         aside={
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="rounded-[26px] bg-white/80 p-5 shadow-[0_16px_40px_rgba(16,45,63,0.08)]">
+            <div className="mist-panel px-5 py-5">
               <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 Planes activos
               </p>
               <p className="mt-3 text-4xl text-primary">{content.plans.length}</p>
             </div>
-            <div className="rounded-[26px] bg-secondary p-5">
+            <div className="rounded-[26px] bg-muted p-5">
               <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                 Cierre comercial
               </p>

@@ -21,7 +21,7 @@ export default async function ServicesPage() {
         title="Servicios que hacen la estadia mas simple y mas completa"
         description="Desde conectividad y zonas comunes hasta restaurante, tienda 24 horas y apoyo para planes complementarios. El objetivo es resolver con claridad, no sumar ruido."
         aside={
-          <div className="rounded-[30px] bg-white/80 p-7 shadow-[0_18px_40px_rgba(16,45,63,0.08)]">
+          <div className="mist-panel p-7">
             <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
               Restaurante
             </p>

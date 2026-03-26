@@ -30,7 +30,7 @@ export default async function LocationPage() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             ) : (
-              <div className="flex aspect-[5/4] flex-col justify-between rounded-[24px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(21,59,82,0.06),rgba(95,114,100,0.08))] p-6">
+              <div className="flex aspect-[5/4] flex-col justify-between rounded-[24px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(238,242,241,0.78),rgba(247,243,236,0.94))] p-6">
                 <MapPin className="size-8 text-primary" />
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">

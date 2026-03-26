@@ -20,8 +20,8 @@ export function CtaBanner({
       <Reveal>
         <div className="relative overflow-hidden rounded-[38px] bg-[linear-gradient(145deg,#153b52_0%,#102d3f_100%)] px-6 py-10 text-primary-foreground shadow-[0_34px_78px_rgba(16,45,63,0.28)] md:px-10 md:py-12 lg:px-14">
           <div className="absolute inset-0">
-            <div className="absolute left-10 top-8 h-32 w-32 rounded-full bg-white/8 blur-3xl" />
-            <div className="absolute bottom-[-2rem] right-10 h-40 w-40 rounded-full bg-[var(--coral)]/12 blur-3xl" />
+            <div className="absolute left-10 top-8 h-32 w-32 rounded-full bg-[rgba(238,242,241,0.1)] blur-3xl" />
+            <div className="absolute bottom-[-2rem] right-10 h-40 w-40 rounded-full bg-[var(--coral)]/1 blur-3xl" />
           </div>
           <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="space-y-4">
