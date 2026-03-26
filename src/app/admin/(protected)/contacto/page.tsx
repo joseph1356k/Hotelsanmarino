@@ -1,4 +1,5 @@
 import { AdminNotice } from "@/components/admin/admin-notice";
+import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -27,8 +28,14 @@ export default async function AdminContactPage({
 
   return (
     <div className="space-y-6">
+      <AdminPageHeader
+        eyebrow="Sitio"
+        title="Contacto y WhatsApp"
+        description="Bloque operativo del sitio: datos del hotel, canal comercial principal y copies accionables."
+      />
       <AdminNotice notice={notice} error={error} />
-      <div className="grid gap-6 lg:grid-cols-2">
+
+      <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <Card>
           <CardHeader>
             <CardTitle>Informacion de contacto</CardTitle>
@@ -94,7 +101,11 @@ export default async function AdminContactPage({
         </CardHeader>
         <CardContent className="space-y-4">
           {whatsappCtas.map((cta) => (
-            <form key={cta.id} action={updateWhatsappCtaAction} className="rounded-2xl border p-4">
+            <form
+              key={cta.id}
+              action={updateWhatsappCtaAction}
+              className="rounded-[1.25rem] border border-border/80 p-4"
+            >
               <input type="hidden" name="cta_id" value={cta.id} />
               <div className="grid gap-4 md:grid-cols-2">
                 <Input name="key" defaultValue={cta.key} required />

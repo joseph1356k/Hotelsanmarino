@@ -17,12 +17,12 @@ export const publicNavigation = [
 ];
 
 export const adminNavigation = [
-  { href: "/admin", label: "Resumen" },
-  { href: "/admin/habitaciones", label: "Habitaciones" },
-  { href: "/admin/planes", label: "Planes" },
-  { href: "/admin/testimonios", label: "Testimonios" },
-  { href: "/admin/home", label: "Home" },
-  { href: "/admin/configuracion", label: "Configuración" },
-  { href: "/admin/contacto", label: "Contacto" },
-  { href: "/admin/media", label: "Media" },
+  { href: "/admin", label: "Resumen", group: "Control" },
+  { href: "/admin/habitaciones", label: "Habitaciones", group: "Contenido" },
+  { href: "/admin/planes", label: "Planes", group: "Contenido" },
+  { href: "/admin/testimonios", label: "Testimonios", group: "Contenido" },
+  { href: "/admin/home", label: "Home", group: "Sitio" },
+  { href: "/admin/contacto", label: "Contacto", group: "Sitio" },
+  { href: "/admin/configuracion", label: "Configuracion", group: "Sitio" },
+  { href: "/admin/media", label: "Media", group: "Recursos" },
 ];

@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { AdminEmptyState } from "@/components/admin/admin-empty-state";
 import { AdminNotice } from "@/components/admin/admin-notice";
+import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -92,48 +94,67 @@ export default async function AdminPlansPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl">Planes</h2>
-        <p className="text-sm text-muted-foreground">CRUD real persistente para planes.</p>
-      </div>
+      <AdminPageHeader
+        eyebrow="Contenido"
+        title="Planes"
+        description="Gestiona planes promocionales, orden editorial y estado de publicacion desde una sola vista."
+      />
       <AdminNotice notice={notice} error={error} />
 
-      <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
         <Card>
           <CardHeader>
             <CardTitle>Listado</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {plans.map((plan) => (
-              <div key={plan.id} className="rounded-2xl border p-4">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="font-semibold">{plan.name}</p>
-                    <p className="text-sm text-muted-foreground">{plan.short_description}</p>
-                  </div>
-                  <div className="flex gap-2">
-                    <Link href={`/admin/planes?edit=${plan.id}`} className="rounded-full border px-4 py-2 text-sm font-semibold">
-                      Editar
-                    </Link>
-                    <form action={deletePlanAction}>
-                      <input type="hidden" name="plan_id" value={plan.id} />
-                      <Button type="submit" variant="outline">
-                        Eliminar
-                      </Button>
-                    </form>
+            {plans.length === 0 ? (
+              <AdminEmptyState
+                title="No hay planes cargados"
+                description="Crea el primer plan para empezar a poblar la oferta comercial del sitio."
+              />
+            ) : (
+              plans.map((plan) => (
+                <div key={plan.id} className="rounded-[1.25rem] border border-border/80 p-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <p className="font-semibold">{plan.name}</p>
+                        <span className="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground">
+                          {plan.status}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-sm text-muted-foreground">{plan.short_description}</p>
+                      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                        Orden {plan.display_order}
+                      </p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Link href={`/admin/planes?edit=${plan.id}`} className="rounded-full border px-4 py-2 text-sm font-semibold">
+                        Editar
+                      </Link>
+                      <form action={deletePlanAction}>
+                        <input type="hidden" name="plan_id" value={plan.id} />
+                        <Button type="submit" variant="outline">
+                          Eliminar
+                        </Button>
+                      </form>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>{currentPlan ? "Editar plan" : "Nuevo plan"}</CardTitle>
+            <CardTitle>{currentPlan ? "Editor de plan" : "Nuevo plan"}</CardTitle>
           </CardHeader>
           <CardContent>
-            <PlanForm action={currentPlan ? updatePlanAction : createPlanAction} plan={currentPlan} />
+            <PlanForm
+              action={currentPlan ? updatePlanAction : createPlanAction}
+              plan={currentPlan}
+            />
           </CardContent>
         </Card>
       </div>

@@ -303,6 +303,36 @@ export async function deleteRoomAction(formData: FormData) {
   adminRedirect("/admin/habitaciones", "notice", "Habitacion eliminada.");
 }
 
+export async function toggleRoomFeaturedAction(formData: FormData) {
+  await requireAdmin();
+  const adminClient = createSupabaseAdminClient();
+  const roomId = getString(formData, "room_id");
+  const currentValue = getBoolean(formData, "current_value");
+
+  await adminClient
+    .from("rooms")
+    .update({ is_featured: !currentValue })
+    .eq("id", roomId);
+
+  revalidatePath("/admin/habitaciones");
+  adminRedirect(
+    "/admin/habitaciones",
+    "notice",
+    !currentValue ? "Habitacion marcada como destacada." : "Habitacion removida de destacadas.",
+  );
+}
+
+export async function changeRoomStatusAction(formData: FormData) {
+  await requireAdmin();
+  const adminClient = createSupabaseAdminClient();
+  const roomId = getString(formData, "room_id");
+  const status = getString(formData, "status");
+
+  await adminClient.from("rooms").update({ status }).eq("id", roomId);
+  revalidatePath("/admin/habitaciones");
+  adminRedirect("/admin/habitaciones", "notice", "Estado actualizado.");
+}
+
 export async function setRoomPrimaryImageAction(formData: FormData) {
   await requireAdmin();
   const adminClient = createSupabaseAdminClient();
