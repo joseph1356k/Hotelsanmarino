@@ -1,37 +1,27 @@
-import Image from "next/image";
-import { SectionHeading } from "@/components/marketing/section-heading";
+import { GalleryGrid } from "@/components/marketing/gallery-grid";
+import { PageHero } from "@/components/marketing/page-hero";
 import { getPublicSiteContent } from "@/lib/content/public-content";
-import { resolveEntityImage } from "@/lib/media";
 
 export default async function GalleryPage() {
   const content = await getPublicSiteContent();
   const galleryImages = content.rooms.flatMap((room) =>
     room.images.map((image) => ({
       id: image.id,
-      src: resolveEntityImage("room", image.storage_path),
+      src: image.storage_path,
       alt: image.alt_text ?? room.name,
     })),
   );
 
   return (
-    <section className="container-shell py-16">
-      <SectionHeading
+    <div className="pb-16 md:pb-24">
+      <PageHero
         eyebrow="Galeria"
-        title="Imagenes reales o fallback estructural"
-        description="La galeria consume room_images desde DB. Si una habitacion aun no tiene asset real, conserva fallback editorial explicito."
+        title="Imagenes tratadas con ritmo y aire"
+        description="La galeria toma room_images desde DB y las presenta con una composicion editorial limpia, preparada para crecer sin volverse un collage caotico."
       />
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {galleryImages.slice(0, 12).map((image) => (
-          <Image
-            key={image.id}
-            src={image.src}
-            alt={image.alt}
-            width={800}
-            height={800}
-            className="aspect-square w-full rounded-[var(--radius)] border object-cover"
-          />
-        ))}
-      </div>
-    </section>
+      <section className="section-shell">
+        <GalleryGrid items={galleryImages} limit={18} />
+      </section>
+    </div>
   );
 }

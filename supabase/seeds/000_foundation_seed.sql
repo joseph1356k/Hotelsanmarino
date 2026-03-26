@@ -19,9 +19,9 @@ insert into public.site_settings (
 ) values (
   'default',
   'Hotel San Marino Tumaco',
-  'Estadia frente al Pacifico con operacion simple y contenido editable.',
+  'El Morro se vive aqui.',
   'Hotel San Marino Tumaco',
-  'Sitio institucional con contenido editable desde Supabase y CTA comercial unico via WhatsApp.',
+  'Una forma clara, comoda y cercana de vivir El Morro con atencion directa por WhatsApp.',
   '/placeholders/site.svg'
 )
 on conflict (id) do update set
@@ -76,9 +76,9 @@ insert into public.home_sections (
 (
   '1d0a6ffc-0b25-4b09-bc51-f9156c5d0ea6',
   'hero',
-  'Hotel San Marino Tumaco',
-  'Base comercial enfocada en conversacion directa por WhatsApp.',
-  'Sin reservas online en esta fase. Sin formularios publicos. La conversion central es abrir conversacion con el hotel.',
+  'El Morro se vive aqui',
+  'Calma con identidad, cercania al mar y atencion directa.',
+  'Hotel San Marino presenta una forma mas clara y comoda de quedarse en El Morro. En esta fase no hay reservas online: la conversacion comercial ocurre por WhatsApp.',
   '{"eyebrow":"Hotel San Marino","ctaLabel":"Consultar por WhatsApp"}'::jsonb,
   'published',
   1
@@ -86,9 +86,9 @@ insert into public.home_sections (
 (
   '8db85849-f64b-40bb-9aa5-4d7c253a1377',
   'featured_rooms',
-  'Habitaciones provisionales listas para administracion',
-  'Inventario semilla completo con 32 habitaciones.',
-  'Cada habitacion soporta amenities, imagen principal, galeria, SEO basico y orden de despliegue.',
+  'Habitaciones para elegir con calma',
+  'Imagen, capacidad y contexto para decidir mejor.',
+  'Cada habitacion soporta amenities, imagen principal, galeria, SEO basico y orden de despliegue desde base de datos.',
   '{}'::jsonb,
   'published',
   2
@@ -165,8 +165,8 @@ select
   id,
   'Habitacion ' || room_code,
   'habitacion-' || room_code,
-  'Habitacion provisional ' || room_code || ' para la fase operativa del sitio.',
-  'Habitacion ' || room_code || ' sembrada para validar lectura publica real, administracion persistente y relaciones con amenidades e imagenes.',
+  'Una opcion provisional bien presentada para vivir El Morro con mas comodidad.',
+  'Habitacion ' || room_code || ' sembrada para validar lectura publica real, administracion persistente, amenidades relacionadas y una presentacion comercial coherente.',
   price_value,
   capacity_value,
   status_value,
@@ -174,7 +174,7 @@ select
   room_number,
   '/placeholders/room.svg',
   'Habitacion ' || room_code || ' | Hotel San Marino Tumaco',
-  'Habitacion provisional ' || room_code || ' administrada desde base de datos.'
+  'Habitacion ' || room_code || ' con contenido provisional administrado desde base de datos.'
 from room_seed
 on conflict (slug) do update set
   name = excluded.name,
@@ -279,8 +279,8 @@ insert into public.plans (
   '22b94f1c-2f6d-4a66-8180-85cb487663c6',
   'Plan Corporativo',
   'plan-corporativo',
-  'Tarifa provisional para viajeros de trabajo.',
-  'Plan operativo para validar persistencia real, lectura publica y administracion desde el panel.',
+  'Una opcion clara para viajes de trabajo en Tumaco.',
+  'Plan base para estadias corporativas con presentacion publica, persistencia real y cierre comercial por WhatsApp.',
   'Desde $210.000 por noche',
   true,
   1,
@@ -291,8 +291,8 @@ insert into public.plans (
   '4d1ebd48-f570-4697-b564-f7bcbccb3158',
   'Plan Escapada',
   'plan-escapada',
-  'Contenido inicial para estadias cortas.',
-  'Plan semilla para el flujo DB-first sin reservas ni checkout.',
+  'Una salida breve para quedarse cerca del mar con mas calma.',
+  'Plan semilla pensado para escapadas cortas, sin reservas online ni checkout en esta fase.',
   'Consulta por WhatsApp',
   false,
   2,
@@ -314,9 +314,9 @@ insert into public.testimonials (
 ) values
 (
   '4c4feb18-c263-4283-8186-b1f920a52fda',
-  'Cliente provisional 01',
+  'Andrea M.',
   'Tumaco',
-  'Semilla inicial para validar el modulo de testimonios desde base de datos.',
+  'La ubicacion se siente practica y el contacto por WhatsApp hace todo mas claro desde el primer mensaje.',
   5,
   true,
   1,
@@ -324,9 +324,9 @@ insert into public.testimonials (
 ),
 (
   '7073ad4b-e5da-46fc-91d6-f911987529c0',
-  'Cliente provisional 02',
+  'Carlos R.',
   'Pasto',
-  'Segundo testimonio semilla para comprobar orden, estado y actualizacion desde admin.',
+  'Es una estadia sencilla, bien presentada y con una atencion mas directa de lo habitual.',
   4,
   false,
   2,

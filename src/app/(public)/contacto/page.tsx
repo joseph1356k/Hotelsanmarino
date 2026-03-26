@@ -1,48 +1,126 @@
+import { Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { CtaBanner } from "@/components/marketing/cta-banner";
+import { PageHero } from "@/components/marketing/page-hero";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
-import { SectionHeading } from "@/components/marketing/section-heading";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 
 export default async function ContactPage() {
-  const { contactInfo, whatsappCtas } = await getPublicSiteContent();
-  const primaryCta = whatsappCtas.find((cta) => cta.is_primary) ?? whatsappCtas[0] ?? null;
+  const content = await getPublicSiteContent();
+  const primaryCta =
+    content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
+
+  const contactBlocks = [
+    {
+      title: "Telefono",
+      value: content.contactInfo.phone,
+      icon: Phone,
+    },
+    {
+      title: "WhatsApp",
+      value: primaryCta?.phone_number ?? content.contactInfo.whatsapp_number,
+      icon: MessageCircle,
+    },
+    {
+      title: "Direccion",
+      value: content.contactInfo.address,
+      icon: MapPin,
+    },
+    {
+      title: "Email",
+      value: content.contactInfo.email ?? "Se coordina por WhatsApp",
+      icon: Mail,
+    },
+    {
+      title: "Check-in",
+      value: content.contactInfo.check_in_time ?? "--",
+      icon: Clock3,
+    },
+    {
+      title: "Check-out",
+      value: content.contactInfo.check_out_time ?? "--",
+      icon: Clock3,
+    },
+  ];
 
   return (
-    <section className="container-shell py-16">
-      <SectionHeading
+    <div className="pb-16 md:pb-24">
+      <PageHero
         eyebrow="Contacto"
-        title="Contacto operativo sin formularios"
-        description="Esta fase elimina formularios publicos por decision de producto. El CTA comercial unico es WhatsApp."
+        title="Hablar con el hotel debe sentirse facil"
+        description="No hay formularios publicos en esta fase. La web concentra informacion clara y lleva la conversacion comercial a WhatsApp."
+        actions={
+          <WhatsappCta
+            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
+            message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+            label={primaryCta?.label ?? "Consultar por WhatsApp"}
+          />
+        }
       />
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Canales activos</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-muted-foreground">
-            <p>Telefono: {contactInfo.phone}</p>
-            <p>Ciudad: {contactInfo.city}</p>
-            <p>Check-in: {contactInfo.check_in_time}</p>
-            <p>Check-out: {contactInfo.check_out_time}</p>
-          </CardContent>
-        </Card>
-        <Card className="bg-primary text-primary-foreground">
-          <CardHeader>
-            <CardTitle className="font-sans">WhatsApp como canal principal</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-sm text-primary-foreground/80">
-              Mensaje base: {primaryCta?.message ?? contactInfo.whatsapp_default_message}
-            </p>
-            <WhatsappCta
-              phoneNumber={primaryCta?.phone_number ?? contactInfo.whatsapp_number}
-              message={primaryCta?.message ?? contactInfo.whatsapp_default_message}
-              label={primaryCta?.label ?? "Consultar por WhatsApp"}
-              className="bg-card text-foreground hover:bg-card/90"
-            />
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+
+      <section className="section-shell">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="grid gap-5 sm:grid-cols-2">
+            {contactBlocks.map((block) => {
+              const Icon = block.icon;
+              return (
+                <article
+                  key={block.title}
+                  className="rounded-[28px] border border-white/70 bg-white/80 p-6 shadow-[0_16px_40px_rgba(16,45,63,0.08)]"
+                >
+                  <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-secondary text-primary">
+                    <Icon className="size-5" />
+                  </div>
+                  <p className="mt-5 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                    {block.title}
+                  </p>
+                  <p className="mt-3 text-lg leading-7 text-foreground/86">{block.value}</p>
+                </article>
+              );
+            })}
+          </div>
+          <div className="space-y-5">
+            <div className="rounded-[32px] bg-white/82 p-7 shadow-[0_18px_40px_rgba(16,45,63,0.08)]">
+              <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                Mensaje base
+              </p>
+              <p className="mt-4 text-xl leading-8 text-foreground/86">
+                {primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+              </p>
+              <div className="mt-6">
+                <WhatsappCta
+                  phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
+                  message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+                  label="Abrir WhatsApp"
+                  className="w-full justify-center"
+                />
+              </div>
+            </div>
+            <div className="rounded-[32px] border border-dashed border-primary/25 bg-[linear-gradient(180deg,rgba(21,59,82,0.06),rgba(95,114,100,0.08))] p-7">
+              <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                Mapa y referencia
+              </p>
+              <p className="mt-4 text-lg leading-7 text-foreground/86">
+                {content.contactInfo.address}. Si necesitas una referencia puntual
+                para llegar, la forma correcta es escribir y confirmar por WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner
+        eyebrow="Canal principal"
+        title="El siguiente paso no es un formulario: es una conversacion"
+        description="San Marino usa WhatsApp como salida comercial real para atender dudas, orientar opciones y seguir la conversacion de forma directa."
+        actions={
+          <WhatsappCta
+            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
+            message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+            label="Ir a WhatsApp"
+            className="bg-white text-primary hover:bg-white/92"
+          />
+        }
+      />
+    </div>
   );
 }

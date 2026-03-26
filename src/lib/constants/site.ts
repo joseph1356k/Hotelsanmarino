@@ -1,6 +1,6 @@
 export const siteConfig = {
   siteName: "Hotel San Marino Tumaco",
-  siteTagline: "Estadía frente al Pacífico con operación simple y contenido editable.",
+  siteTagline: "El Morro se vive aqui",
   whatsappNumber: "+573154974576",
   whatsappMessage: "Hola, quiero consultar disponibilidad",
 } as const;
@@ -10,9 +10,9 @@ export const publicNavigation = [
   { href: "/habitaciones", label: "Habitaciones" },
   { href: "/planes", label: "Planes" },
   { href: "/servicios", label: "Servicios" },
-  { href: "/galeria", label: "Galería" },
+  { href: "/galeria", label: "Galeria" },
   { href: "/nosotros", label: "Nosotros" },
-  { href: "/ubicacion", label: "Ubicación" },
+  { href: "/ubicacion", label: "Ubicacion" },
   { href: "/contacto", label: "Contacto" },
 ];
 

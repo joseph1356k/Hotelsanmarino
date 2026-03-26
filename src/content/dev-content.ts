@@ -43,9 +43,9 @@ export const devDefaultRooms: RoomWithRelations[] = [
     id: "4e3c9d4d-77f5-4fba-a521-4ca47b3405db",
     name: "Habitacion Estandar",
     slug: "habitacion-estandar",
-    short_description: "Solucion operativa para viajeros que priorizan descanso y ubicacion.",
+    short_description: "Una opcion comoda y clara para descansar cerca del mar.",
     long_description:
-      "Habitacion provisional para desarrollo local. En produccion la fuente editable real debe ser la base de datos.",
+      "Fallback de desarrollo para mantener una experiencia local coherente mientras Supabase no esta configurado. En produccion, la fuente editable real debe ser la base de datos.",
     price: 180000,
     capacity: 2,
     status: "available",
@@ -74,9 +74,9 @@ export const devDefaultRooms: RoomWithRelations[] = [
     id: "6f8f059c-2f71-4960-901e-f5966521f5f2",
     name: "Habitacion Familiar",
     slug: "habitacion-familiar",
-    short_description: "Configuracion provisional para grupos pequenos o familias.",
+    short_description: "Mas espacio para estadias en grupo con una presentacion limpia.",
     long_description:
-      "Default local para no bloquear desarrollo mientras la base no esta conectada.",
+      "Fallback local de desarrollo pensado para validar la capa publica sin romper la regla DB-first del proyecto.",
     price: 320000,
     capacity: 4,
     status: "available",
@@ -108,9 +108,9 @@ export const devDefaultPlans: Plan[] = [
     id: "22b94f1c-2f6d-4a66-8180-85cb487663c6",
     name: "Plan Corporativo",
     slug: "plan-corporativo",
-    short_description: "Tarifa provisional para viajeros de trabajo.",
+    short_description: "Una salida practica para estadias de trabajo en Tumaco.",
     long_description:
-      "Contenido temporal para desarrollo. La fuente editable final debe ser la base de datos.",
+      "Contenido temporal de desarrollo con tono de marca. La fuente editable final sigue siendo la base de datos.",
     price_label: "Desde $210.000 por noche",
     is_featured: true,
     display_order: 1,
@@ -123,9 +123,9 @@ export const devDefaultPlans: Plan[] = [
     id: "4d1ebd48-f570-4697-b564-f7bcbccb3158",
     name: "Plan Escapada",
     slug: "plan-escapada",
-    short_description: "Contenido inicial para estadias cortas.",
+    short_description: "Una opcion simple para una salida corta con atencion directa.",
     long_description:
-      "Default de desarrollo para validar lectura de tarjetas y ordenamiento.",
+      "Fallback de desarrollo para validar la presentacion publica de planes mientras la DB no esta disponible.",
     price_label: "Consulta por WhatsApp",
     is_featured: false,
     display_order: 2,
@@ -139,9 +139,10 @@ export const devDefaultPlans: Plan[] = [
 export const devDefaultTestimonials: Testimonial[] = [
   {
     id: "4c4feb18-c263-4283-8186-b1f920a52fda",
-    guest_name: "Cliente provisional",
+    guest_name: "Huesped local",
     guest_origin: "Tumaco",
-    quote: "Default local para validar el modulo de testimonios antes de cargar contenido real.",
+    quote:
+      "La presentacion del hotel se siente clara y el contacto por WhatsApp hace todo mas directo.",
     rating: 5,
     is_featured: true,
     display_order: 1,
@@ -155,12 +156,12 @@ export const devDefaultHomeSections: HomeSection[] = [
   {
     id: "1d0a6ffc-0b25-4b09-bc51-f9156c5d0ea6",
     key: "hero",
-    title: "Hotel San Marino Tumaco",
-    subtitle: "Default local para desarrollo con CTA unico por WhatsApp.",
+    title: "El Morro se vive aqui",
+    subtitle: "Calma con identidad, contacto directo y una estadia mejor presentada.",
     body:
-      "Sin reservas online en esta fase. Sin formularios publicos. La conversion central es abrir conversacion con el hotel.",
+      "Hotel San Marino propone una forma clara y cercana de quedarse en El Morro. En esta fase, la conversacion comercial ocurre por WhatsApp.",
     payload: {
-      eyebrow: "Development fallback",
+      eyebrow: "Hotel San Marino",
       ctaLabel: "Consultar por WhatsApp",
     },
     status: "published",
@@ -171,10 +172,10 @@ export const devDefaultHomeSections: HomeSection[] = [
   {
     id: "8db85849-f64b-40bb-9aa5-4d7c253a1377",
     key: "featured_rooms",
-    title: "Habitaciones editables desde base de datos",
-    subtitle: "La arquitectura queda lista para crecer hasta 32 habitaciones.",
+    title: "Habitaciones para elegir con calma",
+    subtitle: "Imagen, capacidad y contexto para decidir sin ruido.",
     body:
-      "Cada habitacion soporta amenities, imagenes relacionadas, SEO basico y orden de despliegue.",
+      "El front de desarrollo conserva una seleccion corta, pero la arquitectura ya soporta inventario, amenidades, galeria y orden de despliegue desde DB.",
     payload: {},
     status: "published",
     display_order: 2,
@@ -189,7 +190,7 @@ export const devDefaultSiteSettings: SiteSettings = {
   site_tagline: siteConfig.siteTagline,
   seo_title: "Hotel San Marino Tumaco",
   seo_description:
-    "Default local para desarrollo. En produccion este contenido debe venir de Supabase.",
+    "Fallback local de desarrollo para Hotel San Marino Tumaco. En produccion el contenido debe venir de Supabase.",
   logo_path: null,
   default_share_image: "/placeholders/site.svg",
   created_at: "2026-03-26T00:00:00.000Z",
