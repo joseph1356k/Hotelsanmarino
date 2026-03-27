@@ -2,6 +2,7 @@ import { Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { CtaBanner } from "@/components/marketing/cta-banner";
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
+import { SocialLinks } from "@/components/marketing/social-links";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 
@@ -103,6 +104,15 @@ export default async function ContactPage() {
                 {content.contactInfo.address}. Si necesitas una referencia puntual
                 para llegar, la forma correcta es escribir y confirmar por WhatsApp.
               </p>
+            </div>
+            <div className="premium-card p-7">
+              <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                Redes sociales
+              </p>
+              <p className="mt-4 text-lg leading-7 text-foreground/86">
+                Tambien puedes seguir a San Marino en Instagram, TikTok y Facebook.
+              </p>
+              <SocialLinks className="mt-6" />
             </div>
           </div>
         </div>

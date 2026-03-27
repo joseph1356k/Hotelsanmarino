@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Clock3, MapPin, Phone } from "lucide-react";
 import { publicNavigation } from "@/lib/constants/site";
+import { SocialLinks } from "@/components/marketing/social-links";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import type {
   ContactInfo,
@@ -24,7 +25,7 @@ export function PublicFooter({
 
   return (
     <footer className="mt-20 bg-[var(--footer)] text-white">
-      <div className="container-shell grid gap-12 py-14 lg:grid-cols-[1.25fr_0.8fr_0.95fr]">
+      <div className="container-shell grid gap-12 py-14 lg:grid-cols-[1.1fr_0.8fr_1.1fr]">
         <div className="space-y-5">
           <div>
             <p className="font-serif text-4xl leading-none">San Marino</p>
@@ -86,6 +87,12 @@ export function PublicFooter({
             label={whatsappLabel}
             className="bg-[var(--coral)] text-white hover:bg-[var(--accent-hover)]"
           />
+          <div className="pt-2">
+            <p className="mb-3 text-xs uppercase tracking-[0.28em] text-white/55">
+              Redes sociales
+            </p>
+            <SocialLinks variant="dark" />
+          </div>
         </div>
       </div>
     </footer>

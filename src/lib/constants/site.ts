@@ -5,6 +5,24 @@ export const siteConfig = {
   whatsappMessage: "Hola, quiero consultar disponibilidad",
 } as const;
 
+export const socialLinks = [
+  {
+    key: "instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/hotelsanmarinotumaco/",
+  },
+  {
+    key: "tiktok",
+    label: "TikTok",
+    href: "https://www.tiktok.com/@sanmarinotumaco?lang=es",
+  },
+  {
+    key: "facebook",
+    label: "Facebook",
+    href: "https://www.facebook.com/HotelSanMarino.Tumaco",
+  },
+] as const;
+
 export const publicNavigation = [
   { href: "/", label: "Inicio" },
   { href: "/habitaciones", label: "Habitaciones" },
