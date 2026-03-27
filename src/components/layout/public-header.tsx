@@ -62,7 +62,7 @@ export function PublicHeader({
             <p className="font-serif text-3xl leading-none tracking-[0.02em] text-primary">
               San Marino
             </p>
-            <p className="text-[0.7rem] uppercase tracking-[0.24em] text-muted-foreground transition group-hover:text-primary">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground transition group-hover:text-primary">
               Hotel en El Morro
             </p>
           </Link>
@@ -80,7 +80,7 @@ export function PublicHeader({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative text-sm tracking-[0.16em] uppercase text-foreground transition-colors hover:text-primary",
+                  "relative text-sm font-semibold tracking-[0.16em] uppercase text-foreground transition-colors hover:text-primary",
                   isActive && "text-[var(--coral)]",
                 )}
               >
@@ -121,7 +121,7 @@ export function PublicHeader({
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "rounded-2xl border border-white/8 px-4 py-3 text-sm uppercase tracking-[0.18em] text-white/72 transition hover:border-white/20 hover:bg-white/8 hover:text-white",
+                      "rounded-2xl border border-white/8 px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white/86 transition hover:border-white/20 hover:bg-white/8 hover:text-white",
                       isActive && "border-white/18 bg-white text-[var(--coral)]",
                     )}
                     onClick={() => setIsOpen(false)}

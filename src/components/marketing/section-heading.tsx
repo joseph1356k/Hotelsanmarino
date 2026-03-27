@@ -28,11 +28,11 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-balance text-4xl leading-tight md:text-5xl lg:text-6xl">
+      <h2 className="text-balance text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl">
         {title}
       </h2>
       {description ? (
-        <p className="max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+        <p className="max-w-2xl text-base font-medium leading-7 text-muted-foreground md:text-lg">
           {description}
         </p>
       ) : null}

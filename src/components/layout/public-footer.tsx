@@ -28,11 +28,11 @@ export function PublicFooter({
         <div className="space-y-5">
           <div>
             <p className="font-serif text-4xl leading-none">San Marino</p>
-            <p className="mt-3 max-w-md text-sm leading-6 text-white/74">
+            <p className="mt-3 max-w-md text-sm leading-6 text-white/86">
               {siteSettings.site_tagline}
             </p>
           </div>
-          <div className="space-y-3 text-sm text-white/80">
+          <div className="space-y-3 text-sm text-white/88">
             <p className="inline-flex items-start gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0" />
               <span>
@@ -59,7 +59,7 @@ export function PublicFooter({
           <p className="text-xs uppercase tracking-[0.28em] text-white/55">
             Navegacion
           </p>
-          <div className="grid gap-3 text-sm text-white/80">
+          <div className="grid gap-3 text-sm text-white/88">
             {publicNavigation.map((item) => (
               <Link
                 key={item.href}
@@ -76,7 +76,7 @@ export function PublicFooter({
           <p className="text-xs uppercase tracking-[0.28em] text-white/55">
             WhatsApp
           </p>
-          <p className="max-w-sm text-sm leading-6 text-white/74">
+          <p className="max-w-sm text-sm leading-6 text-white/86">
             La conversacion comercial ocurre aqui: una via directa, clara y sin
             formularios publicos.
           </p>

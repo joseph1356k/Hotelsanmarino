@@ -12,7 +12,7 @@
   --secondary: #faf7f2;
   --secondary-foreground: #111111;
   --muted: #faf7f2;
-  --muted-foreground: #4e4e4e;
+  --muted-foreground: #2f2f2f;
   --accent: #d63f34;
   --accent-foreground: #ffffff;
   --accent-hover: #b93128;
@@ -75,6 +75,7 @@ body {
     linear-gradient(180deg, rgba(250, 247, 242, 0.44), transparent 34%);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
 }
 
 a {
@@ -95,6 +96,16 @@ canvas {
   h4 {
     font-family: var(--font-cormorant), serif;
     letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  p,
+  li,
+  label,
+  input,
+  textarea,
+  button {
+    font-weight: 500;
   }
 
   ::selection {
