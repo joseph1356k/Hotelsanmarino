@@ -33,7 +33,7 @@ export function PublicHeader({
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/94 backdrop-blur-xl">
       <div className="border-b border-primary/10 bg-primary">
-        <div className="container-shell hidden items-center justify-between py-2 text-xs text-white/84 md:flex">
+        <div className="container-shell hidden items-center justify-between py-1.5 text-[11px] text-white/84 md:flex">
           <p className="tracking-[0.24em] uppercase">
             {contactInfo.city} - {siteSettings.site_tagline}
           </p>
@@ -47,7 +47,7 @@ export function PublicHeader({
         </div>
       </div>
 
-      <div className="container-shell flex items-center justify-between gap-4 py-4 md:py-5">
+      <div className="container-shell flex items-center justify-between gap-4 py-3 md:py-4">
         <div className="flex items-center gap-3">
           <button
             type="button"

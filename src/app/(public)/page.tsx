@@ -184,7 +184,7 @@ export default async function HomePage() {
         <div className="ocean-panel relative overflow-hidden px-6 py-8 md:px-10 md:py-10 lg:px-12">
           <div className="absolute inset-0">
             <div className="absolute left-0 top-0 h-52 w-52 rounded-full bg-white/6 blur-3xl" />
-            <div className="absolute bottom-[-4rem] right-[-2rem] h-56 w-56 rounded-full bg-[var(--coral)]/8 blur-[120px]" />
+            <div className="absolute bottom-[-4rem] right-0 h-48 w-48 rounded-full bg-[var(--coral)]/8 blur-[120px] md:h-56 md:w-56" />
           </div>
           <div className="relative grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <Reveal className="space-y-6">

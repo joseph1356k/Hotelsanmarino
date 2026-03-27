@@ -18,15 +18,15 @@ export function PageHero({
   className?: string;
 }) {
   return (
-    <section className={cn("container-shell pt-10 md:pt-14", className)}>
+    <section className={cn("container-shell pt-4 md:pt-6", className)}>
       <div className="ocean-panel relative overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute -left-16 top-10 h-52 w-52 rounded-full bg-white/8 blur-3xl" />
-            <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[var(--sky)]/18 blur-3xl" />
-            <div className="absolute bottom-[-5rem] right-[15%] h-64 w-64 animate-[drift_10s_ease-in-out_infinite] rounded-full bg-[var(--sun)]/12 blur-[120px]" />
+            <div className="absolute left-4 top-6 h-40 w-40 rounded-full bg-white/8 blur-3xl md:h-52 md:w-52" />
+            <div className="absolute right-4 top-0 h-52 w-52 rounded-full bg-[var(--sky)]/18 blur-3xl md:h-72 md:w-72" />
+            <div className="absolute bottom-[-4rem] right-[10%] h-44 w-44 animate-[drift_10s_ease-in-out_infinite] rounded-full bg-[var(--sun)]/12 blur-[110px] md:h-64 md:w-64" />
           </div>
-        <div className="relative grid gap-10 px-6 py-10 md:px-10 md:py-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-14 lg:py-16">
-          <Reveal className="space-y-6" delay={50}>
+        <div className="relative grid gap-8 px-6 py-8 md:px-8 md:py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-12 lg:py-12">
+          <Reveal className="space-y-5" delay={50}>
             {eyebrow ? (
               <p className="text-xs uppercase tracking-[0.32em] text-white/62">
                 {eyebrow}

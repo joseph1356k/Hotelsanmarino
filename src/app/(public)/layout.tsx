@@ -22,7 +22,7 @@ export default async function PublicLayout({
         contactInfo={contactInfo}
         primaryCta={primaryCta}
       />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 overflow-x-clip">{children}</main>
       <WhatsappFab
         phoneNumber={primaryCta?.phone_number ?? contactInfo.whatsapp_number}
         message={primaryCta?.message ?? contactInfo.whatsapp_default_message}

@@ -61,9 +61,13 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: clip;
 }
 
 body {
+  width: 100%;
+  overflow-x: clip;
   background: var(--background);
   background-image:
     radial-gradient(circle at top left, rgba(23, 143, 208, 0.08), transparent 24%),
@@ -75,6 +79,13 @@ body {
 
 a {
   text-decoration: none;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
 }
 
 @layer base {
