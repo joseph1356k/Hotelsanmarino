@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
@@ -6,7 +7,7 @@ import { cn } from "@/lib/utils";
 interface WhatsappCtaProps {
   phoneNumber: string;
   message: string;
-  label?: string;
+  label?: ReactNode;
   className?: string;
   variant?: "default" | "secondary" | "outline" | "ghost";
   size?: "default" | "sm" | "lg";

@@ -47,8 +47,8 @@ export function PublicHeader({
         </div>
       </div>
 
-      <div className="container-shell flex items-center justify-between gap-4 py-3 md:py-4">
-        <div className="flex items-center gap-3">
+      <div className="container-shell flex items-center gap-3 py-3 md:gap-4 md:py-4">
+        <div className="flex shrink-0 items-center gap-3">
           <button
             type="button"
             className="inline-flex size-11 items-center justify-center rounded-full border border-border bg-white text-foreground transition hover:border-primary hover:text-primary lg:hidden"
@@ -68,7 +68,7 @@ export function PublicHeader({
           </Link>
         </div>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-4 xl:gap-7 lg:flex">
           {publicNavigation.map((item) => {
             const isActive =
               item.href === "/"
@@ -80,7 +80,7 @@ export function PublicHeader({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative text-sm font-semibold tracking-[0.16em] uppercase text-foreground transition-colors hover:text-primary",
+                  "relative text-sm font-semibold tracking-[0.14em] uppercase text-foreground transition-colors hover:text-primary xl:tracking-[0.16em]",
                   isActive && "text-[var(--coral)]",
                 )}
               >
@@ -96,12 +96,18 @@ export function PublicHeader({
           })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden shrink-0 lg:block">
           <WhatsappCta
             phoneNumber={whatsappPhone}
             message={whatsappMessage}
-            label={whatsappLabel}
+            label={
+              <>
+                <span className="xl:hidden">WhatsApp</span>
+                <span className="hidden xl:inline">{whatsappLabel}</span>
+              </>
+            }
             size="sm"
+            className="max-w-full px-3 xl:px-4"
           />
         </div>
       </div>
