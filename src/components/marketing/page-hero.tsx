@@ -21,9 +21,9 @@ export function PageHero({
     <section className={cn("container-shell pt-10 md:pt-14", className)}>
       <div className="ocean-panel relative overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute -left-16 top-10 h-52 w-52 rounded-full bg-[rgba(238,242,241,0.1)] blur-3xl" />
-            <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[var(--mangrove)]/12 blur-3xl" />
-            <div className="absolute bottom-[-5rem] right-[15%] h-64 w-64 animate-[drift_10s_ease-in-out_infinite] rounded-full bg-[var(--coral)]/8 blur-[120px]" />
+            <div className="absolute -left-16 top-10 h-52 w-52 rounded-full bg-white/8 blur-3xl" />
+            <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[var(--sky)]/18 blur-3xl" />
+            <div className="absolute bottom-[-5rem] right-[15%] h-64 w-64 animate-[drift_10s_ease-in-out_infinite] rounded-full bg-[var(--sun)]/12 blur-[120px]" />
           </div>
         <div className="relative grid gap-10 px-6 py-10 md:px-10 md:py-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-14 lg:py-16">
           <Reveal className="space-y-6" delay={50}>

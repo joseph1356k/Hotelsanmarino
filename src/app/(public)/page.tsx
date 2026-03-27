@@ -87,7 +87,7 @@ export default async function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 34vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#153B52]/55 via-[#153B52]/18 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F5F8F]/62 via-[#178FD0]/14 to-transparent" />
               </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -139,7 +139,7 @@ export default async function HomePage() {
           {valuePillars.map((pillar, index) => (
             <Reveal key={pillar.title} delay={index * 90}>
               <article className="premium-card h-full p-7">
-                <div className="mb-6 h-px w-20 bg-[linear-gradient(90deg,#153b52,#5f7264)]" />
+                <div className="mb-6 h-px w-20 bg-[linear-gradient(90deg,#0f5f8f,#d63f34)]" />
                 <h3 className="text-3xl leading-none">{pillar.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-muted-foreground">
                   {pillar.description}
@@ -214,7 +214,7 @@ export default async function HomePage() {
                   height={900}
                   className="aspect-[5/4] w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#153B52]/62 via-[#153B52]/18 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#0F5F8F]/62 via-[#178FD0]/16 to-transparent" />
               </div>
             </Reveal>
           </div>
@@ -263,7 +263,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell bg-[rgba(238,242,241,0.72)]">
+      <section className="section-shell bg-[rgba(250,247,242,0.74)]">
         <Reveal>
           <SectionHeading
             eyebrow="Servicios"
@@ -280,19 +280,19 @@ export default async function HomePage() {
         </div>
         <Reveal delay={120}>
           <div className="mt-8 flex flex-wrap gap-3 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(247,243,236,0.92)] px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 shadow-[0_10px_22px_rgba(15,95,143,0.05)]">
               <Wifi className="size-4 text-primary" />
               WiFi
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(247,243,236,0.92)] px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 shadow-[0_10px_22px_rgba(15,95,143,0.05)]">
               <ParkingCircle className="size-4 text-primary" />
               Parqueadero
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(247,243,236,0.92)] px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 shadow-[0_10px_22px_rgba(15,95,143,0.05)]">
               <MapPin className="size-4 text-primary" />
               Tours con terceros
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(247,243,236,0.92)] px-4 py-2 shadow-[0_10px_22px_rgba(16,45,63,0.05)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 shadow-[0_10px_22px_rgba(15,95,143,0.05)]">
               <MessageCircle className="size-4 text-primary" />
               Atencion directa
             </span>

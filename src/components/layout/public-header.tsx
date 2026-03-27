@@ -31,15 +31,15 @@ export function PublicHeader({
   const whatsappLabel = primaryCta?.label ?? "Consultar por WhatsApp";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-primary/8 bg-[rgba(247,243,236,0.82)] backdrop-blur-xl">
-      <div className="border-b border-primary/8 bg-[rgba(238,242,241,0.86)]">
-        <div className="container-shell hidden items-center justify-between py-2 text-xs text-muted-foreground md:flex">
+    <header className="sticky top-0 z-50 border-b border-border bg-white/94 backdrop-blur-xl">
+      <div className="border-b border-primary/10 bg-primary">
+        <div className="container-shell hidden items-center justify-between py-2 text-xs text-white/84 md:flex">
           <p className="tracking-[0.24em] uppercase">
-            {contactInfo.city} · {siteSettings.site_tagline}
+            {contactInfo.city} - {siteSettings.site_tagline}
           </p>
           <a
             href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
-            className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+            className="inline-flex items-center gap-2 text-white transition-colors hover:text-[var(--sun-soft)]"
           >
             <Phone className="size-3.5" />
             {contactInfo.phone}
@@ -51,7 +51,7 @@ export function PublicHeader({
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-primary/10 bg-white/88 text-foreground transition hover:bg-white lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-border bg-white text-foreground transition hover:border-primary hover:text-primary lg:hidden"
             onClick={() => setIsOpen((current) => !current)}
             aria-label={isOpen ? "Cerrar menu" : "Abrir menu"}
           >
@@ -62,7 +62,7 @@ export function PublicHeader({
             <p className="font-serif text-3xl leading-none tracking-[0.02em] text-primary">
               San Marino
             </p>
-            <p className="text-[0.7rem] uppercase tracking-[0.24em] text-muted-foreground transition group-hover:text-foreground">
+            <p className="text-[0.7rem] uppercase tracking-[0.24em] text-muted-foreground transition group-hover:text-primary">
               Hotel en El Morro
             </p>
           </Link>
@@ -80,14 +80,14 @@ export function PublicHeader({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative text-sm tracking-[0.16em] uppercase text-muted-foreground transition-colors hover:text-foreground",
-                  isActive && "text-foreground",
+                  "relative text-sm tracking-[0.16em] uppercase text-foreground transition-colors hover:text-primary",
+                  isActive && "text-[var(--coral)]",
                 )}
               >
                 {item.label}
                 <span
                   className={cn(
-                    "absolute inset-x-0 -bottom-2 h-px bg-primary transition-opacity",
+                    "absolute inset-x-0 -bottom-2 h-0.5 bg-[var(--coral)] transition-opacity",
                     isActive ? "opacity-100" : "opacity-0",
                   )}
                 />
@@ -107,7 +107,7 @@ export function PublicHeader({
       </div>
 
       {isOpen ? (
-        <div className="border-t border-primary/10 bg-[linear-gradient(180deg,#153b52_0%,#102d3f_100%)] lg:hidden">
+        <div className="border-t border-primary/10 bg-[linear-gradient(180deg,#0f5f8f_0%,#0b4c73_100%)] lg:hidden">
           <div className="container-shell space-y-4 py-5">
             <nav className="grid gap-2">
               {publicNavigation.map((item) => {
@@ -122,7 +122,7 @@ export function PublicHeader({
                     href={item.href}
                     className={cn(
                       "rounded-2xl border border-white/8 px-4 py-3 text-sm uppercase tracking-[0.18em] text-white/72 transition hover:border-white/20 hover:bg-white/8 hover:text-white",
-                      isActive && "border-white/18 bg-white text-[#102d3f]",
+                      isActive && "border-white/18 bg-white text-[var(--coral)]",
                     )}
                     onClick={() => setIsOpen(false)}
                   >

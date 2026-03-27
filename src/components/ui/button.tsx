@@ -8,11 +8,11 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[var(--coral)] px-5 py-3 text-[var(--ivory)] shadow-[0_14px_34px_rgba(201,110,87,0.22)] hover:bg-[var(--accent-hover)]",
+          "bg-[var(--coral)] px-5 py-3 text-[var(--ivory)] shadow-[0_14px_34px_rgba(214,63,52,0.24)] hover:bg-[var(--accent-hover)]",
         secondary:
-          "bg-primary/8 px-5 py-3 text-primary hover:bg-primary/14",
+          "border border-primary bg-white px-5 py-3 text-primary hover:bg-primary hover:text-primary-foreground",
         outline:
-          "border border-primary/18 bg-transparent px-5 py-3 text-primary hover:bg-primary hover:text-primary-foreground",
+          "border border-primary bg-transparent px-5 py-3 text-primary hover:bg-primary hover:text-primary-foreground",
         ghost: "px-4 py-2 hover:bg-muted",
       },
       size: {

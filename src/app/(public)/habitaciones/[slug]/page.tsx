@@ -44,7 +44,7 @@ export default async function RoomDetailPage({
         </Reveal>
         <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <Reveal className="space-y-5">
-            <p className="text-xs uppercase tracking-[0.3em] text-[var(--mangrove)]">
+            <p className="text-xs uppercase tracking-[0.3em] text-[var(--coral)]">
               Habitacion
             </p>
             <h1 className="text-balance text-5xl leading-[0.95] md:text-6xl">
@@ -98,7 +98,7 @@ export default async function RoomDetailPage({
               height={1000}
               className="aspect-[5/4] h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#102d3f]/34 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F5F8F]/34 via-transparent to-transparent" />
           </Reveal>
           <div className="grid gap-4 md:grid-cols-2 lg:col-span-5">
             {(galleryImages.length > 0
@@ -142,7 +142,7 @@ export default async function RoomDetailPage({
                 {room.amenities.map((amenity, index) => (
                   <Reveal key={amenity.id} delay={index * 70}>
                     <div className="inline-flex items-center gap-3">
-                      <Check className="size-4 text-[var(--mangrove)]" />
+                      <Check className="size-4 text-[var(--coral)]" />
                       <span className="text-sm leading-6 text-foreground/86">
                         {amenity.name}
                       </span>
@@ -189,7 +189,7 @@ export default async function RoomDetailPage({
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <Reveal>
               <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.3em] text-[var(--mangrove)]">
+                <p className="text-xs uppercase tracking-[0.3em] text-[var(--coral)]">
                   Otras habitaciones
                 </p>
                 <h2 className="text-4xl md:text-5xl">Tambien podria interesarte</h2>

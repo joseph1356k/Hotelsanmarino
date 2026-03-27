@@ -39,7 +39,7 @@ export default async function AboutPage() {
       <section className="section-shell">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="space-y-5">
-            <p className="text-xs uppercase tracking-[0.3em] text-[var(--mangrove)]">
+            <p className="text-xs uppercase tracking-[0.3em] text-[var(--coral)]">
               El Morro se vive aqui
             </p>
             <h2 className="text-balance text-4xl md:text-5xl">

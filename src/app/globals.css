@@ -1,32 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f3ec;
-  --foreground: #1f2a30;
-  --card: #f7f3ec;
-  --card-foreground: #1f2a30;
-  --popover: #f7f3ec;
-  --popover-foreground: #1f2a30;
-  --primary: #153b52;
-  --primary-foreground: #f7f3ec;
-  --secondary: #e9dfcf;
-  --secondary-foreground: #1f2a30;
-  --muted: #eef2f1;
-  --muted-foreground: #6e7b80;
-  --accent: #c96e57;
-  --accent-foreground: #fff9f3;
-  --accent-hover: #b85e49;
+  --background: #ffffff;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: #0f5f8f;
+  --primary-foreground: #ffffff;
+  --secondary: #faf7f2;
+  --secondary-foreground: #111111;
+  --muted: #faf7f2;
+  --muted-foreground: #4e4e4e;
+  --accent: #d63f34;
+  --accent-foreground: #ffffff;
+  --accent-hover: #b93128;
   --destructive: #b42318;
-  --border: #e9dfcf;
-  --input: #e9dfcf;
-  --ring: #153b52;
+  --border: #e8e8e8;
+  --input: #e8e8e8;
+  --ring: #178fd0;
   --radius: 1.5rem;
-  --pacific: #153b52;
-  --ivory: #f7f3ec;
-  --sand: #e9dfcf;
-  --coral: #c96e57;
-  --mangrove: #5f7264;
-  --footer: #102d3f;
+  --pacific: #0f5f8f;
+  --sky: #178fd0;
+  --ivory: #ffffff;
+  --sand: #faf7f2;
+  --coral: #d63f34;
+  --sun: #f4c533;
+  --sun-soft: #f9dd77;
+  --mangrove: #0f5f8f;
+  --footer: #0b4c73;
 }
 
 @theme inline {
@@ -63,9 +66,9 @@ html {
 body {
   background: var(--background);
   background-image:
-    radial-gradient(circle at top left, rgba(21, 59, 82, 0.09), transparent 26%),
-    radial-gradient(circle at 100% 10%, rgba(238, 242, 241, 0.85), transparent 24%),
-    linear-gradient(180deg, rgba(247, 243, 236, 0.78), transparent 45%);
+    radial-gradient(circle at top left, rgba(23, 143, 208, 0.08), transparent 24%),
+    radial-gradient(circle at 100% 8%, rgba(244, 197, 51, 0.08), transparent 18%),
+    linear-gradient(180deg, rgba(250, 247, 242, 0.44), transparent 34%);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
 }
@@ -84,11 +87,11 @@ a {
   }
 
   ::selection {
-    background: rgba(201, 110, 87, 0.18);
+    background: rgba(214, 63, 52, 0.18);
   }
 
   :focus-visible {
-    outline: 2px solid rgba(21, 59, 82, 0.18);
+    outline: 2px solid rgba(23, 143, 208, 0.28);
     outline-offset: 3px;
   }
 }
@@ -117,19 +120,19 @@ a {
 }
 
 @utility editorial-panel {
-  @apply rounded-[32px] border border-[rgba(233,223,207,0.8)] bg-[rgba(247,243,236,0.8)] backdrop-blur-sm shadow-[0_24px_70px_rgba(16,45,63,0.08)];
+  @apply rounded-[32px] border border-[rgba(232,232,232,0.92)] bg-[rgba(255,255,255,0.92)] backdrop-blur-sm shadow-[0_24px_70px_rgba(15,95,143,0.08)];
 }
 
 @utility ocean-panel {
-  @apply rounded-[36px] border border-[rgba(238,242,241,0.12)] bg-[linear-gradient(155deg,#153b52_0%,#153b52_58%,#102d3f_100%)] text-[var(--ivory)] shadow-[0_34px_90px_rgba(16,45,63,0.28)];
+  @apply rounded-[36px] border border-[rgba(255,255,255,0.12)] bg-[linear-gradient(155deg,#0f5f8f_0%,#178fd0_52%,#0b4c73_100%)] text-[var(--ivory)] shadow-[0_34px_90px_rgba(15,95,143,0.24)];
 }
 
 @utility mist-panel {
-  @apply rounded-[30px] border border-[rgba(233,223,207,0.8)] bg-[rgba(247,243,236,0.82)] backdrop-blur-sm shadow-[0_20px_50px_rgba(16,45,63,0.08)];
+  @apply rounded-[30px] border border-[rgba(232,232,232,0.92)] bg-[rgba(255,255,255,0.94)] backdrop-blur-sm shadow-[0_20px_50px_rgba(15,95,143,0.08)];
 }
 
 @utility premium-card {
-  @apply rounded-[30px] border border-[rgba(233,223,207,0.8)] bg-[rgba(247,243,236,0.86)] shadow-[0_18px_44px_rgba(16,45,63,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(16,45,63,0.12)];
+  @apply rounded-[30px] border border-[rgba(232,232,232,0.92)] bg-[rgba(255,255,255,0.98)] shadow-[0_18px_44px_rgba(15,95,143,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(15,95,143,0.12)];
 }
 
 @utility text-balance {
@@ -137,7 +140,7 @@ a {
 }
 
 @utility fade-divider {
-  background: linear-gradient(90deg, transparent, rgba(21, 59, 82, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(15, 95, 143, 0.24), transparent);
 }
 
 @keyframes drift {

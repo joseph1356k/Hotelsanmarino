@@ -24,7 +24,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="text-xs uppercase tracking-[0.3em] text-[var(--mangrove)]">
+        <p className="text-xs uppercase tracking-[0.3em] text-[var(--coral)]">
           {eyebrow}
         </p>
       ) : null}

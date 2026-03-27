@@ -40,7 +40,7 @@ function SidebarContent({ admin }: { admin: AdminUser }) {
   );
 
   return (
-    <div className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,#153b52_0%,#102d3f_100%)] p-5 text-white shadow-[0_24px_70px_rgba(16,45,63,0.26)]">
+    <div className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,#0f5f8f_0%,#178fd0_52%,#0b4c73_100%)] p-5 text-white shadow-[0_24px_70px_rgba(15,95,143,0.26)]">
       <div className="space-y-2 border-b border-white/10 pb-5">
         <p className="text-xs uppercase tracking-[0.24em] text-white/48">
           San Marino Admin
@@ -68,7 +68,7 @@ function SidebarContent({ admin }: { admin: AdminUser }) {
                     className={cn(
                       "flex items-center gap-3 rounded-2xl px-3 py-2.5 text-sm transition-colors",
                       isActive
-                        ? "bg-white text-[#102d3f] shadow-[0_12px_26px_rgba(255,255,255,0.12)]"
+                        ? "bg-white text-[var(--coral)] shadow-[0_12px_26px_rgba(255,255,255,0.12)]"
                         : "text-white/78 hover:bg-white/8 hover:text-white",
                     )}
                   >
@@ -103,7 +103,7 @@ export function AdminSidebar({ admin }: { admin: AdminUser }) {
       </div>
 
       {open ? (
-        <div className="fixed inset-0 z-50 bg-[#102d3f]/72 backdrop-blur-sm lg:hidden">
+        <div className="fixed inset-0 z-50 bg-[#0b4c73]/72 backdrop-blur-sm lg:hidden">
           <div className="h-full w-[88%] max-w-sm p-4">
             <div className="relative h-full">
               <button

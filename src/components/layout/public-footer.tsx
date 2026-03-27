@@ -28,11 +28,11 @@ export function PublicFooter({
         <div className="space-y-5">
           <div>
             <p className="font-serif text-4xl leading-none">San Marino</p>
-            <p className="mt-3 max-w-md text-sm leading-6 text-white/72">
+            <p className="mt-3 max-w-md text-sm leading-6 text-white/74">
               {siteSettings.site_tagline}
             </p>
           </div>
-          <div className="space-y-3 text-sm text-white/78">
+          <div className="space-y-3 text-sm text-white/80">
             <p className="inline-flex items-start gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0" />
               <span>
@@ -48,7 +48,7 @@ export function PublicFooter({
             <p className="inline-flex items-center gap-3">
               <Clock3 className="size-4 shrink-0" />
               <span>
-                Check-in {contactInfo.check_in_time ?? "--"} · Check-out{" "}
+                Check-in {contactInfo.check_in_time ?? "--"} - Check-out{" "}
                 {contactInfo.check_out_time ?? "--"}
               </span>
             </p>
@@ -59,12 +59,12 @@ export function PublicFooter({
           <p className="text-xs uppercase tracking-[0.28em] text-white/55">
             Navegacion
           </p>
-          <div className="grid gap-3 text-sm text-white/78">
+          <div className="grid gap-3 text-sm text-white/80">
             {publicNavigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition-colors hover:text-white"
+                className="transition-colors hover:text-[var(--sun-soft)]"
               >
                 {item.label}
               </Link>
@@ -76,7 +76,7 @@ export function PublicFooter({
           <p className="text-xs uppercase tracking-[0.28em] text-white/55">
             WhatsApp
           </p>
-          <p className="max-w-sm text-sm leading-6 text-white/72">
+          <p className="max-w-sm text-sm leading-6 text-white/74">
             La conversacion comercial ocurre aqui: una via directa, clara y sin
             formularios publicos.
           </p>
@@ -84,7 +84,7 @@ export function PublicFooter({
             phoneNumber={whatsappPhone}
             message={whatsappMessage}
             label={whatsappLabel}
-            className="bg-[var(--coral)] text-[var(--ivory)] hover:bg-[var(--accent-hover)]"
+            className="bg-[var(--coral)] text-white hover:bg-[var(--accent-hover)]"
           />
         </div>
       </div>

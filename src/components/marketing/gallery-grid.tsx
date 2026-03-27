@@ -21,7 +21,7 @@ export function GalleryGrid({
         <div
           key={item.id}
           className={cn(
-            "group relative overflow-hidden rounded-[32px] bg-[linear-gradient(180deg,#eef2f1,#f7f3ec)] shadow-[0_16px_44px_rgba(16,45,63,0.08)]",
+            "group relative overflow-hidden rounded-[32px] bg-[linear-gradient(180deg,#ffffff,#faf7f2)] shadow-[0_16px_44px_rgba(15,95,143,0.08)]",
             index % 5 === 0
               ? "lg:col-span-7 lg:row-span-2"
               : index % 3 === 0
@@ -36,7 +36,7 @@ export function GalleryGrid({
             height={900}
             className="aspect-[4/3] h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#153B52]/24 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F5F8F]/24 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
         </div>
       ))}
     </div>

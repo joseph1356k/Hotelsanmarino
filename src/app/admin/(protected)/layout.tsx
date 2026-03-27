@@ -15,7 +15,7 @@ export default async function AdminProtectedLayout({
   const admin = await requireAdmin();
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(180deg,#eef2f1_0%,#f7f3ec_38%,#f7f3ec_100%)]">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#ffffff_0%,#faf7f2_26%,#ffffff_100%)]">
       <div className="container-shell grid gap-6 py-6 lg:grid-cols-[300px_1fr] lg:py-8">
         <AdminSidebar admin={admin} />
         <div className="space-y-6">
@@ -30,7 +30,7 @@ export default async function AdminProtectedLayout({
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                <div className="rounded-full bg-white px-4 py-2 text-sm text-muted-foreground shadow-[0_10px_24px_rgba(16,45,63,0.06)]">
+                <div className="rounded-full border border-border bg-white px-4 py-2 text-sm text-muted-foreground shadow-[0_10px_24px_rgba(15,95,143,0.06)]">
                   {admin.full_name ?? admin.email}
                 </div>
                 <form action={signOutAdmin}>

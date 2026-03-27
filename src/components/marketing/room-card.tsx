@@ -30,7 +30,7 @@ export function RoomCard({
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover transition duration-500 group-hover:scale-[1.03]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#153B52]/58 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F5F8F]/58 via-transparent to-transparent" />
         <div className="absolute left-5 top-5 rounded-full bg-white/88 px-3 py-1 text-[0.68rem] uppercase tracking-[0.24em] text-primary">
           {room.is_featured ? "Destacada" : "Habitacion"}
         </div>
