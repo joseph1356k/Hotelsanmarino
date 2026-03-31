@@ -47,7 +47,7 @@ export function PublicHeader({
         </div>
       </div>
 
-      <div className="container-shell grid grid-cols-[auto_1fr] items-center gap-3 py-3 md:gap-4 md:py-4 lg:grid-cols-[auto_1fr_auto]">
+      <div className="container-shell grid grid-cols-[auto_1fr] items-center gap-3 py-3 md:gap-4 md:py-4 lg:grid-cols-[minmax(140px,164px)_1fr_auto] xl:grid-cols-[minmax(150px,174px)_1fr_auto]">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -58,17 +58,17 @@ export function PublicHeader({
             {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
 
-          <Link href="/" className="group block w-[156px] md:w-[168px] xl:w-[182px]">
-            <p className="font-serif text-[2.25rem] leading-[0.84] text-primary md:text-[2.45rem]">
+          <Link href="/" className="group block w-[140px] md:w-[150px] xl:w-[164px] 2xl:w-[178px]">
+            <p className="font-serif text-[2.08rem] leading-[0.84] text-primary md:text-[2.2rem] xl:text-[2.34rem]">
               San Marino
             </p>
-            <p className="mt-1 text-[0.66rem] font-semibold uppercase tracking-[0.28em] text-foreground/72 transition group-hover:text-primary">
+            <p className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-foreground/72 transition group-hover:text-primary md:text-[0.64rem] xl:text-[0.66rem]">
               Hotel en El Morro
             </p>
           </Link>
         </div>
 
-        <nav className="hidden min-w-0 items-center justify-center gap-4 lg:flex xl:gap-6">
+        <nav className="hidden min-w-0 items-center justify-center gap-3 pl-4 lg:flex xl:gap-4 xl:pl-6 2xl:gap-6 2xl:pl-8">
           {publicNavigation.map((item) => {
             const isActive =
               item.href === "/"
@@ -80,7 +80,7 @@ export function PublicHeader({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative py-2 text-[0.79rem] font-semibold uppercase tracking-[0.16em] text-foreground transition hover:text-primary xl:text-[0.84rem]",
+                  "relative py-2 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-foreground transition hover:text-primary xl:text-[0.79rem] xl:tracking-[0.15em] 2xl:text-[0.84rem] 2xl:tracking-[0.16em]",
                   isActive && "text-[var(--coral)]",
                 )}
               >
@@ -102,8 +102,8 @@ export function PublicHeader({
             message={whatsappMessage}
             label={
               <>
-                <span className="xl:hidden">WhatsApp</span>
-                <span className="hidden xl:inline">{whatsappLabel}</span>
+                <span className="2xl:hidden">WhatsApp</span>
+                <span className="hidden 2xl:inline">{whatsappLabel}</span>
               </>
             }
             size="sm"
