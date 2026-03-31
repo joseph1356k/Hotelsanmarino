@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Clock3, MapPin, Phone } from "lucide-react";
 import { publicNavigation } from "@/lib/constants/site";
+import { BrandLogo } from "@/components/layout/brand-logo";
 import { SocialLinks } from "@/components/marketing/social-links";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import type {
@@ -24,9 +25,9 @@ export function PublicFooter({
   const whatsappLabel = primaryCta?.label ?? "Consultar por WhatsApp";
 
   return (
-    <footer className="mt-20 overflow-hidden bg-[var(--footer)] text-white">
+    <footer className="mt-20 overflow-hidden bg-[linear-gradient(180deg,#184f5f_0%,#112f3b_100%)] text-white">
       <div className="container-shell py-14 md:py-16">
-        <div className="mb-10 grid gap-6 rounded-[34px] border border-white/10 bg-white/6 p-6 backdrop-blur-sm lg:grid-cols-[1fr_auto] lg:items-end lg:px-8">
+        <div className="mb-10 grid gap-6 rounded-[34px] border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04))] p-6 backdrop-blur-sm lg:grid-cols-[1fr_auto] lg:items-end lg:px-8">
           <div className="space-y-4">
             <div className="inline-flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-white/58">
               <span className="h-px w-10 bg-[linear-gradient(90deg,var(--sun),transparent)]" />
@@ -48,14 +49,13 @@ export function PublicFooter({
           />
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.7fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.7fr_1fr]">
           <div className="space-y-6">
-            <div>
-              <p className="font-serif text-5xl leading-[0.88]">San Marino</p>
-              <p className="mt-3 max-w-md text-base leading-7 text-white/78">
-                {siteSettings.site_tagline}
-              </p>
-            </div>
+            <BrandLogo theme="light" />
+
+            <p className="max-w-md text-base leading-7 text-white/78">
+              {siteSettings.site_tagline}
+            </p>
 
             <div className="space-y-3 text-sm text-white/82">
               <p className="inline-flex items-start gap-3">
@@ -102,7 +102,7 @@ export function PublicFooter({
               Marca y redes
             </p>
             <p className="max-w-sm text-sm leading-7 text-white/76">
-              Una estadia costera con mas claridad visual, mejor presentacion y
+              Una estadia costera con mas color, mejor presencia de marca y
               contacto directo cuando importa.
             </p>
             <SocialLinks variant="dark" />

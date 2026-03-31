@@ -6,6 +6,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
 import { publicNavigation } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
+import { BrandLogo } from "@/components/layout/brand-logo";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import type {
   ContactInfo,
@@ -31,9 +32,9 @@ export function PublicHeader({
   const whatsappLabel = primaryCta?.label ?? "Consultar por WhatsApp";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-white/92 shadow-[0_14px_34px_rgba(24,79,95,0.04)] backdrop-blur-xl">
-      <div className="hidden border-b border-white/10 bg-primary md:block">
-        <div className="container-shell flex items-center justify-between gap-4 py-2 text-[11px] text-white/84">
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-white/94 shadow-[0_14px_34px_rgba(24,79,95,0.05)] backdrop-blur-xl">
+      <div className="hidden border-b border-white/12 bg-[linear-gradient(90deg,#184f5f_0%,#2b6d80_100%)] md:block">
+        <div className="container-shell flex items-center justify-between gap-4 py-2 text-[11px] text-white/88">
           <p className="min-w-0 truncate uppercase tracking-[0.32em]">
             {contactInfo.city} · {siteSettings.site_tagline}
           </p>
@@ -47,7 +48,7 @@ export function PublicHeader({
         </div>
       </div>
 
-      <div className="container-shell grid grid-cols-[auto_1fr] items-center gap-3 py-3 md:gap-4 md:py-4 lg:grid-cols-[minmax(140px,164px)_1fr_auto] xl:grid-cols-[minmax(150px,174px)_1fr_auto]">
+      <div className="container-shell grid grid-cols-[auto_1fr] items-center gap-3 py-3 md:gap-4 md:py-4 lg:grid-cols-[minmax(210px,260px)_1fr_auto] xl:grid-cols-[minmax(228px,280px)_1fr_auto]">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -58,17 +59,10 @@ export function PublicHeader({
             {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
 
-          <Link href="/" className="group block w-[140px] md:w-[150px] xl:w-[164px] 2xl:w-[178px]">
-            <p className="font-serif text-[2.08rem] leading-[0.84] text-primary md:text-[2.2rem] xl:text-[2.34rem]">
-              San Marino
-            </p>
-            <p className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-foreground/72 transition group-hover:text-primary md:text-[0.64rem] xl:text-[0.66rem]">
-              Hotel en El Morro
-            </p>
-          </Link>
+          <BrandLogo className="max-w-full" compact />
         </div>
 
-        <nav className="hidden min-w-0 items-center justify-center gap-3 pl-4 lg:flex xl:gap-4 xl:pl-6 2xl:gap-6 2xl:pl-8">
+        <nav className="hidden min-w-0 items-center justify-center gap-3 pl-3 lg:flex xl:gap-4 xl:pl-5 2xl:gap-6 2xl:pl-8">
           {publicNavigation.map((item) => {
             const isActive =
               item.href === "/"
