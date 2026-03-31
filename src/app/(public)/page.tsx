@@ -85,9 +85,9 @@ export default async function HomePage() {
                 {hero?.title ?? "El Morro se vive aqui"}
               </h1>
 
-              <p className="max-w-[18rem] text-base leading-7 text-white/82 sm:max-w-[22rem] md:max-w-2xl md:text-lg md:leading-8">
+              <p className="max-w-[18rem] text-[1.02rem] leading-8 text-white/86 sm:max-w-[22rem] md:max-w-[34rem] md:text-[1.12rem] md:leading-8">
                 {hero?.body ??
-                  "Una forma mas viva, clara y costera de quedarse en Tumaco: habitaciones mejor presentadas, servicios utiles y una conversacion directa por WhatsApp."}
+                  "Una forma clara y cercana de quedarse en El Morro, con habitaciones mejor presentadas y contacto directo por WhatsApp."}
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -111,7 +111,7 @@ export default async function HomePage() {
                   <Reveal key={metric.value} delay={index * 70}>
                     <div className="rounded-[24px] border border-white/12 bg-white/8 px-4 py-4 backdrop-blur-sm">
                       <p className="text-3xl leading-none text-white">{metric.value}</p>
-                      <p className="mt-2 text-xs uppercase tracking-[0.22em] text-white/62">
+                      <p className="mt-2 text-[0.68rem] uppercase tracking-[0.18em] text-white/72">
                         {metric.label}
                       </p>
                     </div>
@@ -160,11 +160,10 @@ export default async function HomePage() {
                       <p className="text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground">
                         Contacto
                       </p>
-                      <p className="mt-3 text-2xl text-primary">WhatsApp directo</p>
+                      <p className="mt-3 text-xl text-primary">WhatsApp directo</p>
                     </div>
                     <div className="space-y-2 text-sm text-muted-foreground">
                       <p>{content.contactInfo.city}</p>
-                      <p>{content.contactInfo.phone}</p>
                     </div>
                   </div>
                 </div>
@@ -196,17 +195,17 @@ export default async function HomePage() {
               eyebrow="San Marino"
               title={
                 hero?.subtitle ??
-                "Una web y un hotel que se sienten mas vivos, mas claros y mejor presentados."
+                "Una presencia mas viva, clara y mejor presentada."
               }
-              description="La primera impresion tenia que cambiar: mas contraste, mas fotografia, mas marca y una forma mas directa de entender el hotel desde el primer scroll."
+              description="Mas contraste, mas fotografia y una lectura mas directa del hotel."
             />
             <div className="editorial-panel p-6 md:p-7">
               <p className="text-[0.68rem] uppercase tracking-[0.3em] text-muted-foreground">
                 Direccion editorial
               </p>
-              <p className="mt-4 text-lg leading-8 text-foreground/84">
+              <p className="mt-4 text-base leading-8 text-foreground/84">
                 {featuredBlock?.body ??
-                  "San Marino se presenta como una base costera con personalidad: hospitalidad cercana, habitaciones claras y una marca mucho mas reconocible desde la web."}
+                  "San Marino se presenta como una base costera con personalidad y una lectura mucho mas clara desde la web."}
               </p>
             </div>
           </Reveal>
@@ -248,7 +247,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Habitaciones"
               title={featuredBlock?.title ?? "Habitaciones para elegir con mas deseo y mas contexto"}
-              description="Imagen, capacidad, tarifa referencial y amenidades visibles para decidir mejor sin sentir que estas viendo un catalogo plano."
+              description="Imagen, capacidad y tarifa referencial para decidir mejor."
             />
           </Reveal>
           <Reveal delay={120}>
@@ -279,8 +278,8 @@ export default async function HomePage() {
             <Reveal className="space-y-6">
               <SectionHeading
                 eyebrow={liveElMorroSection.eyebrow}
-                title={liveElMorroSection.title}
-                description={liveElMorroSection.description}
+              title={liveElMorroSection.title}
+              description={liveElMorroSection.description}
                 className="text-white [&_p]:text-white/74 [&_div]:text-white/62 [&_h2]:text-white"
               />
               <div className="space-y-4">
@@ -323,11 +322,10 @@ export default async function HomePage() {
                       Contexto
                     </p>
                     <p className="mt-3 text-3xl leading-[0.94] text-white">
-                      Pacifco autentico, bien vivido.
+                      Pacifico autentico, bien vivido.
                     </p>
                     <p className="mt-3 text-sm leading-7 text-white/72">
-                      El sitio deja entrar mas territorio y hace que la marca se sienta
-                      propia desde el primer scroll.
+                      El territorio entra antes y la marca se siente mas propia.
                     </p>
                   </div>
                 </div>
@@ -358,7 +356,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Restaurante"
               title="Comer bien tambien forma parte de la experiencia del hotel"
-              description="Desayuno, almuerzo y cena dentro de una propuesta mas costera y mejor integrada a la estadia."
+              description="Desayuno, almuerzo y cena dentro del hotel."
             />
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="premium-card p-6">
@@ -373,8 +371,7 @@ export default async function HomePage() {
                 <Waves className="size-6 text-primary" />
                 <h3 className="mt-5 text-3xl leading-[0.94]">Ritmo costero</h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  Un restaurante que acompana la estadia con servicio diario y mas
-                  continuidad.
+                  Un restaurante que acompana la estadia con servicio diario.
                 </p>
               </div>
             </div>
@@ -398,7 +395,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Servicios"
               title="Comodidades utiles, contadas con mas criterio visual"
-              description="San Marino suma piscina, WiFi, gym, parqueadero, restaurante y apoyos cotidianos dentro de una presentacion mas viva."
+              description="Piscina, WiFi, gym, parqueadero y apoyos cotidianos bien presentados."
             />
           </Reveal>
           <Reveal delay={120}>
@@ -434,15 +431,14 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Testimonios"
               title="Una marca mas confiable tambien se sostiene en voces reales"
-              description="La prueba social entra como una capa limpia y bien tratada, no como un bloque secundario improvisado."
+              description="Prueba social limpia y mejor integrada al ritmo del sitio."
             />
             <div className="ocean-panel p-6 md:p-7">
               <p className="text-[0.68rem] uppercase tracking-[0.3em] text-white/58">
                 Percepcion
               </p>
               <p className="mt-4 text-3xl leading-[0.96] text-white">
-                Mejor presencia, mejor lectura y una experiencia publica mucho mas
-                recordable.
+                Mejor presencia y mejor lectura.
               </p>
             </div>
           </Reveal>
@@ -462,7 +458,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Galeria"
               title="Una mezcla curada entre Tumaco, El Morro y la experiencia del hotel"
-              description="Aunque falte fotografia final del hotel, el sitio ya no cae en placeholders torpes: la narrativa visual tiene contexto real."
+              description="La narrativa visual ya tiene contexto real y mejor ritmo."
             />
           </Reveal>
           <Reveal delay={120}>
@@ -485,7 +481,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Ubicacion"
               title="El hotel se entiende mejor cuando el territorio se ve desde el sitio"
-              description="San Marino conecta El Morro y Tumaco con una referencia de llegada mas clara, mejor imagen y un canal directo para resolver dudas."
+              description="El Morro y Tumaco entran con mejor imagen y una referencia mas clara."
             />
             <div className="editorial-panel p-6">
               <p className="text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground">
@@ -493,8 +489,7 @@ export default async function HomePage() {
               </p>
               <p className="mt-3 text-2xl text-primary">{content.contactInfo.address}</p>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                Si necesitas una referencia puntual, el siguiente paso sigue siendo
-                WhatsApp.
+                Si necesitas una referencia puntual, el siguiente paso sigue siendo WhatsApp.
               </p>
             </div>
           </Reveal>
@@ -520,8 +515,7 @@ export default async function HomePage() {
                   </p>
                 </div>
                 <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                  Una pagina de ubicacion mas visual, mas clara y mas conectada con
-                  la marca.
+                  Una pagina mas visual y mas clara.
                 </p>
               </div>
             </div>
@@ -532,7 +526,7 @@ export default async function HomePage() {
       <CtaBanner
         eyebrow="WhatsApp"
         title="La conversacion comercial sigue por el canal mas simple"
-        description="Sin formularios publicos. Sin reserva falsa. Si quieres revisar habitaciones, planes o llegar mejor orientado, el siguiente paso es WhatsApp."
+        description="Sin formularios publicos ni reservas falsas. El siguiente paso es WhatsApp."
         actions={
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}

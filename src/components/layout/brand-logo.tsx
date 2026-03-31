@@ -42,7 +42,7 @@ export function BrandLogo({
           className={cn(
             "block font-serif leading-[0.84] transition group-hover:text-[var(--coral)]",
             theme === "light" ? "text-white" : "text-primary",
-            compact ? "text-[1.85rem]" : "text-[2rem] md:text-[2.18rem] xl:text-[2.28rem]",
+            compact ? "text-[1.7rem] md:text-[1.8rem]" : "text-[1.9rem] md:text-[2.08rem] xl:text-[2.2rem]",
           )}
         >
           San Marino
@@ -51,7 +51,7 @@ export function BrandLogo({
           className={cn(
             "mt-1 block font-semibold uppercase tracking-[0.24em] transition group-hover:text-primary",
             theme === "light" ? "text-white/72" : "text-foreground/72",
-            compact ? "text-[0.58rem]" : "text-[0.6rem] md:text-[0.64rem]",
+            compact ? "text-[0.6rem]" : "text-[0.62rem] md:text-[0.66rem]",
           )}
         >
           Hotel en El Morro

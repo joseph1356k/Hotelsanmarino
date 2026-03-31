@@ -48,7 +48,7 @@ export function RoomCard({
       </div>
 
       <div className="space-y-6 p-6 md:p-7">
-        <p className="max-w-xl text-sm leading-7 text-muted-foreground">
+        <p className="max-w-xl text-[0.98rem] leading-7 text-foreground/76">
           {room.short_description}
         </p>
 

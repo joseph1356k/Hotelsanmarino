@@ -68,47 +68,47 @@ export const coastalScenes = {
 export const heroMetrics = [
   {
     value: "El Morro",
-    label: "contexto costero, ciudad y mar en una misma estadia",
+    label: "costa, ciudad y mar",
   },
   {
     value: "32",
-    label: "habitaciones listas para mostrarse con claridad",
+    label: "habitaciones visibles",
   },
   {
     value: "WhatsApp",
-    label: "contacto comercial directo y sin intermediarios",
+    label: "contacto directo",
   },
 ];
 
 export const trustHighlights = [
-  "Frente al ritmo de El Morro",
-  "Contacto directo con el hotel",
-  "Restaurante y servicios en sitio",
-  "Presentacion mas cuidada que la media",
+  "En El Morro",
+  "WhatsApp directo",
+  "Restaurante en sitio",
+  "Mejor presentado",
 ];
 
 export const valuePillars: MarketingPillar[] = [
   {
     title: "Primer vistazo con identidad",
     description:
-      "La web presenta el hotel como una marca viva del territorio, no como una plantilla de hospedaje sin caracter.",
+      "Una marca viva del territorio, no una plantilla de hotel.",
   },
   {
     title: "Descanso mas claro",
     description:
-      "Habitaciones, servicios y contexto local se entienden rapido para que decidir no dependa de preguntas innecesarias.",
+      "Habitaciones y servicios se entienden rapido.",
   },
   {
     title: "Hospitalidad directa",
     description:
-      "La conversacion comercial se resuelve por WhatsApp: simple, humana y sin pasos falsos.",
+      "La conversacion ocurre por WhatsApp: simple y directa.",
   },
 ];
 
 export const restaurantHighlights = [
   "Desayuno, almuerzo y cena sin salir del hotel",
   "Cocina de mar con pescado, camarones y langostino",
-  "Una propuesta pensada para acompanar la estadia, no para recargarla",
+  "Una propuesta simple, local y bien presentada",
 ];
 
 export const servicesCatalog: MarketingService[] = [
@@ -178,11 +178,11 @@ export const liveElMorroSection: MarketingSplitSection = {
   eyebrow: "El Morro se vive aqui",
   title: "Tumaco y El Morro entran en la experiencia desde la primera mirada",
   description:
-    "San Marino funciona mejor cuando se entiende como base costera: una forma comoda, clara y bien presentada de quedarse donde el territorio realmente se siente.",
+    "San Marino se entiende mejor como una base costera clara, comoda y cercana.",
   points: [
-    "Fotografia grande, bloques limpios y una narrativa que conecta hotel y contexto local",
-    "Una marca que no necesita lujo falso para verse mejor cuidada y mas confiable",
-    "Decision mas simple: ver, comparar y escribir directo por WhatsApp",
+    "Fotografia grande y contexto local visible",
+    "Una marca mejor cuidada, sin lujo falso",
+    "Ver, comparar y escribir directo por WhatsApp",
   ],
 };
 

@@ -57,10 +57,10 @@ export function PageHero({
                 <span>{eyebrow}</span>
               </div>
             ) : null}
-            <h1 className="text-balance max-w-[9.5ch] text-[3.45rem] leading-[0.9] text-white sm:max-w-[10ch] sm:text-5xl md:max-w-4xl md:text-6xl lg:text-7xl">
+            <h1 className="text-balance max-w-[9.5ch] text-[3.35rem] leading-[0.94] text-white sm:max-w-[10ch] sm:text-[3.9rem] md:max-w-4xl md:text-6xl lg:text-7xl">
               {title}
             </h1>
-            <p className="max-w-[18rem] text-base leading-7 text-white/82 sm:max-w-[22rem] md:max-w-2xl md:text-lg md:leading-8">
+            <p className="max-w-[18rem] text-[1.02rem] leading-8 text-white/88 sm:max-w-[22rem] md:max-w-2xl md:text-[1.08rem] md:leading-8">
               {description}
             </p>
             {actions ? <div className="flex flex-wrap gap-3 pt-1">{actions}</div> : null}
