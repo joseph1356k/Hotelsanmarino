@@ -21,22 +21,27 @@ export function GalleryGrid({
         <div
           key={item.id}
           className={cn(
-            "group relative overflow-hidden rounded-[32px] bg-[linear-gradient(180deg,#ffffff,#faf7f2)] shadow-[0_16px_44px_rgba(15,95,143,0.08)]",
-            index % 5 === 0
+            "group relative overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_22px_72px_rgba(24,79,95,0.08)]",
+            index % 6 === 0
               ? "lg:col-span-7 lg:row-span-2"
-              : index % 3 === 0
+              : index % 4 === 0
                 ? "lg:col-span-5"
                 : "lg:col-span-4",
           )}
         >
           <Image
-            src={resolveEntityImage("room", item.src)}
+            src={resolveEntityImage("site", item.src)}
             alt={item.alt}
             width={1200}
             height={900}
-            className="aspect-[4/3] h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+            className="aspect-[4/3] h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F5F8F]/24 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,47,59,0.02)_10%,rgba(17,47,59,0.12)_42%,rgba(17,47,59,0.72)_100%)] opacity-90" />
+          <div className="absolute inset-x-0 bottom-0 p-5">
+            <div className="inline-flex max-w-full items-center rounded-full bg-white/90 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-primary backdrop-blur">
+              {item.alt}
+            </div>
+          </div>
         </div>
       ))}
     </div>

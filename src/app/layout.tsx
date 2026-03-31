@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   },
   description:
     "Hotel San Marino Tumaco. Una forma clara, comoda y cercana de vivir El Morro, con atencion directa por WhatsApp.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#184F5F",
 };
 
 export default function RootLayout({

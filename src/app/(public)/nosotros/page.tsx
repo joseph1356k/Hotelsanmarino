@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
+import { SectionHeading } from "@/components/marketing/section-heading";
 import { TestimonialCard } from "@/components/marketing/testimonial-card";
-import { aboutNarrative } from "@/content/static-marketing";
+import { aboutNarrative, coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 
 export default async function AboutPage() {
@@ -11,46 +13,64 @@ export default async function AboutPage() {
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Nosotros"
-        title="Hospitalidad cercana, mejor presentada"
+        title="Hospitalidad cercana, identidad costera y mejor presencia de marca."
         description={`${aboutNarrative.intro} ${aboutNarrative.story}`}
+        imageSrc={coastalScenes.arch.src}
+        imageAlt={coastalScenes.arch.alt}
       />
 
       <section className="section-shell">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {aboutNarrative.pillars.map((pillar, index) => {
-            const Icon = pillar.icon;
-            return (
-              <Reveal key={pillar.title} delay={index * 90}>
-                <article className="premium-card p-7">
-                  <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-muted text-primary">
-                    <Icon className="size-5" />
-                  </div>
-                  <h2 className="mt-6 text-3xl">{pillar.title}</h2>
-                  <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                    {pillar.description}
-                  </p>
-                </article>
-              </Reveal>
-            );
-          })}
+        <div className="grid gap-10 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
+          <Reveal className="space-y-6">
+            <SectionHeading
+              eyebrow="Quienes somos"
+              title="San Marino quiere sentirse mas propio, mas vivo y mejor contado."
+              description="La marca deja atras la idea de hotel generico para verse como una presencia clara dentro de El Morro."
+            />
+            <div className="premium-card overflow-hidden p-3">
+              <div className="relative aspect-[5/4] overflow-hidden rounded-[26px]">
+                <Image
+                  src={coastalScenes.aerial.src}
+                  alt={coastalScenes.aerial.alt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {aboutNarrative.pillars.map((pillar, index) => {
+              const Icon = pillar.icon;
+              return (
+                <Reveal key={pillar.title} delay={index * 90}>
+                  <article className="premium-card p-6 md:p-7">
+                    <div className="inline-flex size-12 items-center justify-center rounded-[24px] bg-primary/8 text-primary">
+                      <Icon className="size-5" />
+                    </div>
+                    <h2 className="mt-6 text-3xl leading-[0.96]">{pillar.title}</h2>
+                    <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                      {pillar.description}
+                    </p>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       <section className="section-shell">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div className="space-y-5">
-            <p className="text-xs uppercase tracking-[0.3em] text-[var(--coral)]">
-              El Morro se vive aqui
-            </p>
-            <h2 className="text-balance text-4xl md:text-5xl">
-              Una forma de quedarse mejor conectada con Tumaco
-            </h2>
-            <p className="text-lg leading-8 text-muted-foreground">
-              {content.siteSettings.site_tagline}. El sitio y el hotel comparten
-              la misma idea: bajar friccion, elevar presentacion y sostener una
-              conversacion clara con quien quiere quedarse.
-            </p>
-          </div>
+        <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+          <Reveal className="space-y-5">
+            <SectionHeading
+              eyebrow="El Morro se vive aqui"
+              title="Una forma de quedarse mejor conectada con Tumaco."
+              description={`${content.siteSettings.site_tagline}. El sitio y el hotel ahora comparten una misma idea: menos friccion, mas presencia y una lectura visual mucho mas clara.`}
+            />
+          </Reveal>
+
           <div className="grid gap-6 lg:grid-cols-2">
             {content.testimonials.map((testimonial, index) => (
               <Reveal key={testimonial.id} delay={index * 90}>

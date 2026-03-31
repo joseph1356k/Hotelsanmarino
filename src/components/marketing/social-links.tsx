@@ -5,7 +5,15 @@ import { socialLinks } from "@/lib/constants/site";
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
-      <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5.5" stroke="currentColor" strokeWidth="1.5" />
+      <rect
+        x="3.25"
+        y="3.25"
+        width="17.5"
+        height="17.5"
+        rx="5.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
       <circle cx="12" cy="12" r="4.25" stroke="currentColor" strokeWidth="1.5" />
       <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
     </svg>
@@ -30,7 +38,15 @@ function FacebookIcon({ className }: { className?: string }) {
         d="M13.32 20.5v-7.02h2.36l.35-2.73h-2.71V9.02c0-.79.22-1.33 1.36-1.33h1.45V5.25c-.25-.03-1.1-.1-2.1-.1-2.08 0-3.5 1.27-3.5 3.6v2h-2.35v2.73h2.35v7.02h2.79Z"
         fill="currentColor"
       />
-      <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5.5" stroke="currentColor" strokeWidth="1.5" />
+      <rect
+        x="3.25"
+        y="3.25"
+        width="17.5"
+        height="17.5"
+        rx="5.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }
@@ -60,10 +76,10 @@ export function SocialLinks({
             target="_blank"
             rel="noreferrer"
             className={cn(
-              "inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors",
+              "inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition duration-300",
               variant === "light"
-                ? "border-border bg-white text-primary hover:border-primary hover:bg-primary hover:text-white"
-                : "border-white/18 bg-white/8 text-white hover:border-white/28 hover:bg-white hover:text-primary",
+                ? "border-primary/10 bg-white text-primary hover:-translate-y-0.5 hover:border-[var(--coral)] hover:text-[var(--coral)]"
+                : "border-white/16 bg-white/8 text-white hover:-translate-y-0.5 hover:border-[var(--sun)] hover:bg-white hover:text-primary",
             )}
           >
             <Icon className="size-4" />

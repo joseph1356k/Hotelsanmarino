@@ -8,12 +8,12 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[var(--coral)] px-5 py-3 text-[var(--ivory)] shadow-[0_14px_34px_rgba(214,63,52,0.24)] hover:bg-[var(--accent-hover)]",
+          "bg-[var(--coral)] px-5 py-3 text-white shadow-[0_18px_44px_rgba(211,15,8,0.24)] hover:bg-[var(--accent-hover)]",
         secondary:
-          "border border-primary bg-white px-5 py-3 text-primary hover:bg-primary hover:text-primary-foreground",
+          "border border-primary/20 bg-white px-5 py-3 text-primary hover:border-primary hover:bg-primary hover:text-primary-foreground",
         outline:
-          "border border-primary bg-transparent px-5 py-3 text-primary hover:bg-primary hover:text-primary-foreground",
-        ghost: "px-4 py-2 hover:bg-muted",
+          "border border-primary/30 bg-transparent px-5 py-3 text-primary hover:border-primary hover:bg-primary hover:text-primary-foreground",
+        ghost: "px-4 py-2 hover:bg-primary/6",
       },
       size: {
         default: "h-11",
