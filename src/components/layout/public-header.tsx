@@ -47,7 +47,7 @@ export function PublicHeader({
         </div>
       </div>
 
-      <div className="container-shell flex items-center gap-3 py-3 md:gap-4 md:py-4">
+      <div className="container-shell flex items-center gap-3 py-3 md:gap-4 md:py-4 xl:gap-5">
         <div className="flex shrink-0 items-center gap-3">
           <button
             type="button"
@@ -58,17 +58,17 @@ export function PublicHeader({
             {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
 
-          <Link href="/" className="group space-y-0.5">
-            <p className="font-serif text-3xl leading-none tracking-[0.02em] text-primary">
+          <Link href="/" className="group w-[180px] space-y-0.5 xl:w-[190px] 2xl:w-[220px]">
+            <p className="font-serif text-[2.45rem] leading-[0.88] tracking-[0.01em] text-primary xl:text-[2.6rem]">
               San Marino
             </p>
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground transition group-hover:text-primary">
+            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground transition group-hover:text-primary xl:text-[0.72rem] xl:tracking-[0.24em]">
               Hotel en El Morro
             </p>
           </Link>
         </div>
 
-        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-4 xl:gap-7 lg:flex">
+        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-4 xl:gap-5 2xl:gap-7 lg:flex">
           {publicNavigation.map((item) => {
             const isActive =
               item.href === "/"
@@ -80,7 +80,7 @@ export function PublicHeader({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative text-sm font-semibold tracking-[0.14em] uppercase text-foreground transition-colors hover:text-primary xl:tracking-[0.16em]",
+                  "relative text-[0.84rem] font-semibold tracking-[0.1em] uppercase text-foreground transition-colors hover:text-primary xl:tracking-[0.12em] 2xl:text-sm 2xl:tracking-[0.16em]",
                   isActive && "text-[var(--coral)]",
                 )}
               >
@@ -102,12 +102,12 @@ export function PublicHeader({
             message={whatsappMessage}
             label={
               <>
-                <span className="xl:hidden">WhatsApp</span>
-                <span className="hidden xl:inline">{whatsappLabel}</span>
+                <span className="2xl:hidden">WhatsApp</span>
+                <span className="hidden 2xl:inline">{whatsappLabel}</span>
               </>
             }
             size="sm"
-            className="max-w-full px-3 xl:px-4"
+            className="max-w-full px-3 2xl:px-4"
           />
         </div>
       </div>
