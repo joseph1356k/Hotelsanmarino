@@ -60,9 +60,11 @@ const iconMap = {
 export function SocialLinks({
   className,
   variant = "light",
+  size = "default",
 }: {
   className?: string;
   variant?: "light" | "dark";
+  size?: "default" | "compact";
 }) {
   return (
     <div className={cn("flex flex-wrap gap-3", className)}>
@@ -76,14 +78,19 @@ export function SocialLinks({
             target="_blank"
             rel="noreferrer"
             className={cn(
-              "inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition duration-300",
+              "inline-flex items-center rounded-full border font-semibold transition duration-300",
+              size === "compact"
+                ? "justify-center gap-0 p-0 size-9"
+                : "gap-2 px-4 py-2.5 text-sm",
               variant === "light"
                 ? "border-primary/10 bg-white text-primary hover:-translate-y-0.5 hover:border-[var(--coral)] hover:text-[var(--coral)]"
                 : "border-white/16 bg-white/8 text-white hover:-translate-y-0.5 hover:border-[var(--sun)] hover:bg-white hover:text-primary",
             )}
+            aria-label={social.label}
+            title={social.label}
           >
             <Icon className="size-4" />
-            {social.label}
+            {size === "compact" ? <span className="sr-only">{social.label}</span> : social.label}
           </Link>
         );
       })}

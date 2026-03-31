@@ -7,6 +7,7 @@ import { useState } from "react";
 import { publicNavigation } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "@/components/layout/brand-logo";
+import { SocialLinks } from "@/components/marketing/social-links";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import type {
   ContactInfo,
@@ -38,13 +39,16 @@ export function PublicHeader({
           <p className="min-w-0 truncate uppercase tracking-[0.32em]">
             {contactInfo.city} · {siteSettings.site_tagline}
           </p>
-          <a
-            href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
-            className="inline-flex shrink-0 items-center gap-2 text-white transition hover:text-[var(--sun)]"
-          >
-            <Phone className="size-3.5" />
-            {contactInfo.phone}
-          </a>
+          <div className="flex shrink-0 items-center gap-3">
+            <SocialLinks variant="dark" size="compact" className="gap-2" />
+            <a
+              href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
+              className="inline-flex shrink-0 items-center gap-2 text-white transition hover:text-[var(--sun)]"
+            >
+              <Phone className="size-3.5" />
+              {contactInfo.phone}
+            </a>
+          </div>
         </div>
       </div>
 
@@ -131,6 +135,12 @@ export function PublicHeader({
                 );
               })}
             </nav>
+            <div className="rounded-[22px] border border-white/10 bg-white/6 px-4 py-4">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/62">
+                Redes sociales
+              </p>
+              <SocialLinks variant="dark" size="compact" className="mt-4 gap-2" />
+            </div>
             <WhatsappCta
               phoneNumber={whatsappPhone}
               message={whatsappMessage}
