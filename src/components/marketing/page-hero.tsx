@@ -25,7 +25,7 @@ export function PageHero({
             <div className="absolute right-4 top-0 h-52 w-52 rounded-full bg-[var(--sky)]/18 blur-3xl md:h-72 md:w-72" />
             <div className="absolute bottom-[-4rem] right-[10%] h-44 w-44 animate-[drift_10s_ease-in-out_infinite] rounded-full bg-[var(--sun)]/12 blur-[110px] md:h-64 md:w-64" />
           </div>
-        <div className="relative grid gap-8 px-6 py-8 md:px-8 md:py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-12 lg:py-12">
+        <div className="relative grid gap-8 px-6 py-8 md:px-8 md:py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:px-12 lg:py-12">
           <Reveal className="space-y-5" delay={50}>
             {eyebrow ? (
               <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/78">
