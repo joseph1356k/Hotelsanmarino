@@ -16,15 +16,15 @@ export default async function RoomsPage() {
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Habitaciones"
-        title="Habitaciones para comparar con mas claridad y mas deseo"
-        description="La pagina deja de sentirse como una lista tecnica: imagen grande, contexto visual, capacidad visible, amenidades resumidas y salida inmediata a WhatsApp."
+        title="Habitaciones para descansar bien y elegir con confianza."
+        description="Explora opciones para tu viaje, revisa capacidad, ambiente y amenidades, y escribenos cuando encuentres la indicada."
         imageSrc={coastalScenes.aerial.src}
         imageAlt={coastalScenes.aerial.alt}
         actions={
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
-            label="Consultar habitaciones"
+            label="Ver opciones por WhatsApp"
           />
         }
         aside={
@@ -56,18 +56,17 @@ export default async function RoomsPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Elegir"
-              title="Una parrilla pensada para recorrer y decidir mejor."
-              description="Cada card concentra la informacion clave y deja ver mejor la habitacion antes de pasar al detalle."
+              title="Encuentra la habitacion que mejor va con tu viaje."
+              description="Cada opcion te muestra lo esencial para comparar con calma y decidir con mas seguridad."
             />
           </Reveal>
           <Reveal delay={100}>
             <div className="editorial-panel p-6">
               <p className="text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground">
-                Vista general
+                Antes de elegir
               </p>
               <p className="mt-4 text-lg leading-8 text-foreground/84">
-                Capacidad, tarifa referencial y una lectura visual mucho mas fuerte
-                para que la decision se sienta menos fria y mas confiable.
+                Revisa capacidad, tarifa referencial y amenidades para tener una idea mas clara antes de escribirnos.
               </p>
             </div>
           </Reveal>

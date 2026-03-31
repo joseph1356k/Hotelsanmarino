@@ -70,7 +70,7 @@ export default async function RoomDetailPage({
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={`${primaryCta?.message ?? content.contactInfo.whatsapp_default_message} para ${room.name}`}
-            label="Consultar esta habitacion"
+                label="Quiero esta habitacion"
           />
         }
         aside={
@@ -88,13 +88,13 @@ export default async function RoomDetailPage({
                 Hasta {room.capacity} personas
               </div>
               <div className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm text-muted-foreground">
-                Estado admin: {room.status}
+                Atencion directa
               </div>
             </div>
 
             <p className="text-sm leading-7 text-muted-foreground">
-              Esta fase no muestra disponibilidad real ni reserva online. El
-              siguiente paso para revisar esta habitacion es WhatsApp.
+              Si esta opcion te interesa, escribenos por WhatsApp y te ayudamos a
+              revisar detalles, tarifas y disponibilidad.
             </p>
           </aside>
         }
@@ -137,8 +137,8 @@ export default async function RoomDetailPage({
           <Reveal className="space-y-6">
             <SectionHeading
               eyebrow="Amenidades"
-              title="Lo esencial se entiende de inmediato."
-              description="La ficha deja ver capacidad, amenidades y tono de la habitacion sin alejarse de la lectura comercial."
+              title="Lo que necesitas para una estadia comoda."
+              description="Conoce lo esencial de la habitacion antes de dar el siguiente paso."
             />
 
             <div className="premium-card p-6 md:p-7">
@@ -173,7 +173,7 @@ export default async function RoomDetailPage({
           <Reveal className="space-y-6" delay={120}>
             <div>
               <p className="text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground">
-                Descripcion larga
+                Sobre esta habitacion
               </p>
               <p className="mt-4 text-lg leading-8 text-foreground/88">
                 {room.long_description}
@@ -209,8 +209,8 @@ export default async function RoomDetailPage({
             <Reveal>
               <SectionHeading
                 eyebrow="Otras habitaciones"
-                title="Si quieres comparar, aqui tienes otras opciones del hotel."
-                description="La lectura sigue siendo simple: ver, comparar y conversar."
+                title="Si quieres comparar, aqui tienes otras opciones."
+                description="Explora mas habitaciones del hotel y encuentra la que mejor se ajuste a tu plan."
               />
             </Reveal>
             <Reveal delay={120}>
@@ -234,13 +234,13 @@ export default async function RoomDetailPage({
 
       <CtaBanner
         eyebrow="WhatsApp"
-        title="Si esta habitacion te encaja, la conversacion sigue aqui."
-        description="Sin reserva automatica. Sin checkout. Solo una salida directa para resolver dudas y avanzar con claridad."
+        title="Si esta habitacion es para ti, escribenos."
+        description="Te ayudamos a resolver dudas, revisar disponibilidad y avanzar de forma directa por WhatsApp."
         actions={
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={`${primaryCta?.message ?? content.contactInfo.whatsapp_default_message} para ${room.name}`}
-            label="Hablar por WhatsApp"
+            label="Escribir ahora"
           />
         }
       />

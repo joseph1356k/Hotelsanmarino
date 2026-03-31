@@ -32,7 +32,7 @@ export function LocationMapSection({
               <SectionHeading
                 eyebrow="Ubicacion"
                 title="Estamos en El Morro"
-                description="Encuentranos en una ubicacion comoda y clara para llegar al hotel y moverte con mas facilidad entre Tumaco, playa y descanso."
+                description="Encuentranos en una ubicacion comoda para llegar al hotel y moverte con mas facilidad entre Tumaco, playa y descanso."
                 className="max-w-none [&_h2]:text-white [&_p]:text-white/78 [&_span]:text-[var(--sun-soft)]"
               />
 
@@ -55,8 +55,8 @@ export function LocationMapSection({
                     Referencia
                   </p>
                   <p className="mt-3 text-sm leading-7 text-white/76">
-                    Si necesitas una indicacion puntual, el canal mas directo sigue
-                    siendo WhatsApp.
+                    Si quieres confirmar la llegada o pedir una referencia puntual,
+                    te respondemos directo por WhatsApp.
                   </p>
                 </div>
               </div>
@@ -108,8 +108,8 @@ export function LocationMapSection({
                   Google Maps
                 </p>
                 <p className="mt-2 max-w-xl text-sm leading-7 text-muted-foreground">
-                  Mira la ubicacion exacta del hotel dentro del mapa y abre la ruta
-                  completa en una pestaña nueva cuando la necesites.
+                  Mira la ubicacion exacta del hotel en el mapa y abre la ruta
+                  completa cuando la necesites.
                 </p>
               </div>
               <Link

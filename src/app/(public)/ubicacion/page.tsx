@@ -37,7 +37,7 @@ export default async function LocationPage() {
       <PageHero
         eyebrow="Ubicacion"
         title="Estamos en El Morro"
-        description="Una ubicacion clara para llegar con mas facilidad al hotel y moverte entre Tumaco, playa y descanso sin perder referencia."
+        description="Encuentra el hotel con facilidad y ubicate mejor entre playa, ciudad y descanso desde el primer vistazo."
         imageSrc={coastalScenes.aerial.src}
         imageAlt={coastalScenes.aerial.alt}
       />
@@ -53,8 +53,8 @@ export default async function LocationPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Contexto"
-              title="Llegar bien tambien hace parte de la experiencia."
-              description="La ubicacion no se presenta como un dato suelto. Se muestra con mas referencia, lectura territorial y una salida clara cuando necesitas orientacion."
+                title="Llegar bien tambien hace parte de una buena estadia."
+                description="Queremos que desde antes de tu llegada tengas una referencia clara del hotel y de su relacion con El Morro."
             />
           </Reveal>
 

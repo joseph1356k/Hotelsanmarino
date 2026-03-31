@@ -16,28 +16,28 @@ export default async function PlansPage() {
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Planes"
-        title="Planes editables, mejor contados y listos para conversarse directo."
-        description="La capa comercial de planes ya no se siente provisional: tiene imagen, jerarquia y una salida clara a WhatsApp."
+        title="Planes pensados para que tu visita tenga un motivo extra."
+        description="Descubre opciones para escapadas, viajes de trabajo o estadias con mas contexto, y conversemos la mejor alternativa para ti."
         imageSrc={coastalScenes.aerial.src}
         imageAlt={coastalScenes.aerial.alt}
         actions={
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
-            label="Consultar planes"
+            label="Preguntar por planes"
           />
         }
         aside={
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             <div className="mist-panel px-5 py-5">
               <p className="text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground">
-                Planes activos
+                Opciones disponibles
               </p>
               <p className="mt-3 text-4xl text-primary">{content.plans.length}</p>
             </div>
             <div className="mist-panel px-5 py-5">
               <p className="text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground">
-                Cierre comercial
+                Atencion directa
               </p>
               <p className="mt-3 text-2xl text-primary">WhatsApp</p>
             </div>
@@ -49,19 +49,19 @@ export default async function PlansPage() {
         <div className="mb-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <Reveal>
             <SectionHeading
-              eyebrow="Campanas"
-              title="Una vitrina mas util para escapadas, paquetes y ofertas futuras."
-              description="La pagina se apoya en DB real, pero ya tiene un lenguaje mas fuerte para presentar cualquier plan sin verse vacia."
+              eyebrow="Escapadas y opciones"
+              title="Una forma simple de encontrar un plan que vaya con tu viaje."
+              description="Aqui reunimos ideas para quedarte, celebrar o resolver una visita con mas facilidad."
             />
           </Reveal>
           <Reveal delay={120}>
             <div className="editorial-panel p-6">
               <p className="text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground">
-                Uso comercial
+                Para que te sirva
               </p>
               <p className="mt-4 text-lg leading-8 text-foreground/84">
-                Aqui pueden vivir campañas, escapadas o activaciones del hotel sin
-                depender de un checkout o una reserva automatica.
+                Si algun plan te interesa, lo revisamos contigo por WhatsApp y te
+                ayudamos a ver la opcion que mejor encaja.
               </p>
             </div>
           </Reveal>
@@ -78,13 +78,13 @@ export default async function PlansPage() {
 
       <CtaBanner
         eyebrow="WhatsApp"
-        title="Si un plan te interesa, el paso real es escribir."
-        description="No hay checkout ni reserva automatica. Esta fase prioriza una conversacion rapida para revisar el plan correcto."
+        title="Si un plan te llama la atencion, conversemos."
+        description="Escribenos por WhatsApp y te contamos detalles, condiciones y la mejor forma de aprovecharlo."
         actions={
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
-            label="Hablar por WhatsApp"
+            label="Consultar este plan"
           />
         }
       />

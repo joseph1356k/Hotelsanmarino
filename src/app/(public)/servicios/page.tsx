@@ -21,15 +21,15 @@ export default async function ServicesPage() {
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Servicios"
-        title="Servicios mostrados con mas caracter y mejor lectura comercial."
-        description="La pagina ya no es una lista plana: servicios, restaurante y apoyos del hotel entran en una composicion mas viva y mejor conectada con la marca."
+        title="Todo lo que hace tu estadia mas comoda, en un solo lugar."
+        description="Desde el restaurante hasta los servicios del dia a dia, San Marino reune lo que necesitas para quedarte con mas calma."
         imageSrc={coastalScenes.arch.src}
         imageAlt={coastalScenes.arch.alt}
         actions={
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
-            label="Consultar servicios"
+            label="Preguntar por servicios"
           />
         }
         aside={
@@ -54,8 +54,8 @@ export default async function ServicesPage() {
           <Reveal className="space-y-6">
             <SectionHeading
               eyebrow="Operacion"
-              title="Servicios que hacen la estadia mas comoda sin quitarle identidad."
-              description="Lo util del hotel ahora se presenta con mas orden visual y con mejor relacion entre texto, imagen y accion."
+              title="Servicios pensados para que disfrutes mas y te preocupes menos."
+              description="Cada espacio y cada apoyo suman comodidad para que tu paso por San Marino se sienta mas facil."
             />
             <div className="premium-card overflow-hidden p-3">
               <div className="relative aspect-[5/4] overflow-hidden rounded-[26px]">
@@ -82,13 +82,13 @@ export default async function ServicesPage() {
 
       <CtaBanner
         eyebrow="WhatsApp"
-        title="Si quieres confirmar un servicio o coordinar algo especial."
-        description="Lo mas util sigue siendo escribir directo. WhatsApp concentra la conversacion comercial y operativa de esta fase."
+        title="Si quieres confirmar un servicio o coordinar algo especial, escribenos."
+        description="Por WhatsApp podemos ayudarte a resolver detalles, horarios y solicitudes de manera rapida."
         actions={
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
-            label="Consultar servicios"
+            label="Hablar sobre servicios"
           />
         }
       />

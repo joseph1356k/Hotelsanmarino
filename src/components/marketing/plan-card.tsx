@@ -52,7 +52,7 @@ export function PlanCard({
         <div className="flex flex-col gap-4 border-t border-border/70 pt-5 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[0.68rem] uppercase tracking-[0.3em] text-muted-foreground">
-              Salida comercial
+              Valor o referencia
             </p>
             <p className="mt-2 text-2xl text-primary">
               {plan.price_label ?? "Consulta por WhatsApp"}

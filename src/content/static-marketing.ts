@@ -68,146 +68,146 @@ export const coastalScenes = {
 export const heroMetrics = [
   {
     value: "El Morro",
-    label: "costa, ciudad y mar",
+    label: "mar, descanso y ciudad",
   },
   {
     value: "32",
-    label: "habitaciones visibles",
+    label: "habitaciones para elegir",
   },
   {
     value: "WhatsApp",
-    label: "contacto directo",
+    label: "atencion sin vueltas",
   },
 ];
 
 export const trustHighlights = [
   "En El Morro",
-  "WhatsApp directo",
+  "Atencion directa",
   "Restaurante en sitio",
-  "Mejor presentado",
+  "Cerca del mar",
 ];
 
 export const valuePillars: MarketingPillar[] = [
   {
-    title: "Primer vistazo con identidad",
+    title: "Una estadia que entra bien por los ojos",
     description:
-      "Una marca viva del territorio, no una plantilla de hotel.",
+      "San Marino se presenta con mas identidad, mas claridad y mejor atmosfera desde la primera visita.",
   },
   {
-    title: "Descanso mas claro",
+    title: "Comodidad facil de elegir",
     description:
-      "Habitaciones y servicios se entienden rapido.",
+      "Habitaciones, servicios y ubicacion se entienden rapido para decidir con mas confianza.",
   },
   {
-    title: "Hospitalidad directa",
+    title: "Contacto directo con el hotel",
     description:
-      "La conversacion ocurre por WhatsApp: simple y directa.",
+      "Cuando quieras resolver una duda o avanzar, WhatsApp te conecta sin rodeos.",
   },
 ];
 
 export const restaurantHighlights = [
-  "Desayuno, almuerzo y cena sin salir del hotel",
-  "Cocina de mar con pescado, camarones y langostino",
-  "Una propuesta simple, local y bien presentada",
+  "Desayuno, almuerzo y cena dentro del hotel",
+  "Sabores de mar con pescado, camarones y langostino",
+  "Una mesa practica para quedarse, comer bien y seguir el dia con calma",
 ];
 
 export const servicesCatalog: MarketingService[] = [
   {
     title: "WiFi",
-    description: "Conexion estable para estadias de descanso o viajes de trabajo.",
+    description: "Conexion estable para descansar, responder pendientes o seguir conectado sin complicaciones.",
     icon: Wifi,
   },
   {
     title: "Piscina",
-    description: "Un respiro de agua y pausa dentro del recorrido del hotel.",
+    description: "Un espacio para bajar el ritmo, refrescarte y alargar la sensacion de descanso.",
     icon: Waves,
   },
   {
     title: "Gym",
-    description: "Un espacio funcional para mantener rutina sin salir del ritmo del viaje.",
+    description: "Una opcion practica para mantener tu rutina durante la estadia.",
     icon: Dumbbell,
   },
   {
     title: "Parqueadero",
-    description: "Apoyo practico para quienes llegan con vehiculo y necesitan una llegada simple.",
+    description: "Una llegada mas comoda para quienes viajan en vehiculo y quieren resolverlo todo en un solo lugar.",
     icon: ParkingCircle,
   },
   {
     title: "Restaurante",
-    description: "Cocina de mar y servicio diario dentro de la experiencia San Marino.",
+    description: "Cocina de mar y servicio diario para que comer bien tambien haga parte de la estadia.",
     icon: Fish,
   },
   {
     title: "Zonas comunes",
-    description: "Espacios tranquilos para esperar, conversar o bajar revoluciones.",
+    description: "Ambientes tranquilos para esperar, conversar o simplemente tomarte el tiempo con mas calma.",
     icon: Landmark,
   },
   {
     title: "Desayuno gratis",
-    description: "Una salida cotidiana resuelta con mas calma desde el inicio del dia.",
+    description: "Empezar el dia con el desayuno resuelto hace la estadia mas comoda desde temprano.",
     icon: Coffee,
   },
   {
     title: "Tienda 24 horas",
-    description: "Respuesta rapida para necesidades simples a cualquier hora.",
+    description: "Una ayuda practica para esas necesidades de ultima hora, sin importar el momento.",
     icon: ShoppingBag,
   },
   {
     title: "Lavanderia",
-    description: "Soporte util para estadias largas o trayectos con mas movimiento.",
+    description: "Apoyo util para viajes largos, escalas o estadias con mas movimiento.",
     icon: Shirt,
   },
   {
     title: "Decoraciones romanticas",
-    description: "Montajes puntuales para ocasiones especiales, coordinados de forma directa.",
+    description: "Detalles pensados para sorprender en una fecha especial o darle otro tono a la estadia.",
     icon: HeartHandshake,
   },
   {
     title: "Salon de eventos",
-    description: "Un formato controlado para reuniones, celebraciones y encuentros del hotel.",
+    description: "Un espacio funcional para reuniones, celebraciones y encuentros con una logistica mas simple.",
     icon: ConciergeBell,
   },
   {
     title: "Tours con terceros",
-    description: "Orientacion para planes complementarios sin convertir el hotel en operador turistico.",
+    description: "Apoyo para explorar otros planes en Tumaco sin perder la sencillez del contacto directo.",
     icon: MapPinned,
   },
 ];
 
 export const liveElMorroSection: MarketingSplitSection = {
   eyebrow: "El Morro se vive aqui",
-  title: "Tumaco y El Morro entran en la experiencia desde la primera mirada",
+  title: "Quedarse bien tambien es una forma de vivir El Morro",
   description:
-    "San Marino se entiende mejor como una base costera clara, comoda y cercana.",
+    "San Marino es una base comoda para descansar, moverte con facilidad y sentir mas de cerca el ritmo de Tumaco.",
   points: [
-    "Fotografia grande y contexto local visible",
-    "Una marca mejor cuidada, sin lujo falso",
-    "Ver, comparar y escribir directo por WhatsApp",
+    "Una ubicacion que te deja mas cerca del mar y del movimiento de El Morro",
+    "Habitaciones claras para elegir sin enredos",
+    "Un contacto directo para resolver todo por WhatsApp",
   ],
 };
 
 export const aboutNarrative = {
   intro:
-    "Hotel San Marino nace desde una idea simple: quedarse bien en El Morro deberia sentirse claro, cercano y mejor presentado.",
+    "Hotel San Marino nace de una idea simple: quedarse en El Morro deberia sentirse comodo, cercano y facil desde el primer momento.",
   story:
-    "La propuesta combina una operacion ordenada con una identidad mas viva. No se trata de parecer un resort. Se trata de descanso bien resuelto, contexto costero real y una conversacion directa con el huesped.",
+    "Aqui la experiencia no se vende como promesa vacia. Se vive en una atencion directa, espacios comodos y una manera mas clara de disfrutar Tumaco.",
   pillars: [
     {
       title: "Hospitalidad cercana",
       description:
-        "Una relacion mas humana con el huesped, con respuestas claras y menos friccion desde el primer contacto.",
+        "Queremos que desde el primer mensaje sientas una atencion amable, rapida y facil de seguir.",
       icon: MessageCircleMore,
     },
     {
-      title: "Comodidad bien contada",
+      title: "Comodidad bien cuidada",
       description:
-        "Habitaciones, servicios y espacios mostrados con criterio editorial para que la marca se vea pensada.",
+        "Habitaciones, servicios y espacios pensados para que tu estadia se sienta clara y agradable.",
       icon: BedDouble,
     },
     {
-      title: "Calma con energia visual",
+      title: "Identidad costera real",
       description:
-        "Una identidad que toma del Pacifico su color, su luz y su presencia, pero con un lenguaje moderno.",
+        "Tomamos del Pacifico su luz, su color y su cercania sin caer en lo tipico ni en el lujo falso.",
       icon: MoonStar,
     },
   ],
@@ -215,21 +215,21 @@ export const aboutNarrative = {
 
 export const locationContext = [
   {
-    title: "El Morro como referencia real",
+    title: "Llegar es facil",
     description:
-      "La ubicacion se presenta como una base comoda para conectar playa, ciudad y recorridos cotidianos de Tumaco.",
+      "La ubicacion del hotel te conecta con El Morro y con otros recorridos de Tumaco de una forma simple.",
     icon: MapPinned,
   },
   {
-    title: "Llegada clara",
+    title: "Ubicacion que da confianza",
     description:
-      "Si hace falta confirmar una referencia puntual, el canal correcto sigue siendo WhatsApp.",
+      "Puedes revisar el punto exacto en el mapa y, si lo prefieres, pedir una referencia directa por WhatsApp.",
     icon: ShieldCheck,
   },
   {
-    title: "Ritmo local visible",
+    title: "Tumaco mas cerca",
     description:
-      "El sitio refuerza el territorio con mas imagen, mas contraste y una identidad menos generica.",
+      "La cercania con el mar y con El Morro hace parte de la experiencia desde antes de llegar.",
     icon: Sparkles,
   },
 ];

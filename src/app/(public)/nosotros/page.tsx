@@ -13,7 +13,7 @@ export default async function AboutPage() {
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Nosotros"
-        title="Hospitalidad cercana, identidad costera y mejor presencia de marca."
+        title="San Marino es una forma cercana de quedarse bien en El Morro."
         description={`${aboutNarrative.intro} ${aboutNarrative.story}`}
         imageSrc={coastalScenes.arch.src}
         imageAlt={coastalScenes.arch.alt}
@@ -24,8 +24,8 @@ export default async function AboutPage() {
           <Reveal className="space-y-6">
             <SectionHeading
               eyebrow="Quienes somos"
-              title="San Marino quiere sentirse mas propio, mas vivo y mejor contado."
-              description="La marca deja atras la idea de hotel generico para verse como una presencia clara dentro de El Morro."
+              title="Un hotel con identidad costera, atencion directa y una forma sencilla de recibirte."
+              description="San Marino quiere que tu experiencia se sienta cercana, clara y bien cuidada desde el primer momento."
             />
             <div className="premium-card overflow-hidden p-3">
               <div className="relative aspect-[5/4] overflow-hidden rounded-[26px]">
@@ -66,8 +66,8 @@ export default async function AboutPage() {
           <Reveal className="space-y-5">
             <SectionHeading
               eyebrow="El Morro se vive aqui"
-              title="Una forma de quedarse mejor conectada con Tumaco."
-              description={`${content.siteSettings.site_tagline}. El sitio y el hotel ahora comparten una misma idea: menos friccion, mas presencia y una lectura visual mucho mas clara.`}
+              title="Una estadia que se conecta mejor con Tumaco."
+              description={`${content.siteSettings.site_tagline}. Queremos que desde la web hasta tu llegada todo se sienta mas claro, mas amable y mas cercano al lugar.`}
             />
           </Reveal>
 

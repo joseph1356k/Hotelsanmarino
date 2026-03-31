@@ -43,9 +43,9 @@ export const devDefaultRooms: RoomWithRelations[] = [
     id: "4e3c9d4d-77f5-4fba-a521-4ca47b3405db",
     name: "Habitacion Estandar",
     slug: "habitacion-estandar",
-    short_description: "Una opcion comoda y clara para descansar cerca del mar.",
+    short_description: "Una habitacion comoda para descansar en El Morro con la sencillez que pide una buena estadia.",
     long_description:
-      "Fallback de desarrollo para mantener una experiencia local coherente mientras Supabase no esta configurado. En produccion, la fuente editable real debe ser la base de datos.",
+      "Ideal para una estadia tranquila cerca del mar, con lo necesario para descansar bien y moverte con facilidad por Tumaco.",
     price: 180000,
     capacity: 2,
     status: "available",
@@ -53,7 +53,7 @@ export const devDefaultRooms: RoomWithRelations[] = [
     display_order: 1,
     primary_image: "/images/fallbacks/room-fallback.jpg",
     seo_title: "Habitacion Estandar | Hotel San Marino Tumaco",
-    seo_description: "Default temporal de desarrollo para validar la arquitectura.",
+    seo_description: "Habitacion estandar en Hotel San Marino Tumaco.",
     created_at: "2026-03-26T00:00:00.000Z",
     updated_at: "2026-03-26T00:00:00.000Z",
     images: [
@@ -74,9 +74,9 @@ export const devDefaultRooms: RoomWithRelations[] = [
     id: "6f8f059c-2f71-4960-901e-f5966521f5f2",
     name: "Habitacion Familiar",
     slug: "habitacion-familiar",
-    short_description: "Mas espacio para estadias en grupo con una presentacion limpia.",
+    short_description: "Mas espacio para viajar en familia o compartir la estadia con mas comodidad.",
     long_description:
-      "Fallback local de desarrollo pensado para validar la capa publica sin romper la regla DB-first del proyecto.",
+      "Pensada para quienes necesitan mas amplitud, una distribucion comoda y una base practica para disfrutar El Morro.",
     price: 320000,
     capacity: 4,
     status: "available",
@@ -84,7 +84,7 @@ export const devDefaultRooms: RoomWithRelations[] = [
     display_order: 2,
     primary_image: "/images/fallbacks/room-fallback.jpg",
     seo_title: "Habitacion Familiar | Hotel San Marino Tumaco",
-    seo_description: "Default temporal de desarrollo para validar relaciones.",
+    seo_description: "Habitacion familiar en Hotel San Marino Tumaco.",
     created_at: "2026-03-26T00:00:00.000Z",
     updated_at: "2026-03-26T00:00:00.000Z",
     images: [
@@ -108,9 +108,9 @@ export const devDefaultPlans: Plan[] = [
     id: "22b94f1c-2f6d-4a66-8180-85cb487663c6",
     name: "Plan Corporativo",
     slug: "plan-corporativo",
-    short_description: "Una salida practica para estadias de trabajo en Tumaco.",
+    short_description: "Una opcion comoda para viajes de trabajo con atencion directa y una estadia bien resuelta.",
     long_description:
-      "Contenido temporal de desarrollo con tono de marca. La fuente editable final sigue siendo la base de datos.",
+      "Pensado para quienes viajan por trabajo y quieren resolver alojamiento, descanso y atencion sin perder tiempo.",
     price_label: "Desde $210.000 por noche",
     is_featured: true,
     display_order: 1,
@@ -123,9 +123,9 @@ export const devDefaultPlans: Plan[] = [
     id: "4d1ebd48-f570-4697-b564-f7bcbccb3158",
     name: "Plan Escapada",
     slug: "plan-escapada",
-    short_description: "Una opcion simple para una salida corta con atencion directa.",
+    short_description: "Una escapada corta para cambiar de ritmo y quedarte cerca del mar.",
     long_description:
-      "Fallback de desarrollo para validar la presentacion publica de planes mientras la DB no esta disponible.",
+      "Una opcion pensada para una salida breve, con una experiencia clara y la facilidad de resolver todo por WhatsApp.",
     price_label: "Consulta por WhatsApp",
     is_featured: false,
     display_order: 2,
@@ -142,7 +142,7 @@ export const devDefaultTestimonials: Testimonial[] = [
     guest_name: "Huesped local",
     guest_origin: "Tumaco",
     quote:
-      "La presentacion del hotel se siente clara y el contacto por WhatsApp hace todo mas directo.",
+      "La atencion fue rapida y el hotel se siente bien ubicado para disfrutar El Morro con calma.",
     rating: 5,
     is_featured: true,
     display_order: 1,
@@ -157,9 +157,9 @@ export const devDefaultHomeSections: HomeSection[] = [
     id: "1d0a6ffc-0b25-4b09-bc51-f9156c5d0ea6",
     key: "hero",
     title: "El Morro se vive aqui",
-    subtitle: "Calma con identidad, contacto directo y una estadia mejor presentada.",
+    subtitle: "Cerca del mar, con atencion directa y una forma mas comoda de quedarte en El Morro.",
     body:
-      "Hotel San Marino propone una forma clara y cercana de quedarse en El Morro. En esta fase, la conversacion comercial ocurre por WhatsApp.",
+      "Descubre una forma mas clara de quedarte en El Morro, con habitaciones bien presentadas y contacto directo con el hotel.",
     payload: {
       eyebrow: "Hotel San Marino",
       ctaLabel: "Consultar por WhatsApp",
@@ -173,9 +173,9 @@ export const devDefaultHomeSections: HomeSection[] = [
     id: "8db85849-f64b-40bb-9aa5-4d7c253a1377",
     key: "featured_rooms",
     title: "Habitaciones para elegir con calma",
-    subtitle: "Imagen, capacidad y contexto para decidir sin ruido.",
+    subtitle: "Comodidad, capacidad y contexto para encontrar la opcion que mejor te queda.",
     body:
-      "El front de desarrollo conserva una seleccion corta, pero la arquitectura ya soporta inventario, amenidades, galeria y orden de despliegue desde DB.",
+      "Cada habitacion muestra lo esencial para ayudarte a decidir con confianza antes de escribir al hotel.",
     payload: {},
     status: "published",
     display_order: 2,
@@ -190,7 +190,7 @@ export const devDefaultSiteSettings: SiteSettings = {
   site_tagline: siteConfig.siteTagline,
   seo_title: "Hotel San Marino Tumaco",
   seo_description:
-    "Fallback local de desarrollo para Hotel San Marino Tumaco. En produccion el contenido debe venir de Supabase.",
+    "Hotel San Marino Tumaco: una forma clara y cercana de vivir El Morro con contacto directo por WhatsApp.",
   logo_path: null,
   default_share_image: "/images/fallbacks/site-fallback.jpg",
   created_at: "2026-03-26T00:00:00.000Z",
@@ -216,7 +216,7 @@ export const devDefaultWhatsappCtas: WhatsappCta[] = [
   {
     id: "d9a666fd-fd7f-4e76-97a7-386d3f132767",
     key: "primary",
-    label: "Consultar por WhatsApp",
+    label: "Escribir por WhatsApp",
     message: siteConfig.whatsappMessage,
     phone_number: siteConfig.whatsappNumber,
     is_primary: true,

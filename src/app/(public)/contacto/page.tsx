@@ -51,8 +51,8 @@ export default async function ContactPage() {
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Contacto"
-        title="Hablar con el hotel ya se siente mas directo, mas claro y mejor resuelto."
-        description="No hay formularios publicos. La pagina concentra informacion util, redes y salida inmediata a WhatsApp dentro de una presentacion mucho mas fuerte."
+        title="Habla con nosotros y resuelve tu estadia sin vueltas."
+        description="Estamos para orientarte, compartir informacion y ayudarte a elegir la opcion que mejor te quede en San Marino."
         imageSrc={coastalScenes.homeHero.src}
         imageAlt={coastalScenes.homeHero.alt}
         actions={
@@ -69,9 +69,9 @@ export default async function ContactPage() {
           <div className="space-y-6">
             <Reveal>
               <SectionHeading
-                eyebrow="Datos base"
-                title="Toda la informacion esencial en una sola vista."
-                description="Telefono, direccion, horarios y redes dentro de una capa mucho mas ordenada y legible."
+                eyebrow="Contacto directo"
+                title="Toda la informacion que necesitas para escribirnos con confianza."
+                description="Telefono, direccion, horarios y redes para que te comuniques con el hotel de la forma que te resulte mas comoda."
               />
             </Reveal>
             <div className="grid gap-5 sm:grid-cols-2">
@@ -100,16 +100,16 @@ export default async function ContactPage() {
             <Reveal>
               <div className="mist-panel p-6 md:p-7">
                 <p className="text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground">
-                  Mensaje base
+                  Atencion por WhatsApp
                 </p>
                 <p className="mt-4 text-2xl leading-8 text-foreground/86">
-                  {primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+                  Escribenos y te ayudamos a revisar habitaciones, tarifas y cualquier duda antes de tu llegada.
                 </p>
                 <div className="mt-6">
                   <WhatsappCta
                     phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
                     message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
-                    label="Abrir WhatsApp"
+                    label="Escribir por WhatsApp"
                     className="w-full justify-center"
                   />
                 </div>
@@ -137,7 +137,7 @@ export default async function ContactPage() {
                   Redes sociales
                 </p>
                 <p className="mt-4 text-lg leading-8 text-foreground/86">
-                  Instagram, TikTok y Facebook como extensiones activas de la marca.
+                  Conoce mas del hotel, su ambiente y el ritmo de El Morro en nuestras redes.
                 </p>
                 <SocialLinks className="mt-6" />
               </div>
@@ -148,13 +148,13 @@ export default async function ContactPage() {
 
       <CtaBanner
         eyebrow="Canal principal"
-        title="El siguiente paso no es un formulario: es una conversacion."
-        description="San Marino usa WhatsApp como salida comercial real para atender dudas, orientar opciones y seguir la conversacion de forma directa."
+        title="Tu proxima conversacion con San Marino empieza aqui."
+        description="Escribenos por WhatsApp y te ayudamos a resolver tu estadia de forma rapida, clara y cercana."
         actions={
           <WhatsappCta
             phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
             message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
-            label="Ir a WhatsApp"
+            label="Quiero escribir"
           />
         }
       />

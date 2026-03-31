@@ -76,14 +76,14 @@ export function RoomCard({
               href={`/habitaciones/${room.slug}`}
               className="inline-flex items-center gap-2 rounded-full border border-primary/16 bg-white px-5 py-3 text-sm font-semibold text-primary transition duration-300 hover:border-primary hover:bg-primary hover:text-white"
             >
-              Ver detalle
+              Conocer habitacion
               <ArrowRight className="size-4" />
             </Link>
             {primaryCta ? (
               <WhatsappButton
                 phoneNumber={primaryCta.phone_number}
                 message={`${primaryCta.message} para ${room.name}`}
-                label="WhatsApp"
+                label="Consultar"
                 variant="default"
               />
             ) : null}
