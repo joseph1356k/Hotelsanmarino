@@ -78,13 +78,13 @@ export function SocialLinks({
             target="_blank"
             rel="noreferrer"
             className={cn(
-              "inline-flex items-center rounded-full border font-semibold transition duration-300",
+              "inline-flex items-center rounded-full border font-semibold transition duration-300 will-change-transform active:scale-[0.98]",
               size === "compact"
                 ? "justify-center gap-0 p-0 size-9"
                 : "gap-2 px-4 py-2.5 text-sm",
               variant === "light"
-                ? "border-primary/10 bg-white text-primary hover:-translate-y-0.5 hover:border-[var(--coral)] hover:text-[var(--coral)]"
-                : "border-white/16 bg-white/8 text-white hover:-translate-y-0.5 hover:border-[var(--sun)] hover:bg-white hover:text-primary",
+                ? "border-primary/10 bg-white text-primary shadow-[0_12px_34px_rgba(24,79,95,0.05)] hover:-translate-y-1 hover:border-[var(--coral)] hover:text-[var(--coral)] hover:shadow-[0_18px_40px_rgba(24,79,95,0.1)]"
+                : "border-white/16 bg-white/8 text-white hover:-translate-y-1 hover:border-[var(--sun)] hover:bg-white hover:text-primary hover:shadow-[0_18px_40px_rgba(0,0,0,0.16)]",
             )}
             aria-label={social.label}
             title={social.label}

@@ -3,12 +3,14 @@ import { Reveal } from "@/components/marketing/reveal";
 import { cn } from "@/lib/utils";
 
 export function CtaBanner({
+  id,
   eyebrow,
   title,
   description,
   actions,
   className,
 }: {
+  id?: string;
   eyebrow?: string;
   title: string;
   description: string;
@@ -16,12 +18,12 @@ export function CtaBanner({
   className?: string;
 }) {
   return (
-    <section className={cn("container-shell", className)}>
+    <section id={id} data-scene-id={id} className={cn("container-shell", id && "snap-scene", className)}>
       <Reveal>
-        <div className="relative overflow-hidden rounded-[38px] border border-[#184f5f] bg-[linear-gradient(140deg,#184f5f_0%,#23687d_54%,#102f3c_100%)] px-6 py-10 text-white shadow-[0_34px_100px_rgba(24,79,95,0.25)] md:px-10 md:py-12 lg:px-14">
+        <div className="interactive-frame relative overflow-hidden rounded-[38px] border border-[#184f5f] bg-[linear-gradient(140deg,#184f5f_0%,#23687d_54%,#102f3c_100%)] px-6 py-10 text-white shadow-[0_34px_100px_rgba(24,79,95,0.25)] md:px-10 md:py-12 lg:px-14">
           <div className="absolute inset-0">
-            <div className="absolute left-10 top-8 h-36 w-36 rounded-full bg-white/10 blur-3xl" />
-            <div className="absolute bottom-[-2rem] right-10 h-40 w-40 rounded-full bg-[var(--sun)]/14 blur-3xl" />
+            <div className="scene-orb absolute left-10 top-8 h-36 w-36 rounded-full bg-white/10 blur-3xl" />
+            <div className="scene-orb absolute bottom-[-2rem] right-10 h-40 w-40 rounded-full bg-[var(--sun)]/14 blur-3xl" />
             <div className="absolute right-[16%] top-10 h-px w-20 bg-[linear-gradient(90deg,transparent,var(--sun),transparent)]" />
           </div>
 

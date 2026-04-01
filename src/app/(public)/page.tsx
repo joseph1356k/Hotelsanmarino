@@ -13,6 +13,8 @@ import { CtaBanner } from "@/components/marketing/cta-banner";
 import { GalleryGrid } from "@/components/marketing/gallery-grid";
 import { Reveal } from "@/components/marketing/reveal";
 import { RoomCard } from "@/components/marketing/room-card";
+import { SceneExperience } from "@/components/marketing/scene-experience";
+import { SceneSection } from "@/components/marketing/scene-section";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { ServiceCard } from "@/components/marketing/service-card";
 import { TestimonialCard } from "@/components/marketing/testimonial-card";
@@ -54,23 +56,38 @@ export default async function HomePage() {
     ...galleryItems,
   ];
 
+  const sceneItems = [
+    { id: "home-hero", label: "Inicio" },
+    { id: "home-brand", label: "San Marino" },
+    { id: "home-rooms", label: "Habitaciones" },
+    { id: "home-morro", label: "El Morro" },
+    { id: "home-restaurant", label: "Sabores" },
+    { id: "home-services", label: "Servicios" },
+    { id: "home-testimonials", label: "Voces" },
+    { id: "home-gallery", label: "Galeria" },
+    { id: "home-location", label: "Ubicacion" },
+    { id: "home-cta", label: "WhatsApp" },
+  ];
+
   return (
     <div className="overflow-hidden pb-16 md:pb-24">
-      <section className="container-shell pt-3 md:pt-4">
-        <div className="relative overflow-hidden rounded-[40px] border border-[#184f5f] bg-[#184f5f] shadow-[0_36px_120px_rgba(24,79,95,0.24)]">
+      <SceneExperience items={sceneItems} />
+
+      <SceneSection id="home-hero" className="container-shell pt-3 md:pt-4">
+        <div className="interactive-frame group relative overflow-hidden rounded-[40px] border border-[#184f5f] bg-[#184f5f] shadow-[0_36px_120px_rgba(24,79,95,0.24)]">
           <Image
             src={coastalScenes.homeHero.src}
             alt={coastalScenes.homeHero.alt}
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-center scale-[1.03] transition duration-[1400ms] group-hover:scale-[1.08]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(108deg,rgba(17,47,59,0.96)_0%,rgba(24,79,95,0.86)_38%,rgba(24,79,95,0.26)_100%)]" />
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute left-[-3rem] top-[-3rem] h-40 w-40 rounded-full border border-white/12 bg-white/8 blur-2xl md:h-56 md:w-56" />
-            <div className="absolute bottom-[-4rem] left-[20%] h-48 w-48 rounded-full bg-[var(--coral)]/18 blur-[110px]" />
-            <div className="absolute right-[10%] top-10 h-36 w-36 rounded-full bg-[var(--sun)]/12 blur-3xl" />
+            <div className="scene-orb absolute left-[-3rem] top-[-3rem] h-40 w-40 rounded-full border border-white/12 bg-white/8 blur-2xl md:h-56 md:w-56" />
+            <div className="scene-orb absolute bottom-[-4rem] left-[20%] h-48 w-48 rounded-full bg-[var(--coral)]/18 blur-[110px]" />
+            <div className="scene-orb absolute right-[10%] top-10 h-36 w-36 rounded-full bg-[var(--sun)]/12 blur-3xl" />
             <div className="absolute left-6 top-8 h-px w-24 animate-[shimmer-x_3.6s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,var(--sun),transparent)]" />
           </div>
 
@@ -105,6 +122,14 @@ export default async function HomePage() {
                   Ver opciones
                 </Link>
               </div>
+
+              <Link
+                href="#home-brand"
+                className="inline-flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/72 transition duration-300 hover:text-white"
+              >
+                <span className="h-px w-10 bg-[linear-gradient(90deg,var(--sun),transparent)]" />
+                <span>Sigue explorando</span>
+              </Link>
 
               <div className="grid gap-3 pt-2 sm:grid-cols-3">
                 {heroMetrics.map((metric, index) => (
@@ -171,7 +196,7 @@ export default async function HomePage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </SceneSection>
 
       <section className="container-shell pt-6 md:pt-8">
         <div className="grid gap-3 lg:grid-cols-4">
@@ -188,7 +213,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell">
+      <SceneSection id="home-brand" className="section-shell" immersive>
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <Reveal className="space-y-6">
             <SectionHeading
@@ -239,9 +264,9 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </SceneSection>
 
-      <section className="section-shell">
+      <SceneSection id="home-rooms" className="section-shell">
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
             <SectionHeading
@@ -266,9 +291,9 @@ export default async function HomePage() {
             </Reveal>
           ))}
         </div>
-      </section>
+      </SceneSection>
 
-      <section className="section-shell">
+      <SceneSection id="home-morro" className="section-shell" immersive>
         <div className="ocean-panel relative overflow-hidden px-6 py-8 md:px-10 md:py-10 lg:px-12">
           <div className="absolute inset-0">
             <div className="absolute left-0 top-0 h-52 w-52 rounded-full bg-white/8 blur-3xl" />
@@ -333,9 +358,9 @@ export default async function HomePage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </SceneSection>
 
-      <section className="section-shell">
+      <SceneSection id="home-restaurant" className="section-shell" immersive>
         <div className="grid gap-10 lg:grid-cols-[1fr_0.98fr] lg:items-center">
           <Reveal className="order-2 lg:order-1">
             <div className="relative overflow-hidden rounded-[34px] border border-white/70 bg-white p-3 shadow-[0_24px_84px_rgba(24,79,95,0.08)]">
@@ -387,9 +412,9 @@ export default async function HomePage() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </SceneSection>
 
-      <section className="section-shell">
+      <SceneSection id="home-services" className="section-shell">
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
             <SectionHeading
@@ -423,9 +448,9 @@ export default async function HomePage() {
             </Reveal>
           ))}
         </div>
-      </section>
+      </SceneSection>
 
-      <section className="section-shell">
+      <SceneSection id="home-testimonials" className="section-shell" immersive>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <Reveal className="space-y-6">
             <SectionHeading
@@ -438,7 +463,7 @@ export default async function HomePage() {
                 Lo que se siente
               </p>
               <p className="mt-4 text-3xl leading-[0.96] text-white">
-                Mejor presencia y mejor lectura.
+                Cercania, comodidad y una atencion que se siente simple.
               </p>
             </div>
           </Reveal>
@@ -450,9 +475,9 @@ export default async function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </SceneSection>
 
-      <section className="section-shell">
+      <SceneSection id="home-gallery" className="section-shell" immersive>
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
             <SectionHeading
@@ -473,9 +498,9 @@ export default async function HomePage() {
         <Reveal delay={120}>
           <GalleryGrid items={editorialGallery} limit={6} />
         </Reveal>
-      </section>
+      </SceneSection>
 
-      <section className="section-shell">
+      <SceneSection id="home-location" className="section-shell" immersive>
         <div className="grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
           <Reveal className="space-y-6">
             <SectionHeading
@@ -489,7 +514,7 @@ export default async function HomePage() {
               </p>
               <p className="mt-3 text-2xl text-primary">{content.contactInfo.address}</p>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                Si necesitas una referencia puntual, el siguiente paso sigue siendo WhatsApp.
+                Si quieres confirmar una referencia o pedir ayuda para llegar, te respondemos directo por WhatsApp.
               </p>
             </div>
           </Reveal>
@@ -521,9 +546,10 @@ export default async function HomePage() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </SceneSection>
 
       <CtaBanner
+        id="home-cta"
         eyebrow="WhatsApp"
         title="Si quieres avanzar con tu estadia, escribenos."
         description="Estamos listos para ayudarte por WhatsApp con habitaciones, servicios y cualquier duda sobre tu visita."

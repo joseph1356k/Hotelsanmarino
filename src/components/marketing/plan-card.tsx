@@ -15,25 +15,25 @@ export function PlanCard({
   className?: string;
 }) {
   return (
-    <article className={cn("premium-card overflow-hidden", className)}>
+    <article className={cn("premium-card interactive-frame group overflow-hidden", className)}>
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
         <Image
           src={resolveEntityImage("plan", plan.image_path)}
           alt={plan.name}
           fill
           sizes="(max-width: 768px) 100vw, 42vw"
-          className="object-cover transition duration-700 hover:scale-[1.04]"
+          className="object-cover transition duration-700 group-hover:scale-[1.08]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,79,95,0.06)_0%,rgba(24,79,95,0.18)_42%,rgba(17,47,59,0.66)_100%)]" />
 
         <div className="absolute left-5 top-5 flex flex-wrap gap-2">
           {plan.is_featured ? (
-            <div className="inline-flex items-center gap-2 rounded-full bg-[var(--coral)] px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[var(--coral)] px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white transition duration-500 group-hover:-translate-y-1">
               <Star className="size-3.5 fill-current" />
               Destacado
             </div>
           ) : null}
-          <div className="inline-flex items-center rounded-full bg-white/92 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-primary">
+          <div className="inline-flex items-center rounded-full bg-white/92 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-primary transition duration-500 group-hover:-translate-y-1">
             Plan
           </div>
         </div>

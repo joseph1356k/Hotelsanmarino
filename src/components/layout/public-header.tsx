@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Phone, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { publicNavigation } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "@/components/layout/brand-logo";
@@ -26,24 +26,56 @@ export function PublicHeader({
 }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const whatsappPhone = primaryCta?.phone_number ?? contactInfo.whatsapp_number;
   const whatsappMessage =
     primaryCta?.message ?? contactInfo.whatsapp_default_message;
   const whatsappLabel = primaryCta?.label ?? "Consultar por WhatsApp";
 
+  useEffect(() => {
+    let frame = 0;
+
+    const updateScrollState = () => {
+      frame = window.requestAnimationFrame(() => {
+        const maxScroll =
+          document.documentElement.scrollHeight - window.innerHeight;
+        setScrollProgress(maxScroll > 0 ? window.scrollY / maxScroll : 0);
+        setIsScrolled(window.scrollY > 12);
+      });
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-white/94 shadow-[0_14px_34px_rgba(24,79,95,0.05)] backdrop-blur-xl">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b border-border/80 bg-white/94 backdrop-blur-xl transition-all duration-300",
+        isScrolled
+          ? "shadow-[0_18px_48px_rgba(24,79,95,0.08)]"
+          : "shadow-[0_14px_34px_rgba(24,79,95,0.05)]",
+      )}
+    >
       <div className="hidden border-b border-white/12 bg-[linear-gradient(90deg,#184f5f_0%,#2b6d80_100%)] md:block">
         <div className="container-shell flex items-center justify-between gap-4 py-2 text-[11px] text-white/88">
           <p className="min-w-0 truncate uppercase tracking-[0.32em]">
-            {contactInfo.city} · {siteSettings.site_tagline}
+            {contactInfo.city} - {siteSettings.site_tagline}
           </p>
           <div className="flex shrink-0 items-center gap-3">
             <SocialLinks variant="dark" size="compact" className="gap-2" />
             <a
               href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
-              className="inline-flex shrink-0 items-center gap-2 text-white transition hover:text-[var(--sun)]"
+              className="inline-flex shrink-0 items-center gap-2 text-white transition duration-300 hover:text-[var(--sun)]"
             >
               <Phone className="size-3.5" />
               {contactInfo.phone}
@@ -56,7 +88,7 @@ export function PublicHeader({
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-border bg-white text-foreground transition hover:border-primary hover:text-primary lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-border bg-white text-foreground transition duration-300 hover:border-primary hover:text-primary lg:hidden"
             onClick={() => setIsOpen((current) => !current)}
             aria-label={isOpen ? "Cerrar menu" : "Abrir menu"}
           >
@@ -78,15 +110,15 @@ export function PublicHeader({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative py-2 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-foreground transition hover:text-primary xl:text-[0.79rem] xl:tracking-[0.15em] 2xl:text-[0.84rem] 2xl:tracking-[0.16em]",
+                  "relative py-2 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-foreground transition duration-300 hover:-translate-y-[1px] hover:text-primary xl:text-[0.79rem] xl:tracking-[0.15em] 2xl:text-[0.84rem] 2xl:tracking-[0.16em]",
                   isActive && "text-[var(--coral)]",
                 )}
               >
                 {item.label}
                 <span
                   className={cn(
-                    "absolute inset-x-0 -bottom-[1px] h-[2px] bg-[var(--coral)] transition-opacity",
-                    isActive ? "opacity-100" : "opacity-0",
+                    "absolute inset-x-0 -bottom-[1px] h-[2px] origin-left bg-[var(--coral)] transition-all duration-300",
+                    isActive ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0",
                   )}
                 />
               </Link>
@@ -105,7 +137,7 @@ export function PublicHeader({
               </>
             }
             size="sm"
-            className="px-3 xl:px-4"
+            className="px-3 transition duration-300 hover:-translate-y-[1px] hover:shadow-[0_18px_48px_rgba(211,15,8,0.24)] xl:px-4"
           />
         </div>
       </div>
@@ -150,6 +182,13 @@ export function PublicHeader({
           </div>
         </div>
       ) : null}
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-primary/8">
+        <div
+          className="h-full rounded-full bg-[linear-gradient(90deg,var(--sky)_0%,var(--coral)_58%,var(--sun)_100%)] shadow-[0_0_18px_rgba(102,182,193,0.28)] transition-[width] duration-150"
+          style={{ width: `${Math.max(scrollProgress * 100, 4)}%` }}
+        />
+      </div>
     </header>
   );
 }

@@ -30,6 +30,19 @@
   --sun-soft: #fefd9b;
   --orange: #bf6330;
   --footer: #102f3c;
+  --public-header-offset: 5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --public-header-offset: 6.9rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --public-header-offset: 7.25rem;
+  }
 }
 
 @theme inline {
@@ -65,6 +78,16 @@ html {
   overflow-x: clip;
 }
 
+html[data-scene-mode="immersive"] {
+  scroll-padding-top: calc(var(--public-header-offset) + 0.85rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-scene-mode="immersive"] {
+    scroll-snap-type: y proximity;
+  }
+}
+
 body {
   width: 100%;
   overflow-x: clip;
@@ -76,6 +99,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans-ui), sans-serif;
   font-weight: 560;
+}
+
+body[data-scene-mode="immersive"] {
+  overscroll-behavior-y: contain;
 }
 
 a {
@@ -142,6 +169,12 @@ canvas {
   @apply container-shell page-section;
 }
 
+@utility snap-scene {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  scroll-margin-top: calc(var(--public-header-offset) + 0.85rem);
+}
+
 @utility editorial-panel {
   @apply rounded-[34px] border border-white/70 bg-white/94 text-card-foreground shadow-[0_28px_90px_rgba(24,79,95,0.08)] backdrop-blur-sm;
 }
@@ -203,6 +236,30 @@ canvas {
   }
 }
 
+@keyframes beam-sweep {
+  0% {
+    transform: translate3d(-140%, 0, 0) rotate(18deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(340%, 0, 0) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rise-in {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translate3d(0, var(--reveal-distance, 28px), 0) scale(0.985);
@@ -219,4 +276,35 @@ canvas {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   filter: blur(0);
+}
+
+.interactive-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.interactive-frame::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  opacity: 0;
+  transform: translate3d(-16%, 0, 0);
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(102, 182, 193, 0.14) 32%, rgba(248, 218, 102, 0.1) 48%, transparent 66%),
+    radial-gradient(circle at top right, rgba(102, 182, 193, 0.1), transparent 40%);
+  transition:
+    opacity 420ms ease,
+    transform 680ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+
+.interactive-frame:hover::before,
+.interactive-frame:focus-within::before {
+  opacity: 1;
+  transform: translate3d(14%, 0, 0);
+}
+
+.scene-orb {
+  animation: rise-in 10s ease-in-out infinite;
 }

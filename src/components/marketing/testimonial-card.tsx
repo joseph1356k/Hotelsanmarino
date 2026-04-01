@@ -7,7 +7,7 @@ export function TestimonialCard({
   testimonial: Testimonial;
 }) {
   return (
-    <article className="premium-card relative h-full overflow-hidden p-6 md:p-7">
+    <article className="premium-card interactive-frame relative h-full overflow-hidden p-6 md:p-7">
       <div className="absolute right-6 top-3 font-serif text-8xl leading-none text-primary/8">
         &ldquo;
       </div>

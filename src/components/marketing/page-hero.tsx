@@ -24,7 +24,7 @@ export function PageHero({
 }) {
   return (
     <section className={cn("container-shell pt-3 md:pt-4", className)}>
-      <div className="ocean-panel relative overflow-hidden">
+      <div className="ocean-panel interactive-frame relative overflow-hidden">
         {imageSrc ? (
           <>
             <Image
@@ -33,7 +33,7 @@ export function PageHero({
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center"
+              className="object-cover object-center scale-[1.03] animate-[drift_18s_ease-in-out_infinite]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(17,47,59,0.94)_0%,rgba(24,79,95,0.86)_42%,rgba(24,79,95,0.34)_100%)]" />
           </>
@@ -42,9 +42,9 @@ export function PageHero({
         )}
 
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute left-[-3rem] top-[-3rem] h-40 w-40 rounded-full border border-white/12 bg-white/6 blur-2xl md:h-52 md:w-52" />
-          <div className="absolute right-[10%] top-6 h-28 w-28 rounded-full bg-[var(--sun)]/16 blur-3xl md:h-44 md:w-44" />
-          <div className="absolute bottom-[-4rem] left-[18%] h-40 w-40 rounded-full bg-[var(--coral)]/14 blur-[110px]" />
+          <div className="scene-orb absolute left-[-3rem] top-[-3rem] h-40 w-40 rounded-full border border-white/12 bg-white/6 blur-2xl md:h-52 md:w-52" />
+          <div className="scene-orb absolute right-[10%] top-6 h-28 w-28 rounded-full bg-[var(--sun)]/16 blur-3xl md:h-44 md:w-44" />
+          <div className="scene-orb absolute bottom-[-4rem] left-[18%] h-40 w-40 rounded-full bg-[var(--coral)]/14 blur-[110px]" />
           <div className="absolute right-10 top-1/2 hidden h-px w-28 bg-white/28 md:block" />
           <div className="absolute left-6 top-8 h-px w-20 animate-[shimmer-x_3.6s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,var(--sun),transparent)]" />
         </div>
@@ -71,6 +71,11 @@ export function PageHero({
               <div className="animate-[drift_13s_ease-in-out_infinite]">{aside}</div>
             </Reveal>
           ) : null}
+        </div>
+
+        <div className="pointer-events-none absolute bottom-5 right-5 hidden items-center gap-3 rounded-full border border-white/14 bg-white/8 px-4 py-2 text-[0.66rem] font-semibold uppercase tracking-[0.24em] text-white/72 backdrop-blur md:inline-flex">
+          <span className="h-px w-8 bg-[linear-gradient(90deg,var(--sun),transparent)]" />
+          <span>Desliza</span>
         </div>
       </div>
     </section>
