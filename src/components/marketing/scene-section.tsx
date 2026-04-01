@@ -15,9 +15,8 @@ export function SceneSection({
   return (
     <section
       id={id}
-      data-scene-id={id}
       className={cn(
-        "snap-scene relative",
+        "relative",
         immersive && "lg:flex lg:min-h-[72svh] lg:flex-col lg:justify-center",
         className,
       )}

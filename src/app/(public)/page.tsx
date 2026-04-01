@@ -13,7 +13,6 @@ import { CtaBanner } from "@/components/marketing/cta-banner";
 import { GalleryGrid } from "@/components/marketing/gallery-grid";
 import { Reveal } from "@/components/marketing/reveal";
 import { RoomCard } from "@/components/marketing/room-card";
-import { SceneExperience } from "@/components/marketing/scene-experience";
 import { SceneSection } from "@/components/marketing/scene-section";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { ServiceCard } from "@/components/marketing/service-card";
@@ -56,23 +55,8 @@ export default async function HomePage() {
     ...galleryItems,
   ];
 
-  const sceneItems = [
-    { id: "home-hero", label: "Inicio" },
-    { id: "home-brand", label: "San Marino" },
-    { id: "home-rooms", label: "Habitaciones" },
-    { id: "home-morro", label: "El Morro" },
-    { id: "home-restaurant", label: "Sabores" },
-    { id: "home-services", label: "Servicios" },
-    { id: "home-testimonials", label: "Voces" },
-    { id: "home-gallery", label: "Galeria" },
-    { id: "home-location", label: "Ubicacion" },
-    { id: "home-cta", label: "WhatsApp" },
-  ];
-
   return (
     <div className="overflow-hidden pb-16 md:pb-24">
-      <SceneExperience items={sceneItems} />
-
       <SceneSection id="home-hero" className="container-shell pt-3 md:pt-4">
         <div className="interactive-frame group relative overflow-hidden rounded-[40px] border border-[#184f5f] bg-[#184f5f] shadow-[0_36px_120px_rgba(24,79,95,0.24)]">
           <Image
@@ -122,14 +106,6 @@ export default async function HomePage() {
                   Ver opciones
                 </Link>
               </div>
-
-              <Link
-                href="#home-brand"
-                className="inline-flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/72 transition duration-300 hover:text-white"
-              >
-                <span className="h-px w-10 bg-[linear-gradient(90deg,var(--sun),transparent)]" />
-                <span>Sigue explorando</span>
-              </Link>
 
               <div className="grid gap-3 pt-2 sm:grid-cols-3">
                 {heroMetrics.map((metric, index) => (

@@ -78,16 +78,6 @@ html {
   overflow-x: clip;
 }
 
-html[data-scene-mode="immersive"] {
-  scroll-padding-top: calc(var(--public-header-offset) + 0.85rem);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html[data-scene-mode="immersive"] {
-    scroll-snap-type: y proximity;
-  }
-}
-
 body {
   width: 100%;
   overflow-x: clip;
@@ -99,10 +89,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans-ui), sans-serif;
   font-weight: 560;
-}
-
-body[data-scene-mode="immersive"] {
-  overscroll-behavior-y: contain;
 }
 
 a {
@@ -167,12 +153,6 @@ canvas {
 
 @utility section-shell {
   @apply container-shell page-section;
-}
-
-@utility snap-scene {
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
-  scroll-margin-top: calc(var(--public-header-offset) + 0.85rem);
 }
 
 @utility editorial-panel {

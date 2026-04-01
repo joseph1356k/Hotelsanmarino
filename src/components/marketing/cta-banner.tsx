@@ -18,7 +18,7 @@ export function CtaBanner({
   className?: string;
 }) {
   return (
-    <section id={id} data-scene-id={id} className={cn("container-shell", id && "snap-scene", className)}>
+    <section id={id} className={cn("container-shell", className)}>
       <Reveal>
         <div className="interactive-frame relative overflow-hidden rounded-[38px] border border-[#184f5f] bg-[linear-gradient(140deg,#184f5f_0%,#23687d_54%,#102f3c_100%)] px-6 py-10 text-white shadow-[0_34px_100px_rgba(24,79,95,0.25)] md:px-10 md:py-12 lg:px-14">
           <div className="absolute inset-0">
