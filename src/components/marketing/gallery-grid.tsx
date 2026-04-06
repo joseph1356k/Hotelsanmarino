@@ -34,11 +34,11 @@ export function GalleryGrid({
             alt={item.alt}
             width={1200}
             height={900}
-            className="aspect-[4/3] h-full w-full object-cover transition duration-700 group-hover:scale-[1.08]"
+            className="aspect-[4/4.35] h-full w-full object-cover transition duration-700 group-hover:scale-[1.08] sm:aspect-[4/3]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,47,59,0.02)_10%,rgba(17,47,59,0.12)_42%,rgba(17,47,59,0.72)_100%)] opacity-90" />
-          <div className="absolute inset-x-0 bottom-0 p-5">
-            <div className="inline-flex max-w-full translate-y-2 items-center rounded-full bg-white/90 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-primary backdrop-blur transition duration-500 group-hover:translate-y-0">
+          <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+            <div className="inline-flex max-w-full translate-y-2 items-center rounded-full bg-white/90 px-3 py-2 text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-primary backdrop-blur transition duration-500 group-hover:translate-y-0 sm:px-4 sm:text-[0.68rem] sm:tracking-[0.22em]">
               {item.alt}
             </div>
           </div>

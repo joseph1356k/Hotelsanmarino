@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 
 export function WhatsappFab({
@@ -9,8 +10,31 @@ export function WhatsappFab({
   phoneNumber: string;
   message: string;
 }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const updateVisibility = () => {
+      setIsVisible(window.scrollY > 220 || window.innerWidth >= 640);
+    };
+
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+    };
+  }, []);
+
   return (
-    <div className="fixed bottom-4 right-4 z-40 md:bottom-6 md:right-6">
+    <div
+      className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40 transition-all duration-300 md:bottom-6 md:right-6 ${
+        isVisible
+          ? "pointer-events-auto translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-4 opacity-0"
+      }`}
+    >
       <span className="absolute inset-0 rounded-full bg-[var(--coral)]/22 animate-[soft-pulse_2.6s_ease-in-out_infinite]" />
       <WhatsappCta
         phoneNumber={phoneNumber}

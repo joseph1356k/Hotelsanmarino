@@ -17,7 +17,7 @@ export function RoomCard({
 }) {
   return (
     <article className={cn("premium-card interactive-frame group overflow-hidden", className)}>
-      <div className="relative aspect-[5/4] overflow-hidden bg-muted">
+      <div className="relative aspect-[4/4.25] overflow-hidden bg-muted sm:aspect-[5/4]">
         <Image
           src={resolveEntityImage("room", room.primary_image)}
           alt={room.name}
@@ -27,28 +27,28 @@ export function RoomCard({
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,79,95,0.02)_0%,rgba(24,79,95,0.18)_40%,rgba(17,47,59,0.7)_100%)]" />
 
-        <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-primary transition duration-500 group-hover:-translate-y-1">
+        <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-primary transition duration-500 group-hover:-translate-y-1 sm:left-5 sm:top-5 sm:text-[0.68rem] sm:tracking-[0.24em]">
           <span className="size-1.5 rounded-full bg-[var(--coral)]" />
           {room.is_featured ? "Destacada" : "Habitacion"}
         </div>
 
-        <div className="absolute right-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/18 bg-[#102f3c]/82 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur transition duration-500 group-hover:-translate-y-1">
+        <div className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/18 bg-[#102f3c]/82 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur transition duration-500 group-hover:-translate-y-1 sm:right-5 sm:top-5 sm:text-[0.68rem] sm:tracking-[0.22em]">
           <Users className="size-3.5 text-[var(--sun)]" />
           {room.capacity} personas
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-          <div className="max-w-xl rounded-[26px] bg-[#102f3c]/74 p-4 backdrop-blur-md transition duration-500 group-hover:translate-y-[-2px]">
-            <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/62">
+        <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
+          <div className="max-w-xl rounded-[22px] bg-[#102f3c]/74 p-3.5 backdrop-blur-md transition duration-500 group-hover:translate-y-[-2px] sm:rounded-[26px] sm:p-4">
+            <p className="text-[0.62rem] uppercase tracking-[0.2em] text-white/62 sm:text-[0.68rem] sm:tracking-[0.28em]">
               San Marino
             </p>
-            <h3 className="mt-2 text-4xl leading-[0.92]">{room.name}</h3>
+            <h3 className="mt-2 text-[2rem] leading-[0.92] sm:text-4xl">{room.name}</h3>
           </div>
         </div>
       </div>
 
-      <div className="space-y-6 p-6 md:p-7">
-        <p className="max-w-xl text-[0.98rem] leading-7 text-foreground/76">
+      <div className="space-y-5 p-5 md:p-7">
+        <p className="max-w-xl text-[0.95rem] leading-[1.65rem] text-foreground/76 sm:text-[0.98rem] sm:leading-7">
           {room.short_description}
         </p>
 
@@ -63,15 +63,15 @@ export function RoomCard({
           ))}
         </div>
 
-        <div className="flex flex-col gap-5 border-t border-border/70 pt-5 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col gap-4 border-t border-border/70 pt-4 sm:gap-5 sm:pt-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-[0.68rem] uppercase tracking-[0.3em] text-muted-foreground">
               Tarifa referencial
             </p>
-            <p className="mt-2 text-3xl text-primary">{formatCurrency(room.price)}</p>
+            <p className="mt-2 text-[1.8rem] text-primary sm:text-3xl">{formatCurrency(room.price)}</p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>*]:w-full sm:[&>*]:w-auto">
             <Link
               href={`/habitaciones/${room.slug}`}
               className="inline-flex items-center gap-2 rounded-full border border-primary/16 bg-white px-5 py-3 text-sm font-semibold text-primary transition duration-300 hover:-translate-y-[1px] hover:border-primary hover:bg-primary hover:text-white"

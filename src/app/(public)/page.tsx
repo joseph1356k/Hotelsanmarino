@@ -57,8 +57,8 @@ export default async function HomePage() {
 
   return (
     <div className="overflow-hidden pb-16 md:pb-24">
-      <SceneSection id="home-hero" className="container-shell pt-3 md:pt-4">
-        <div className="interactive-frame group relative overflow-hidden rounded-[40px] border border-[#184f5f] bg-[#184f5f] shadow-[0_36px_120px_rgba(24,79,95,0.24)]">
+      <SceneSection id="home-hero" className="container-shell pt-2 md:pt-4">
+        <div className="interactive-frame group relative overflow-hidden rounded-[28px] border border-[#184f5f] bg-[#184f5f] shadow-[0_36px_120px_rgba(24,79,95,0.24)] md:rounded-[40px]">
           <Image
             src={coastalScenes.homeHero.src}
             alt={coastalScenes.homeHero.alt}
@@ -69,29 +69,29 @@ export default async function HomePage() {
           />
           <div className="absolute inset-0 bg-[linear-gradient(108deg,rgba(17,47,59,0.96)_0%,rgba(24,79,95,0.86)_38%,rgba(24,79,95,0.26)_100%)]" />
           <div className="absolute inset-0 overflow-hidden">
-            <div className="scene-orb absolute left-[-3rem] top-[-3rem] h-40 w-40 rounded-full border border-white/12 bg-white/8 blur-2xl md:h-56 md:w-56" />
-            <div className="scene-orb absolute bottom-[-4rem] left-[20%] h-48 w-48 rounded-full bg-[var(--coral)]/18 blur-[110px]" />
-            <div className="scene-orb absolute right-[10%] top-10 h-36 w-36 rounded-full bg-[var(--sun)]/12 blur-3xl" />
-            <div className="absolute left-6 top-8 h-px w-24 animate-[shimmer-x_3.6s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,var(--sun),transparent)]" />
+            <div className="scene-orb absolute left-[-3rem] top-[-3rem] h-28 w-28 rounded-full border border-white/12 bg-white/8 blur-2xl md:h-56 md:w-56" />
+            <div className="scene-orb absolute bottom-[-4rem] left-[20%] h-32 w-32 rounded-full bg-[var(--coral)]/18 blur-[110px] md:h-48 md:w-48" />
+            <div className="scene-orb absolute right-[10%] top-10 h-24 w-24 rounded-full bg-[var(--sun)]/12 blur-3xl md:h-36 md:w-36" />
+            <div className="absolute left-5 top-6 h-px w-16 animate-[shimmer-x_3.6s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,var(--sun),transparent)] md:left-6 md:top-8 md:w-24" />
           </div>
 
-          <div className="relative grid gap-8 px-5 py-8 sm:px-6 md:px-8 md:py-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:px-12 lg:py-12">
-            <Reveal className="min-w-0 space-y-6" delay={30}>
-              <div className="inline-flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-white/74">
-                <span className="h-px w-12 bg-[linear-gradient(90deg,var(--coral),var(--sun))]" />
+          <div className="relative grid gap-5 px-4 py-5 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:px-12 lg:py-12">
+            <Reveal className="min-w-0 space-y-5" delay={30}>
+              <div className="inline-flex items-center gap-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-white/74 sm:gap-3 sm:text-[0.68rem] sm:tracking-[0.34em]">
+                <span className="h-px w-10 bg-[linear-gradient(90deg,var(--coral),var(--sun))] sm:w-12" />
                 <span>{String(hero?.payload.eyebrow ?? "Hotel San Marino")}</span>
               </div>
 
-              <h1 className="max-w-[8.5ch] text-balance text-[3.55rem] leading-[0.88] text-white sm:max-w-[9ch] sm:text-5xl md:max-w-4xl md:text-6xl lg:text-8xl">
+              <h1 className="max-w-[8.15ch] text-balance text-[2.72rem] leading-[0.9] text-white sm:max-w-[8.5ch] sm:text-[3.55rem] md:max-w-4xl md:text-6xl lg:text-8xl">
                 {hero?.title ?? "El Morro se vive aqui"}
               </h1>
 
-              <p className="max-w-[18rem] text-[1.02rem] leading-8 text-white/86 sm:max-w-[22rem] md:max-w-[34rem] md:text-[1.12rem] md:leading-8">
+              <p className="max-w-[18.75rem] text-[0.96rem] leading-[1.8] text-white/86 sm:max-w-[22rem] md:max-w-[34rem] md:text-[1.12rem] md:leading-8">
                 {hero?.body ??
                   "Quedate cerca del mar, elige tu habitacion con calma y habla directo con el hotel cuando quieras avanzar."}
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>*]:w-full sm:[&>*]:w-auto">
                 <WhatsappCta
                   phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
                   message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
@@ -107,12 +107,14 @@ export default async function HomePage() {
                 </Link>
               </div>
 
-              <div className="grid gap-3 pt-2 sm:grid-cols-3">
+              <div className="grid grid-cols-3 gap-2 pt-1 sm:gap-3">
                 {heroMetrics.map((metric, index) => (
                   <Reveal key={metric.value} delay={index * 70}>
-                    <div className="rounded-[24px] border border-white/12 bg-white/8 px-4 py-4 backdrop-blur-sm">
-                      <p className="text-3xl leading-none text-white">{metric.value}</p>
-                      <p className="mt-2 text-[0.68rem] uppercase tracking-[0.18em] text-white/72">
+                    <div className="rounded-[18px] border border-white/12 bg-white/8 px-2.5 py-3 backdrop-blur-sm sm:rounded-[24px] sm:px-4 sm:py-4">
+                      <p className="text-[1.3rem] leading-none text-white sm:text-3xl">
+                        {metric.value}
+                      </p>
+                      <p className="mt-1.5 text-[0.54rem] uppercase tracking-[0.12em] text-white/72 sm:mt-2 sm:text-[0.68rem] sm:tracking-[0.18em]">
                         {metric.label}
                       </p>
                     </div>
@@ -121,7 +123,7 @@ export default async function HomePage() {
               </div>
             </Reveal>
 
-            <Reveal className="min-w-0" delay={160} distance={36}>
+            <Reveal className="hidden min-w-0 lg:block" delay={160} distance={36}>
               <div className="grid gap-4 lg:pl-4">
                 <div className="mist-panel overflow-hidden p-3">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[26px]">
@@ -174,12 +176,12 @@ export default async function HomePage() {
         </div>
       </SceneSection>
 
-      <section className="container-shell pt-6 md:pt-8">
-        <div className="grid gap-3 lg:grid-cols-4">
+      <section className="container-shell pt-5 md:pt-8">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {trustHighlights.map((item, index) => (
             <Reveal key={item} delay={index * 80}>
-              <div className="rounded-full border border-primary/10 bg-white px-5 py-3 text-center text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-foreground shadow-[0_16px_44px_rgba(24,79,95,0.06)]">
-                <span className="mr-3 text-[var(--coral)]">
+              <div className="rounded-[18px] border border-primary/10 bg-white px-3 py-3 text-center text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-foreground shadow-[0_16px_44px_rgba(24,79,95,0.06)] sm:rounded-full sm:px-5 sm:text-[0.7rem] sm:tracking-[0.22em]">
+                <span className="mr-2 text-[var(--coral)] sm:mr-3">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 {item}

@@ -57,6 +57,19 @@ export function PublicHeader({
     };
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
   return (
     <header
       className={cn(
@@ -84,11 +97,11 @@ export function PublicHeader({
         </div>
       </div>
 
-      <div className="container-shell grid grid-cols-[auto_1fr] items-center gap-3 py-3 md:gap-4 md:py-4 lg:grid-cols-[minmax(210px,260px)_1fr_auto] xl:grid-cols-[minmax(228px,280px)_1fr_auto]">
+      <div className="container-shell grid grid-cols-[auto_1fr_auto] items-center gap-2 py-2.5 md:gap-4 md:py-4 lg:grid-cols-[minmax(210px,260px)_1fr_auto] xl:grid-cols-[minmax(228px,280px)_1fr_auto]">
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-border bg-white text-foreground transition duration-300 hover:border-primary hover:text-primary lg:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-white text-foreground transition duration-300 hover:border-primary hover:text-primary lg:hidden"
             onClick={() => setIsOpen((current) => !current)}
             aria-label={isOpen ? "Cerrar menu" : "Abrir menu"}
           >
@@ -140,11 +153,21 @@ export function PublicHeader({
             className="px-3 transition duration-300 hover:-translate-y-[1px] hover:shadow-[0_18px_48px_rgba(211,15,8,0.24)] xl:px-4"
           />
         </div>
+
+        <div className="lg:hidden">
+          <WhatsappCta
+            phoneNumber={whatsappPhone}
+            message={whatsappMessage}
+            label={<span className="sr-only">WhatsApp</span>}
+            size="sm"
+            className="size-10 rounded-full px-0 shadow-[0_14px_34px_rgba(211,15,8,0.22)]"
+          />
+        </div>
       </div>
 
       {isOpen ? (
         <div className="border-t border-primary/12 bg-[linear-gradient(180deg,#184f5f_0%,#112f3b_100%)] lg:hidden">
-          <div className="container-shell space-y-4 py-5">
+          <div className="container-shell max-h-[calc(100svh-var(--public-header-offset))] space-y-4 overflow-y-auto py-4 pb-6">
             <nav className="grid gap-2">
               {publicNavigation.map((item) => {
                 const isActive =
@@ -156,18 +179,18 @@ export function PublicHeader({
                   <Link
                     key={item.href}
                     href={item.href}
+                    onClick={() => setIsOpen(false)}
                     className={cn(
-                      "rounded-[22px] border border-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white/86 transition hover:border-white/22 hover:bg-white/8 hover:text-white",
+                      "rounded-[20px] border border-white/10 px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white/86 transition hover:border-white/22 hover:bg-white/8 hover:text-white",
                       isActive && "border-white/24 bg-white text-[var(--coral)]",
                     )}
-                    onClick={() => setIsOpen(false)}
                   >
                     {item.label}
                   </Link>
                 );
               })}
             </nav>
-            <div className="rounded-[22px] border border-white/10 bg-white/6 px-4 py-4">
+            <div className="rounded-[20px] border border-white/10 bg-white/6 px-4 py-4">
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/62">
                 Redes sociales
               </p>
@@ -177,6 +200,7 @@ export function PublicHeader({
               phoneNumber={whatsappPhone}
               message={whatsappMessage}
               label={whatsappLabel}
+              onClick={() => setIsOpen(false)}
               className="w-full justify-center"
             />
           </div>

@@ -23,7 +23,7 @@ export function PageHero({
   className?: string;
 }) {
   return (
-    <section className={cn("container-shell pt-3 md:pt-4", className)}>
+    <section className={cn("container-shell pt-2 md:pt-4", className)}>
       <div className="ocean-panel interactive-frame relative overflow-hidden">
         {imageSrc ? (
           <>
@@ -42,33 +42,37 @@ export function PageHero({
         )}
 
         <div className="absolute inset-0 overflow-hidden">
-          <div className="scene-orb absolute left-[-3rem] top-[-3rem] h-40 w-40 rounded-full border border-white/12 bg-white/6 blur-2xl md:h-52 md:w-52" />
-          <div className="scene-orb absolute right-[10%] top-6 h-28 w-28 rounded-full bg-[var(--sun)]/16 blur-3xl md:h-44 md:w-44" />
-          <div className="scene-orb absolute bottom-[-4rem] left-[18%] h-40 w-40 rounded-full bg-[var(--coral)]/14 blur-[110px]" />
+          <div className="scene-orb absolute left-[-3rem] top-[-3rem] h-32 w-32 rounded-full border border-white/12 bg-white/6 blur-2xl md:h-52 md:w-52" />
+          <div className="scene-orb absolute right-[10%] top-6 h-24 w-24 rounded-full bg-[var(--sun)]/16 blur-3xl md:h-44 md:w-44" />
+          <div className="scene-orb absolute bottom-[-4rem] left-[18%] h-32 w-32 rounded-full bg-[var(--coral)]/14 blur-[110px] md:h-40 md:w-40" />
           <div className="absolute right-10 top-1/2 hidden h-px w-28 bg-white/28 md:block" />
           <div className="absolute left-6 top-8 h-px w-20 animate-[shimmer-x_3.6s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,var(--sun),transparent)]" />
         </div>
 
-        <div className="relative grid gap-8 px-5 py-8 sm:px-6 md:px-8 md:py-10 lg:grid-cols-[1.06fr_0.94fr] lg:items-start lg:px-12 lg:py-12">
-          <Reveal className="min-w-0 space-y-5" delay={40}>
+        <div className="relative grid gap-5 px-4 py-5 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:grid-cols-[1.06fr_0.94fr] lg:items-start lg:px-12 lg:py-12">
+          <Reveal className="min-w-0 space-y-4 sm:space-y-5" delay={40}>
             {eyebrow ? (
-              <div className="inline-flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-white/78">
-                <span className="h-px w-12 bg-[linear-gradient(90deg,var(--sun),transparent)]" />
+              <div className="inline-flex items-center gap-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-white/78 sm:gap-3 sm:text-[0.68rem] sm:tracking-[0.34em]">
+                <span className="h-px w-10 bg-[linear-gradient(90deg,var(--sun),transparent)] sm:w-12" />
                 <span>{eyebrow}</span>
               </div>
             ) : null}
-            <h1 className="text-balance max-w-[9.5ch] text-[3.35rem] leading-[0.94] text-white sm:max-w-[10ch] sm:text-[3.9rem] md:max-w-4xl md:text-6xl lg:text-7xl">
+            <h1 className="text-balance max-w-[8.2ch] text-[2.72rem] leading-[0.9] text-white sm:max-w-[8.8ch] sm:text-[3.45rem] md:max-w-4xl md:text-6xl lg:text-7xl">
               {title}
             </h1>
-            <p className="max-w-[18rem] text-[1.02rem] leading-8 text-white/88 sm:max-w-[22rem] md:max-w-2xl md:text-[1.08rem] md:leading-8">
+            <p className="max-w-[18.75rem] text-[0.96rem] leading-[1.8] text-white/88 sm:max-w-[22rem] md:max-w-2xl md:text-[1.08rem] md:leading-8">
               {description}
             </p>
-            {actions ? <div className="flex flex-wrap gap-3 pt-1">{actions}</div> : null}
+            {actions ? (
+              <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap [&>*]:w-full sm:[&>*]:w-auto">
+                {actions}
+              </div>
+            ) : null}
           </Reveal>
 
           {aside ? (
             <Reveal className="min-w-0 lg:pt-2" delay={180} distance={36}>
-              <div className="animate-[drift_13s_ease-in-out_infinite]">{aside}</div>
+              <div className="motion-safe:animate-[drift_13s_ease-in-out_infinite]">{aside}</div>
             </Reveal>
           ) : null}
         </div>

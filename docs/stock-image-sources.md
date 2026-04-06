@@ -40,3 +40,25 @@ Fallback images downloaded on 2026-03-26 to replace legacy placeholder artwork w
 - Usage: site share image fallback, home/contact/site/testimonial fallback, gallery fallback
 - Source page: https://www.flickr.com/photos/79289037@N02/13979372978
 - Direct asset used: https://live.staticflickr.com/5160/13979372978_a0780d8abe_b.jpg
+
+## Room demo set for the public catalog
+
+- Files: `/public/images/rooms-demo/guest-room-interior.jpg`, `/public/images/rooms-demo/hotel-open-window.jpg`, `/public/images/rooms-demo/hotel-wood-king.jpg`
+- Usage: single, double, king and suite references on `/habitaciones`
+- Source pages:
+  - https://commons.wikimedia.org/wiki/File:Guest_room_interior_view.jpg
+  - https://commons.wikimedia.org/wiki/File:Bedroom_hotel_interior_with_open_door_window._(51536308276).jpg
+  - https://commons.wikimedia.org/wiki/File:Hotel_room_with_traditional_wooden_decor_and_city_view.jpg
+
+- Files: `/public/images/rooms-demo/hotel-twin-01.jpg`, `/public/images/rooms-demo/hotel-twin-02.jpg`, `/public/images/rooms-demo/hotel-twin-03.jpg`
+- Usage: double, triple, cuadruple and quintuple references on `/habitaciones`
+- Source family:
+  - https://commons.wikimedia.org/wiki/Category:Hotel_bedrooms_in_Taipei
+
+- Files: `/public/images/rooms-demo/hostel-bunk-homey.jpg`, `/public/images/rooms-demo/hostel-dormitory.jpg`, `/public/images/rooms-demo/hostel-guest-bedroom.jpg`, `/public/images/rooms-demo/hostel-interior-view.jpg`
+- Usage: multiple, group and high-capacity references on `/habitaciones`
+- Source pages:
+  - https://commons.wikimedia.org/wiki/File:Homey_Hostel_bunk.jpg
+  - https://commons.wikimedia.org/wiki/File:Hostel_Dormitory.jpg
+  - https://commons.wikimedia.org/wiki/File:Guest_bedroom_designed_by_20000_Leagues_Dive_Hostel.jpg
+  - https://commons.wikimedia.org/wiki/File:20000_Leagues_Dive_Hostel_interior_view.jpg
