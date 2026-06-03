@@ -10,6 +10,19 @@ begin
 end;
 $$;
 
+create table if not exists public.admin_users (
+  id uuid primary key references auth.users (id) on delete cascade,
+  email text not null,
+  full_name text,
+  role text not null default 'admin' check (role = 'admin'),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  constraint admin_users_email_not_blank check (length(trim(email)) > 3)
+);
+
+create unique index if not exists admin_users_email_unique_idx
+  on public.admin_users (lower(email));
+
 create or replace function public.is_admin()
 returns boolean
 language sql
@@ -24,19 +37,6 @@ as $$
       and role = 'admin'
   );
 $$;
-
-create table if not exists public.admin_users (
-  id uuid primary key references auth.users (id) on delete cascade,
-  email text not null,
-  full_name text,
-  role text not null default 'admin' check (role = 'admin'),
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  constraint admin_users_email_not_blank check (length(trim(email)) > 3)
-);
-
-create unique index if not exists admin_users_email_unique_idx
-  on public.admin_users (lower(email));
 
 create table if not exists public.site_settings (
   id text primary key default 'default',
