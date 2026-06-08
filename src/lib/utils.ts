@@ -13,6 +13,10 @@ export function formatCurrency(value: number) {
   }).format(value);
 }
 
+export function formatRoomPrice(value: number) {
+  return value > 0 ? formatCurrency(value) : "Consultar";
+}
+
 export function slugify(value: string) {
   return value
     .normalize("NFD")

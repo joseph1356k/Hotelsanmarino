@@ -11,7 +11,7 @@ import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
 import { coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 import { resolveEntityImage } from "@/lib/media";
-import { formatCurrency } from "@/lib/utils";
+import { formatRoomPrice } from "@/lib/utils";
 
 export default async function RoomDetailPage({
   params,
@@ -79,7 +79,7 @@ export default async function RoomDetailPage({
               <p className="text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground">
                 Tarifa referencial
               </p>
-              <p className="mt-3 text-4xl text-primary">{formatCurrency(room.price)}</p>
+              <p className="mt-3 text-4xl text-primary">{formatRoomPrice(room.price)}</p>
             </div>
 
             <div className="flex flex-wrap gap-3">
@@ -191,7 +191,7 @@ export default async function RoomDetailPage({
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Tarifa</p>
-                  <p className="mt-2 text-3xl text-primary">{formatCurrency(room.price)}</p>
+                  <p className="mt-2 text-3xl text-primary">{formatRoomPrice(room.price)}</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Canal</p>

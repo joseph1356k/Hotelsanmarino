@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Users } from "lucide-react";
 import { resolveEntityImage } from "@/lib/media";
-import { cn, formatCurrency } from "@/lib/utils";
+import { cn, formatRoomPrice } from "@/lib/utils";
 import type { RoomWithRelations, WhatsappCta } from "@/types/domain";
 import { WhatsappCta as WhatsappButton } from "@/components/marketing/whatsapp-cta";
 
@@ -68,7 +68,9 @@ export function RoomCard({
             <p className="text-[0.68rem] uppercase tracking-[0.3em] text-muted-foreground">
               Tarifa referencial
             </p>
-            <p className="mt-2 text-[1.8rem] text-primary sm:text-3xl">{formatCurrency(room.price)}</p>
+            <p className="mt-2 text-[1.8rem] text-primary sm:text-3xl">
+              {formatRoomPrice(room.price)}
+            </p>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>*]:w-full sm:[&>*]:w-auto">

@@ -9,8 +9,17 @@ import type {
   WhatsappCta,
 } from "@/types/domain";
 import { siteConfig } from "@/lib/constants/site";
+import { roomCatalog } from "@/content/room-catalog";
 
-// Development-only defaults. These are not the production source of truth.
+const fallbackTimestamp = "2026-03-26T00:00:00.000Z";
+
+function fallbackUuid(group: number, index: number, child = 0) {
+  return `00000000-${String(group).padStart(4, "0")}-4000-8000-${String(
+    index * 100 + child,
+  ).padStart(12, "0")}`;
+}
+
+// Fallback defaults. Supabase remains the editable production source of truth.
 export const devDefaultAmenities: Amenity[] = [
   {
     id: "c0f12625-6925-4f38-9916-56095ddce923",
@@ -18,7 +27,7 @@ export const devDefaultAmenities: Amenity[] = [
     slug: "aire-acondicionado",
     icon_name: "snowflake",
     display_order: 1,
-    created_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
   },
   {
     id: "a0cad8d8-cc9b-4bcb-bd9f-a13f242bf3f1",
@@ -26,7 +35,7 @@ export const devDefaultAmenities: Amenity[] = [
     slug: "wifi",
     icon_name: "wifi",
     display_order: 2,
-    created_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
   },
   {
     id: "c56c9c07-d790-4c58-bc6d-2eddb03d6f8a",
@@ -34,74 +43,71 @@ export const devDefaultAmenities: Amenity[] = [
     slug: "tv",
     icon_name: "tv",
     display_order: 3,
-    created_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
+  },
+  {
+    id: "f4e0ab09-f9ab-4f1a-9c6a-2b5d4b7ab101",
+    name: "Bano privado",
+    slug: "bano-privado",
+    icon_name: "bath",
+    display_order: 4,
+    created_at: fallbackTimestamp,
+  },
+  {
+    id: "cb0dfc11-eac1-4c06-b693-c9d315f7e4a1",
+    name: "Ventilador",
+    slug: "ventilador",
+    icon_name: "fan",
+    display_order: 5,
+    created_at: fallbackTimestamp,
   },
 ];
 
-export const devDefaultRooms: RoomWithRelations[] = [
-  {
-    id: "4e3c9d4d-77f5-4fba-a521-4ca47b3405db",
-    name: "Habitacion Estandar",
-    slug: "habitacion-estandar",
-    short_description: "Una habitacion comoda para descansar en El Morro con la sencillez que pide una buena estadia.",
-    long_description:
-      "Ideal para una estadia tranquila cerca del mar, con lo necesario para descansar bien y moverte con facilidad por Tumaco.",
-    price: 180000,
-    capacity: 2,
-    status: "available",
-    is_featured: true,
-    display_order: 1,
-    primary_image: "/images/fallbacks/room-fallback.jpg",
-    seo_title: "Habitacion Estandar | Hotel San Marino Tumaco",
-    seo_description: "Habitacion estandar en Hotel San Marino Tumaco.",
-    created_at: "2026-03-26T00:00:00.000Z",
-    updated_at: "2026-03-26T00:00:00.000Z",
-    images: [
-      {
-        id: "7ae36933-fcf4-4f8d-976b-b4ddb52e250f",
-        room_id: "4e3c9d4d-77f5-4fba-a521-4ca47b3405db",
+function getFallbackRoomAmenities(climate: "ventilador" | "aire") {
+  const climateSlug =
+    climate === "aire" ? "aire-acondicionado" : "ventilador";
+
+  return devDefaultAmenities.filter((amenity) =>
+    ["wifi", "tv", "bano-privado", climateSlug].includes(amenity.slug),
+  );
+}
+
+export const devDefaultRooms: RoomWithRelations[] = roomCatalog.map(
+  (catalogRoom, index) => {
+    const roomId = fallbackUuid(1, index + 1);
+    const primaryImage =
+      catalogRoom.images[0] ?? "/images/fallbacks/room-fallback.jpg";
+
+    return {
+      id: roomId,
+      name: catalogRoom.name,
+      slug: catalogRoom.slug,
+      short_description: catalogRoom.summary,
+      long_description: `${catalogRoom.description} ${catalogRoom.layoutNote}`,
+      price: 0,
+      capacity: catalogRoom.capacity,
+      status: "available",
+      is_featured: index < 4,
+      display_order: index + 1,
+      primary_image: primaryImage,
+      seo_title: `${catalogRoom.name} | Hotel San Marino Tumaco`,
+      seo_description: `${catalogRoom.name} en Hotel San Marino Tumaco.`,
+      created_at: fallbackTimestamp,
+      updated_at: fallbackTimestamp,
+      images: catalogRoom.images.map((image, imageIndex) => ({
+        id: fallbackUuid(2, index + 1, imageIndex + 1),
+        room_id: roomId,
         asset_id: null,
-        storage_path: "/images/fallbacks/room-fallback.jpg",
-        alt_text: "Placeholder habitacion estandar",
-        is_primary: true,
-        display_order: 1,
-        created_at: "2026-03-26T00:00:00.000Z",
-      },
-    ],
-    amenities: devDefaultAmenities.slice(0, 2),
+        storage_path: image,
+        alt_text: catalogRoom.name,
+        is_primary: imageIndex === 0,
+        display_order: imageIndex + 1,
+        created_at: fallbackTimestamp,
+      })),
+      amenities: getFallbackRoomAmenities(catalogRoom.climate),
+    };
   },
-  {
-    id: "6f8f059c-2f71-4960-901e-f5966521f5f2",
-    name: "Habitacion Familiar",
-    slug: "habitacion-familiar",
-    short_description: "Mas espacio para viajar en familia o compartir la estadia con mas comodidad.",
-    long_description:
-      "Pensada para quienes necesitan mas amplitud, una distribucion comoda y una base practica para disfrutar El Morro.",
-    price: 320000,
-    capacity: 4,
-    status: "available",
-    is_featured: true,
-    display_order: 2,
-    primary_image: "/images/fallbacks/room-fallback.jpg",
-    seo_title: "Habitacion Familiar | Hotel San Marino Tumaco",
-    seo_description: "Habitacion familiar en Hotel San Marino Tumaco.",
-    created_at: "2026-03-26T00:00:00.000Z",
-    updated_at: "2026-03-26T00:00:00.000Z",
-    images: [
-      {
-        id: "44f1db1e-c3b6-4da4-9393-dac573ec3ee1",
-        room_id: "6f8f059c-2f71-4960-901e-f5966521f5f2",
-        asset_id: null,
-        storage_path: "/images/fallbacks/room-fallback.jpg",
-        alt_text: "Placeholder habitacion familiar",
-        is_primary: true,
-        display_order: 1,
-        created_at: "2026-03-26T00:00:00.000Z",
-      },
-    ],
-    amenities: devDefaultAmenities,
-  },
-];
+);
 
 export const devDefaultPlans: Plan[] = [
   {
@@ -116,8 +122,8 @@ export const devDefaultPlans: Plan[] = [
     display_order: 1,
     image_path: "/images/fallbacks/plan-fallback.jpg",
     status: "published",
-    created_at: "2026-03-26T00:00:00.000Z",
-    updated_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
+    updated_at: fallbackTimestamp,
   },
   {
     id: "4d1ebd48-f570-4697-b564-f7bcbccb3158",
@@ -131,8 +137,8 @@ export const devDefaultPlans: Plan[] = [
     display_order: 2,
     image_path: "/images/fallbacks/plan-fallback.jpg",
     status: "published",
-    created_at: "2026-03-26T00:00:00.000Z",
-    updated_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
+    updated_at: fallbackTimestamp,
   },
 ];
 
@@ -147,8 +153,8 @@ export const devDefaultTestimonials: Testimonial[] = [
     is_featured: true,
     display_order: 1,
     status: "published",
-    created_at: "2026-03-26T00:00:00.000Z",
-    updated_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
+    updated_at: fallbackTimestamp,
   },
 ];
 
@@ -166,8 +172,8 @@ export const devDefaultHomeSections: HomeSection[] = [
     },
     status: "published",
     display_order: 1,
-    created_at: "2026-03-26T00:00:00.000Z",
-    updated_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
+    updated_at: fallbackTimestamp,
   },
   {
     id: "8db85849-f64b-40bb-9aa5-4d7c253a1377",
@@ -179,8 +185,8 @@ export const devDefaultHomeSections: HomeSection[] = [
     payload: {},
     status: "published",
     display_order: 2,
-    created_at: "2026-03-26T00:00:00.000Z",
-    updated_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
+    updated_at: fallbackTimestamp,
   },
 ];
 
@@ -193,8 +199,8 @@ export const devDefaultSiteSettings: SiteSettings = {
     "Hotel San Marino Tumaco: una forma clara y cercana de vivir El Morro con contacto directo por WhatsApp.",
   logo_path: null,
   default_share_image: "/images/fallbacks/site-fallback.jpg",
-  created_at: "2026-03-26T00:00:00.000Z",
-  updated_at: "2026-03-26T00:00:00.000Z",
+  created_at: fallbackTimestamp,
+  updated_at: fallbackTimestamp,
 };
 
 export const devDefaultContactInfo: ContactInfo = {
@@ -208,8 +214,8 @@ export const devDefaultContactInfo: ContactInfo = {
   email: null,
   check_in_time: "15:00",
   check_out_time: "12:00",
-  created_at: "2026-03-26T00:00:00.000Z",
-  updated_at: "2026-03-26T00:00:00.000Z",
+  created_at: fallbackTimestamp,
+  updated_at: fallbackTimestamp,
 };
 
 export const devDefaultWhatsappCtas: WhatsappCta[] = [
@@ -221,7 +227,7 @@ export const devDefaultWhatsappCtas: WhatsappCta[] = [
     phone_number: siteConfig.whatsappNumber,
     is_primary: true,
     display_order: 1,
-    created_at: "2026-03-26T00:00:00.000Z",
-    updated_at: "2026-03-26T00:00:00.000Z",
+    created_at: fallbackTimestamp,
+    updated_at: fallbackTimestamp,
   },
 ];
