@@ -13,9 +13,14 @@ export class MissingContentError extends Error {
 }
 
 export function isDevelopmentContentFallbackEnabled() {
+  const explicitFallbackEnabled =
+    process.env.NEXT_PUBLIC_ENABLE_DEV_CONTENT_FALLBACK === "true";
+
   return (
-    process.env.NODE_ENV !== "production" &&
-    process.env.NEXT_PUBLIC_ENABLE_DEV_CONTENT_FALLBACK !== "false"
+    explicitFallbackEnabled ||
+    (process.env.NODE_ENV !== "production" &&
+      process.env.NEXT_PUBLIC_ENABLE_DEV_CONTENT_FALLBACK !== "false"
+    )
   );
 }
 

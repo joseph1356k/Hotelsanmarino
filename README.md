@@ -22,8 +22,8 @@ SUPABASE_SERVICE_ROLE_KEY=
 NEXT_PUBLIC_ENABLE_DEV_CONTENT_FALLBACK=true
 ```
 
-`NEXT_PUBLIC_ENABLE_DEV_CONTENT_FALLBACK` exists only for local development.
-In production the app must fail loudly if essential DB content is missing or Supabase is down.
+`NEXT_PUBLIC_ENABLE_DEV_CONTENT_FALLBACK` is enabled by default only for local development.
+In production, set it to `true` only as a temporary publishing fallback while Supabase is unavailable.
 
 ## Source of truth
 
@@ -52,7 +52,8 @@ Reference file:
 The loader behavior is strict:
 
 - development + fallback enabled: local defaults allowed
-- production without Supabase: infrastructure error
+- production + explicit fallback enabled: local defaults allowed as a temporary public-site fallback
+- production without Supabase and without explicit fallback: infrastructure error
 - production with missing essential content: missing-content error
 - editorial placeholders for missing images remain intentional
 
