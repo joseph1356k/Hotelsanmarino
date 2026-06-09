@@ -1,8 +1,9 @@
 export const siteConfig = {
   siteName: "Hotel San Marino Tumaco",
-  siteTagline: "El Morro se vive aqui",
+  siteTagline: "El Morro se vive aquí",
   whatsappNumber: "+573154974576",
-  whatsappMessage: "Hola, quiero consultar disponibilidad",
+  whatsappMessage:
+    "Hola, quiero consultar disponibilidad para Hotel San Marino en Tumaco.",
 } as const;
 
 export const siteMaps = {
@@ -31,14 +32,15 @@ export const socialLinks = [
 ] as const;
 
 export const publicNavigation = [
-  { href: "/", label: "Inicio" },
-  { href: "/habitaciones", label: "Habitaciones" },
+  { href: "/", label: "El Morro" },
+  { href: "/habitaciones", label: "Descansa" },
   { href: "/planes", label: "Planes" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/galeria", label: "Galeria" },
-  { href: "/nosotros", label: "Nosotros" },
-  { href: "/ubicacion", label: "Ubicacion" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/vive-tumaco", label: "Vive Tumaco" },
+  { href: "/servicios", label: "Experiencia" },
+  { href: "/galeria", label: "Galería" },
+  { href: "/nosotros", label: "San Marino" },
+  { href: "/ubicacion", label: "Ubicación" },
+  { href: "/contacto", label: "Reserva" },
 ];
 
 export const adminNavigation = [

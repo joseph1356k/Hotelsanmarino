@@ -35,16 +35,13 @@ export function PageHero({
               sizes="100vw"
               className="object-cover object-center scale-[1.03] animate-[drift_18s_ease-in-out_infinite]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(17,47,59,0.94)_0%,rgba(24,79,95,0.86)_42%,rgba(24,79,95,0.34)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(112deg,rgba(31,42,48,0.94)_0%,rgba(21,59,82,0.84)_44%,rgba(21,59,82,0.28)_100%)]" />
           </>
         ) : (
-          <div className="absolute inset-0 bg-[linear-gradient(138deg,#184f5f_0%,#215f71_40%,#102f3c_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(138deg,#153b52_0%,#24566a_46%,#1f2a30_100%)]" />
         )}
 
         <div className="absolute inset-0 overflow-hidden">
-          <div className="scene-orb absolute left-[-3rem] top-[-3rem] h-32 w-32 rounded-full border border-white/12 bg-white/6 blur-2xl md:h-52 md:w-52" />
-          <div className="scene-orb absolute right-[10%] top-6 h-24 w-24 rounded-full bg-[var(--sun)]/16 blur-3xl md:h-44 md:w-44" />
-          <div className="scene-orb absolute bottom-[-4rem] left-[18%] h-32 w-32 rounded-full bg-[var(--coral)]/14 blur-[110px] md:h-40 md:w-40" />
           <div className="absolute right-10 top-1/2 hidden h-px w-28 bg-white/28 md:block" />
           <div className="absolute left-6 top-8 h-px w-20 animate-[shimmer-x_3.6s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,var(--sun),transparent)]" />
         </div>

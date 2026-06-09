@@ -23,8 +23,8 @@ export default async function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
           <Reveal className="space-y-6">
             <SectionHeading
-              eyebrow="Quienes somos"
-              title="Un hotel con identidad costera, atencion directa y una forma sencilla de recibirte."
+              eyebrow="Quiénes somos"
+              title="Un hotel con identidad costera, atención directa y una forma sencilla de recibirte."
               description="San Marino quiere que tu experiencia se sienta cercana, clara y bien cuidada desde el primer momento."
             />
             <div className="premium-card overflow-hidden p-3">
@@ -65,9 +65,9 @@ export default async function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
           <Reveal className="space-y-5">
             <SectionHeading
-              eyebrow="El Morro se vive aqui"
-              title="Una estadia que se conecta mejor con Tumaco."
-              description={`${content.siteSettings.site_tagline}. Queremos que desde la web hasta tu llegada todo se sienta mas claro, mas amable y mas cercano al lugar.`}
+              eyebrow="El Morro se vive aquí"
+              title="Una estadía que se conecta mejor con Tumaco."
+              description={`${content.siteSettings.site_tagline}. Queremos que desde la web hasta tu llegada todo se sienta más claro, más amable y más cercano al lugar.`}
             />
           </Reveal>
 

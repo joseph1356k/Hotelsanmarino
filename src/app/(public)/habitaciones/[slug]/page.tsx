@@ -7,7 +7,7 @@ import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
 import { RoomCard } from "@/components/marketing/room-card";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import { coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 import { resolveEntityImage } from "@/lib/media";
@@ -23,6 +23,8 @@ export default async function RoomDetailPage({
   const room = content.rooms.find((item) => item.slug === slug) ?? null;
   const primaryCta =
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
+  const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
+  const whatsappMessage = primaryCta?.message ?? content.contactInfo.whatsapp_default_message;
 
   if (!room) {
     notFound();
@@ -61,16 +63,19 @@ export default async function RoomDetailPage({
 
       <PageHero
         className="mt-3"
-        eyebrow="Habitacion"
+        eyebrow="Habitación"
         title={room.name}
         description={room.short_description}
         imageSrc={resolveEntityImage("room", room.primary_image)}
         imageAlt={room.name}
         actions={
-          <WhatsappCta
-            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-            message={`${primaryCta?.message ?? content.contactInfo.whatsapp_default_message} para ${room.name}`}
-                label="Quiero esta habitacion"
+          <TrackedWhatsappCta
+            phoneNumber={whatsappPhone}
+            message={`${whatsappMessage} para ${room.name}`}
+            label="Quiero esta habitación"
+            trackingSource="detalle_habitacion_hero"
+            trackingLabel="Quiero esta habitación"
+            trackingDetail={room.name}
           />
         }
         aside={
@@ -88,12 +93,12 @@ export default async function RoomDetailPage({
                 Hasta {room.capacity} personas
               </div>
               <div className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm text-muted-foreground">
-                Atencion directa
+                Atención directa
               </div>
             </div>
 
             <p className="text-sm leading-7 text-muted-foreground">
-              Si esta opcion te interesa, escribenos por WhatsApp y te ayudamos a
+              Si esta opción te interesa, escríbenos por WhatsApp y te ayudamos a
               revisar detalles, tarifas y disponibilidad.
             </p>
           </aside>
@@ -137,8 +142,8 @@ export default async function RoomDetailPage({
           <Reveal className="space-y-6">
             <SectionHeading
               eyebrow="Amenidades"
-              title="Lo que necesitas para una estadia comoda."
-              description="Conoce lo esencial de la habitacion antes de dar el siguiente paso."
+              title="Lo que necesitas para una estadía cómoda."
+              description="Conoce lo esencial de la habitación antes de dar el siguiente paso."
             />
 
             <div className="premium-card p-6 md:p-7">
@@ -173,7 +178,7 @@ export default async function RoomDetailPage({
           <Reveal className="space-y-6" delay={120}>
             <div>
               <p className="text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground">
-                Sobre esta habitacion
+                Sobre esta habitación
               </p>
               <p className="mt-4 text-lg leading-8 text-foreground/88">
                 {room.long_description}
@@ -209,8 +214,8 @@ export default async function RoomDetailPage({
             <Reveal>
               <SectionHeading
                 eyebrow="Otras habitaciones"
-                title="Si quieres comparar, aqui tienes otras opciones."
-                description="Explora mas habitaciones del hotel y encuentra la que mejor se ajuste a tu plan."
+                title="Si quieres comparar, aquí tienes otras opciones."
+                description="Explora más habitaciones del hotel y encuentra la que mejor se ajuste a tu plan."
               />
             </Reveal>
             <Reveal delay={120}>
@@ -218,7 +223,7 @@ export default async function RoomDetailPage({
                 href="/habitaciones"
                 className="text-sm font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-[var(--coral)]"
               >
-                Ver mas habitaciones
+                Ver más habitaciones
               </Link>
             </Reveal>
           </div>
@@ -234,13 +239,16 @@ export default async function RoomDetailPage({
 
       <CtaBanner
         eyebrow="WhatsApp"
-        title="Si esta habitacion es para ti, escribenos."
+        title="Si esta habitación es para ti, escríbenos."
         description="Te ayudamos a resolver dudas, revisar disponibilidad y avanzar de forma directa por WhatsApp."
         actions={
-          <WhatsappCta
-            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-            message={`${primaryCta?.message ?? content.contactInfo.whatsapp_default_message} para ${room.name}`}
+          <TrackedWhatsappCta
+            phoneNumber={whatsappPhone}
+            message={`${whatsappMessage} para ${room.name}`}
             label="Escribir ahora"
+            trackingSource="detalle_habitacion_cta_final"
+            trackingLabel="Escribir ahora"
+            trackingDetail={room.name}
           />
         }
       />

@@ -12,7 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { Reveal } from "@/components/marketing/reveal";
-import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import { Button } from "@/components/ui/button";
 import {
   roomCatalogGroups,
@@ -51,7 +51,7 @@ function getCapacityLabel(capacity: number) {
 
 function getInventoryLabel(count: number) {
   return `${count} ${
-    count === 1 ? "habitacion de este tipo" : "habitaciones de este tipo"
+    count === 1 ? "habitación de este tipo" : "habitaciones de este tipo"
   }`;
 }
 
@@ -140,7 +140,7 @@ function RoomCatalogCard({
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,47,59,0.04)_0%,rgba(17,47,59,0.18)_38%,rgba(17,47,59,0.76)_100%)]" />
 
         <div className="absolute inset-x-0 top-0 flex flex-wrap items-start justify-between gap-2 p-4 sm:gap-3 sm:p-5">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-[#112f3b]/72 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm sm:text-[0.68rem] sm:tracking-[0.2em]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-[#1f2a30]/76 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm sm:text-[0.68rem] sm:tracking-[0.2em]">
             <climateMeta.Icon className="size-3.5 text-[var(--sun)]" />
             {climateMeta.label}
           </div>
@@ -151,7 +151,7 @@ function RoomCatalogCard({
         </div>
 
         <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
-          <div className="max-w-xl rounded-[22px] bg-[#102f3c]/78 p-3.5 backdrop-blur-md transition duration-500 group-hover:translate-y-[-2px] sm:rounded-[26px] sm:p-4">
+          <div className="max-w-xl rounded-[16px] bg-[#1f2a30]/80 p-3.5 backdrop-blur-md transition duration-500 group-hover:translate-y-[-2px] sm:p-4">
             <p className="text-[0.62rem] uppercase tracking-[0.2em] text-white/58 sm:text-[0.68rem] sm:tracking-[0.28em]">
               {room.idealFor}
             </p>
@@ -279,7 +279,7 @@ function RoomCatalogModal({
             type="button"
             onClick={onClose}
             className="absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-20 inline-flex size-11 items-center justify-center rounded-full border border-border bg-white/94 text-primary shadow-[0_18px_40px_rgba(8,22,29,0.14)] transition hover:border-primary hover:text-[var(--coral)] sm:right-4 sm:top-4"
-            aria-label="Cerrar habitacion"
+            aria-label="Cerrar habitación"
           >
             <X className="size-5" />
           </button>
@@ -305,7 +305,7 @@ function RoomCatalogModal({
                           current === 0 ? room.images.length - 1 : current - 1,
                         )
                       }
-                      className="absolute left-4 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#112f3b]/68 text-white backdrop-blur transition hover:bg-[#112f3b]/84"
+                      className="absolute left-4 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#1f2a30]/72 text-white backdrop-blur transition hover:bg-[#1f2a30]/88"
                       aria-label="Imagen anterior"
                     >
                       <ChevronLeft className="size-5" />
@@ -315,7 +315,7 @@ function RoomCatalogModal({
                       onClick={() =>
                         setActiveImageIndex((current) => (current + 1) % room.images.length)
                       }
-                      className="absolute right-4 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#112f3b]/68 text-white backdrop-blur transition hover:bg-[#112f3b]/84"
+                      className="absolute right-4 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#1f2a30]/72 text-white backdrop-blur transition hover:bg-[#1f2a30]/88"
                       aria-label="Imagen siguiente"
                     >
                       <ChevronRight className="size-5" />
@@ -324,7 +324,7 @@ function RoomCatalogModal({
                 ) : null}
 
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-4 text-white sm:p-5">
-                  <div className="rounded-[22px] bg-[#102f3c]/72 px-4 py-3 backdrop-blur-md sm:rounded-[24px]">
+                  <div className="rounded-[16px] bg-[#1f2a30]/76 px-4 py-3 backdrop-blur-md">
                     <p className="text-[0.62rem] uppercase tracking-[0.2em] text-white/62 sm:text-[0.68rem] sm:tracking-[0.28em]">
                       {room.idealFor}
                     </p>
@@ -410,7 +410,7 @@ function RoomCatalogModal({
 
                 <div className="space-y-4">
                   <p className="text-[0.72rem] uppercase tracking-[0.3em] text-muted-foreground">
-                    Sobre esta opcion
+                    Sobre esta opción
                   </p>
                   <p className="text-[0.98rem] leading-7 text-foreground/82 sm:text-base sm:leading-8">
                     {room.description}
@@ -430,14 +430,17 @@ function RoomCatalogModal({
               </div>
 
               <div className="mt-7 space-y-4 border-t border-border/70 pt-5 sm:mt-8 sm:pt-6">
-                <WhatsappCta
+                <TrackedWhatsappCta
                   phoneNumber={phoneNumber}
-                  message={`Hola, quiero consultar la habitacion ${room.name}`}
-                  label="Consultar esta habitacion"
+                  message={`Hola, quiero consultar la habitación ${room.name}`}
+                  label="Consultar esta habitación"
+                  trackingSource="modal_habitacion"
+                  trackingLabel="Consultar esta habitación"
+                  trackingDetail={room.name}
                   className="w-full justify-center"
                 />
                 <p className="text-sm leading-7 text-muted-foreground">
-                  La disponibilidad se confirma directamente por WhatsApp. Aqui solo te mostramos el inventario por tipo de habitacion.
+                  La disponibilidad se confirma directamente por WhatsApp. Aquí solo te mostramos el inventario por tipo de habitación.
                 </p>
               </div>
             </div>

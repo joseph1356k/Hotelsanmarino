@@ -3,7 +3,7 @@ import { Clock3, MapPin, Phone } from "lucide-react";
 import { publicNavigation } from "@/lib/constants/site";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { SocialLinks } from "@/components/marketing/social-links";
-import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import type {
   ContactInfo,
   SiteSettings,
@@ -25,7 +25,7 @@ export function PublicFooter({
   const whatsappLabel = primaryCta?.label ?? "Consultar por WhatsApp";
 
   return (
-    <footer className="mt-16 overflow-hidden bg-[linear-gradient(180deg,#184f5f_0%,#112f3b_100%)] text-white md:mt-20">
+    <footer className="mt-0 overflow-hidden bg-[linear-gradient(180deg,#153b52_0%,#1f2a30_100%)] text-white">
       <div className="container-shell py-12 md:py-16">
         <div className="mb-10 grid gap-6 rounded-[28px] border border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04))] p-5 backdrop-blur-sm sm:p-6 lg:grid-cols-[1fr_auto] lg:items-end lg:px-8">
           <div className="space-y-4">
@@ -34,16 +34,18 @@ export function PublicFooter({
               <span>WhatsApp</span>
             </div>
             <h2 className="max-w-3xl text-[2.55rem] leading-[0.94] sm:text-4xl md:text-5xl">
-              El siguiente paso sigue siendo una conversacion directa.
+              Ven a vivir El Morro desde San Marino.
             </h2>
             <p className="max-w-2xl text-sm leading-[1.65rem] text-white/72 md:leading-7">
-              Habitaciones, planes o una referencia para llegar: la salida comercial real de San Marino es WhatsApp.
+              Habitaciones, planes o una referencia para llegar: te ayudamos por WhatsApp a escoger mejor.
             </p>
           </div>
-          <WhatsappCta
+          <TrackedWhatsappCta
             phoneNumber={whatsappPhone}
             message={whatsappMessage}
             label={whatsappLabel}
+            trackingSource="footer"
+            trackingLabel={whatsappLabel}
             className="w-full justify-center bg-[var(--coral)] text-white hover:bg-[var(--accent-hover)] sm:w-auto"
           />
         </div>
@@ -81,7 +83,7 @@ export function PublicFooter({
 
           <div className="space-y-5">
             <p className="text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-white/52">
-              Navegacion
+              Navegación
             </p>
             <div className="grid gap-3 text-sm text-white/82">
               {publicNavigation.map((item) => (
@@ -101,7 +103,7 @@ export function PublicFooter({
               Marca y redes
             </p>
             <p className="max-w-sm text-sm leading-7 text-white/76">
-              Una estadia costera con mejor presencia visual y contacto directo cuando importa.
+              Pacífico auténtico, bien vivido: descanso, sabor local y contacto directo cuando importa.
             </p>
             <SocialLinks variant="dark" />
           </div>

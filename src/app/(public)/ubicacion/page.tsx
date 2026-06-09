@@ -15,13 +15,13 @@ export default async function LocationPage() {
     {
       title: "Hotel San Marino",
       description:
-        "Una referencia clara para ubicarte rapido dentro del ritmo de El Morro.",
+        "Una referencia clara para ubicarte rápido dentro del ritmo de El Morro.",
       icon: Landmark,
     },
     {
       title: "Google Maps integrado",
       description:
-        "Puedes revisar la ubicacion exacta sin salir del sitio y abrir la ruta completa cuando lo necesites.",
+        "Puedes revisar la ubicación exacta sin salir del sitio y abrir la ruta completa cuando lo necesites.",
       icon: Compass,
     },
     {
@@ -35,9 +35,9 @@ export default async function LocationPage() {
   return (
     <div className="pb-16 md:pb-24">
       <PageHero
-        eyebrow="Ubicacion"
+        eyebrow="Ubicación"
         title="Estamos en El Morro"
-        description="Encuentra el hotel con facilidad y ubicate mejor entre playa, ciudad y descanso desde el primer vistazo."
+        description="Encuentra el hotel con facilidad y ubícate mejor entre playa, ciudad y descanso desde el primer vistazo."
         imageSrc={coastalScenes.aerial.src}
         imageAlt={coastalScenes.aerial.alt}
       />
@@ -53,8 +53,8 @@ export default async function LocationPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Contexto"
-                title="Llegar bien tambien hace parte de una buena estadia."
-                description="Queremos que desde antes de tu llegada tengas una referencia clara del hotel y de su relacion con El Morro."
+                title="Llegar bien también hace parte de una buena estadía."
+                description="Queremos que desde antes de tu llegada tengas una referencia clara del hotel y de su relación con El Morro."
             />
           </Reveal>
 

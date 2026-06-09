@@ -8,7 +8,7 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[var(--coral)] px-5 py-3 text-white shadow-[0_18px_44px_rgba(211,15,8,0.24)] before:absolute before:inset-y-0 before:left-[-30%] before:w-12 before:rotate-[18deg] before:bg-white/24 before:opacity-0 before:blur-md before:content-[''] hover:-translate-y-[1px] hover:bg-[var(--accent-hover)] hover:shadow-[0_24px_54px_rgba(211,15,8,0.28)] hover:before:animate-[beam-sweep_900ms_ease]",
+          "bg-[var(--coral)] px-5 py-3 text-white shadow-[0_18px_44px_rgba(201,110,87,0.24)] before:absolute before:inset-y-0 before:left-[-30%] before:w-12 before:rotate-[18deg] before:bg-white/24 before:opacity-0 before:blur-md before:content-[''] hover:-translate-y-[1px] hover:bg-[var(--accent-hover)] hover:shadow-[0_24px_54px_rgba(201,110,87,0.28)] hover:before:animate-[beam-sweep_900ms_ease]",
         secondary:
           "border border-primary/20 bg-white px-5 py-3 text-primary shadow-[0_12px_34px_rgba(24,79,95,0.05)] before:absolute before:inset-y-0 before:left-[-30%] before:w-12 before:rotate-[18deg] before:bg-[rgba(102,182,193,0.2)] before:opacity-0 before:blur-md before:content-[''] hover:-translate-y-[1px] hover:border-primary hover:bg-primary hover:text-primary-foreground hover:before:animate-[beam-sweep_900ms_ease]",
         outline:

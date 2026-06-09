@@ -27,19 +27,19 @@ export const roomCatalogGroups: Array<{
     key: "solo-pareja",
     title: "Solo y pareja",
     description:
-      "Opciones practicas para viajes individuales, escapadas cortas y estadias de dos personas.",
+      "Opciones prácticas para viajes individuales, escapadas cortas y estadías de dos personas.",
   },
   {
     key: "familias",
-    title: "Familias y grupos pequenos",
+    title: "Familias y grupos pequeños",
     description:
-      "Formatos con mas capacidad para compartir la estadia con comodidad y sin perder claridad al elegir.",
+      "Formatos con más capacidad para compartir la estadía con comodidad y sin perder claridad al elegir.",
   },
   {
     key: "grupos",
     title: "Grupos amplios",
     description:
-      "Una opcion multiple para resolver varias camas en un mismo ambiente cuando el viaje se mueve en grupo.",
+      "Una opción múltiple para resolver varias camas en un mismo ambiente cuando el viaje se mueve en grupo.",
   },
 ];
 
@@ -66,16 +66,16 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 1,
     count: 5,
     summary:
-      "Una opcion sencilla y fresca para viajar solo con una estancia comoda y bien resuelta.",
+      "Una opción sencilla y fresca para viajar solo con una estancia cómoda y bien resuelta.",
     description:
-      "Pensada para quien viaja por su cuenta y quiere un espacio practico para descansar bien, moverse con facilidad y resolver su estadia sin complicaciones.",
+      "Pensada para quien viaja por su cuenta y quiere un espacio práctico para descansar bien, moverse con facilidad y resolver su estadía sin complicaciones.",
     idealFor: "Viajes individuales, trabajo y escapadas cortas.",
-    layoutNote: "Formato individual con ventilacion y ambiente funcional.",
+    layoutNote: "Formato individual con ventilación y ambiente funcional.",
     tags: ["1 persona", "Ventilador", "Viaje individual"],
     images: [
-      roomDemoImageLibrary.guestRoom,
       roomDemoImageLibrary.hotelOpenWindow,
-      roomDemoImageLibrary.hotelTwin01,
+      roomDemoImageLibrary.hotelWoodKing,
+      roomDemoImageLibrary.hotelTwin03,
     ],
   },
   {
@@ -87,16 +87,16 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 2,
     count: 5,
     summary:
-      "Una alternativa para dos personas que prefieren una estadia ventilada y facil de llevar.",
+      "Una alternativa para dos personas que prefieren una estadía ventilada y fácil de llevar.",
     description:
-      "Ideal para quienes buscan una habitacion comoda para dos, con un ambiente practico, amable y pensado para quedarse con mas tranquilidad cerca de El Morro.",
+      "Ideal para quienes buscan una habitación cómoda para dos, con un ambiente práctico, amable y pensado para quedarse con más tranquilidad cerca de El Morro.",
     idealFor: "Parejas, amigos o visitas de paso.",
-    layoutNote: "Formato doble con ventilador y distribucion comoda.",
+    layoutNote: "Formato doble con ventilador y distribución cómoda.",
     tags: ["2 personas", "Ventilador", "Doble"],
     images: [
-      roomDemoImageLibrary.hotelTwin01,
-      roomDemoImageLibrary.guestRoom,
+      roomDemoImageLibrary.hotelWoodKing,
       roomDemoImageLibrary.hotelOpenWindow,
+      roomDemoImageLibrary.hotelTwin03,
     ],
   },
   {
@@ -108,16 +108,16 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 2,
     count: 7,
     summary:
-      "La opcion mas versatil para dos personas, con aire acondicionado y una sensacion mas fresca durante la estadia.",
+      "La opción más versátil para dos personas, con aire acondicionado y una sensación más fresca durante la estadía.",
     description:
-      "Es una de las categorias mas practicas para elegir en pareja o en viaje compartido. Da una sensacion mas controlada del ambiente y una estadia comoda para descansar bien.",
+      "Es una de las categorías más prácticas para elegir en pareja o en viaje compartido. Da una sensación más controlada del ambiente y una estadía cómoda para descansar bien.",
     idealFor: "Parejas, amigos y estancias donde el aire acondicionado es prioridad.",
-    layoutNote: "Habitacion doble con aire acondicionado.",
+    layoutNote: "Habitación doble con aire acondicionado.",
     tags: ["2 personas", "Aire acondicionado", "Doble"],
     images: [
-      roomDemoImageLibrary.hotelTwin02,
+      roomDemoImageLibrary.hotelOpenWindow,
+      roomDemoImageLibrary.hotelWoodKing,
       roomDemoImageLibrary.hotelTwin03,
-      roomDemoImageLibrary.guestRoom,
     ],
   },
   {
@@ -129,10 +129,10 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 2,
     count: 2,
     summary:
-      "Una opcion para dos con una presencia mas amplia y una cama protagonista.",
+      "Una opción para dos con una presencia más amplia y una cama protagonista.",
     description:
-      "Pensada para quienes quieren descansar con mas holgura, aire acondicionado y un formato que se siente un poco mas especial desde que entras.",
-    idealFor: "Parejas o estadias de dos personas que buscan mas amplitud.",
+      "Pensada para quienes quieren descansar con más holgura, aire acondicionado y un formato que se siente un poco más especial desde que entras.",
+    idealFor: "Parejas o estadías de dos personas que buscan más amplitud.",
     layoutNote: "Formato king para dos con aire acondicionado.",
     tags: ["2 personas", "King", "Aire acondicionado"],
     images: [
@@ -150,10 +150,10 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 3,
     count: 2,
     summary:
-      "Una configuracion comoda para tres personas, con dos camas y una sensacion mas fresca.",
+      "Una configuración cómoda para tres personas, con dos camas y una sensación más fresca.",
     description:
-      "Da un buen punto medio entre capacidad y comodidad para viajes familiares o de amigos que necesitan compartir habitacion sin que la decision se sienta improvisada.",
-    idealFor: "Pequenas familias, amigos o viaje de tres personas.",
+      "Da un buen punto medio entre capacidad y comodidad para viajes familiares o de amigos que necesitan compartir habitación sin que la decisión se sienta improvisada.",
+    idealFor: "Pequeñas familias, amigos o viaje de tres personas.",
     layoutNote: "Dos camas, capacidad para tres y aire acondicionado.",
     tags: ["3 personas", "2 camas", "Aire acondicionado"],
     images: [
@@ -171,11 +171,11 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 4,
     count: 2,
     summary:
-      "Una habitacion para cuatro personas con formato practico y ambiente ventilado.",
+      "Una habitación para cuatro personas con formato práctico y ambiente ventilado.",
     description:
-      "Funciona bien para familias o grupos pequenos que quieren compartir la estadia en una opcion clara, comoda y facil de comparar con el resto del inventario.",
-    idealFor: "Familias pequenas o grupos de cuatro.",
-    layoutNote: "Capacidad para cuatro con ventilador y distribucion funcional.",
+      "Funciona bien para familias o grupos pequeños que quieren compartir la estadía en una opción clara, cómoda y fácil de comparar con el resto del inventario.",
+    idealFor: "Familias pequeñas o grupos de cuatro.",
+    layoutNote: "Capacidad para cuatro con ventilador y distribución funcional.",
     tags: ["4 personas", "Ventilador", "Compartida"],
     images: [
       roomDemoImageLibrary.hotelTwin01,
@@ -192,10 +192,10 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 4,
     count: 2,
     summary:
-      "Capacidad para cuatro con aire acondicionado y una sensacion mas resuelta para viajes compartidos.",
+      "Capacidad para cuatro con aire acondicionado y una sensación más resuelta para viajes compartidos.",
     description:
-      "Es una opcion util cuando viajan varias personas y prefieren una habitacion que combine capacidad, orden y una mejor sensacion termica durante la estadia.",
-    idealFor: "Familias y grupos pequenos que priorizan aire acondicionado.",
+      "Es una opción útil cuando viajan varias personas y prefieren una habitación que combine capacidad, orden y una mejor sensación térmica durante la estadía.",
+    idealFor: "Familias y grupos pequeños que priorizan aire acondicionado.",
     layoutNote: "Formato para cuatro personas con aire acondicionado.",
     tags: ["4 personas", "Aire acondicionado", "Compartida"],
     images: [
@@ -213,12 +213,12 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 5,
     count: 2,
     summary:
-      "Una alternativa amplia para grupos de cinco personas con una estadia ventilada y practica.",
+      "Una alternativa amplia para grupos de cinco personas con una estadía ventilada y práctica.",
     description:
-      "Permite resolver visitas familiares o compartidas en una sola categoria, con un formato pensado para alojar mas personas sin perder claridad al elegir.",
+      "Permite resolver visitas familiares o compartidas en una sola categoría, con un formato pensado para alojar más personas sin perder claridad al elegir.",
     idealFor: "Familias grandes o grupos de amigos.",
     layoutNote: "Capacidad para cinco con ventilador.",
-    tags: ["5 personas", "Ventilador", "Grupo pequeno"],
+    tags: ["5 personas", "Ventilador", "Grupo pequeño"],
     images: [
       roomDemoImageLibrary.hostelGuestBedroom,
       roomDemoImageLibrary.hostelInterior,
@@ -234,12 +234,12 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 5,
     count: 2,
     summary:
-      "Capacidad para cinco personas con aire acondicionado y una presencia mas fresca para el grupo.",
+      "Capacidad para cinco personas con aire acondicionado y una presencia más fresca para el grupo.",
     description:
-      "Cuando el viaje es de varios y la prioridad es compartir comodo, esta categoria ayuda a resolver la estancia con mejor sensacion de clima y espacio.",
+      "Cuando el viaje es de varios y la prioridad es compartir cómodo, esta categoría ayuda a resolver la estancia con mejor sensación de clima y espacio.",
     idealFor: "Familias o grupos de cinco que prefieren aire acondicionado.",
     layoutNote: "Capacidad para cinco con aire acondicionado.",
-    tags: ["5 personas", "Aire acondicionado", "Grupo pequeno"],
+    tags: ["5 personas", "Aire acondicionado", "Grupo pequeño"],
     images: [
       roomDemoImageLibrary.hostelGuestBedroom,
       roomDemoImageLibrary.hotelTwin03,
@@ -255,9 +255,9 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 6,
     count: 1,
     summary:
-      "La opcion para seis personas cuando el viaje pide una sola habitacion amplia y bien resuelta.",
+      "La opción para seis personas cuando el viaje pide una sola habitación amplia y bien resuelta.",
     description:
-      "Es una categoria puntual dentro del hotel, util para familias numerosas o grupos pequenos que quieren mantenerse juntos en una sola reserva de habitacion.",
+      "Es una categoría puntual dentro del hotel, útil para familias numerosas o grupos pequeños que quieren mantenerse juntos en una sola reserva de habitación.",
     idealFor: "Familias grandes o grupos de seis personas.",
     layoutNote: "Capacidad para seis con aire acondicionado.",
     tags: ["6 personas", "Aire acondicionado", "Amplia"],
@@ -276,10 +276,10 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 2,
     count: 2,
     summary:
-      "Una opcion para dos con una presentacion mas amplia y una sensacion un poco mas reservada.",
+      "Una opción para dos con una presentación más amplia y una sensación un poco más reservada.",
     description:
-      "La Mini Suite ofrece una estancia de dos personas con un tono mas especial, pensada para quienes quieren mas amplitud visual y una experiencia un poco mas cuidada.",
-    idealFor: "Parejas o estadias donde importa el ambiente.",
+      "La Mini Suite ofrece una estancia de dos personas con un tono más especial, pensada para quienes quieren más amplitud visual y una experiencia un poco más cuidada.",
+    idealFor: "Parejas o estadías donde importa el ambiente.",
     layoutNote: "Suite compacta para dos personas.",
     tags: ["2 personas", "Suite", "Aire acondicionado"],
     images: [
@@ -297,9 +297,9 @@ export const roomCatalog: RoomCatalogItem[] = [
     capacity: 2,
     count: 1,
     summary:
-      "La categoria mas especial para dos dentro del inventario actual del hotel.",
+      "La categoría más especial para dos dentro del inventario actual del hotel.",
     description:
-      "La Junior Suite se siente mas protagonista desde el primer vistazo. Es una opcion para dos personas que quieren una estadia con un poco mas de presencia y comodidad.",
+      "La Junior Suite se siente más protagonista desde el primer vistazo. Es una opción para dos personas que quieren una estadía con un poco más de presencia y comodidad.",
     idealFor: "Parejas o visitas especiales de dos personas.",
     layoutNote: "Suite para dos con mejor amplitud visual.",
     tags: ["2 personas", "Junior Suite", "Aire acondicionado"],
@@ -311,18 +311,18 @@ export const roomCatalog: RoomCatalogItem[] = [
   },
   {
     slug: "habitacion-multiple-6-camarotes",
-    name: "Habitacion Multiple 6 Camarotes",
+    name: "Habitación Múltiple 6 Camarotes",
     category: "grupos",
     climate: "aire",
     style: "multiple",
     capacity: 12,
     count: 1,
     summary:
-      "Una alternativa multiple para grupos que necesitan muchas camas dentro de un mismo ambiente.",
+      "Una alternativa múltiple para grupos que necesitan muchas camas dentro de un mismo ambiente.",
     description:
-      "Pensada para grupos grandes, delegaciones o viajes compartidos donde resolver el alojamiento en un solo espacio ayuda a mantener la logistica mas simple.",
+      "Pensada para grupos grandes, delegaciones o viajes compartidos donde resolver el alojamiento en un solo espacio ayuda a mantener la logística más simple.",
     idealFor: "Grupos amplios, equipos o viajes compartidos.",
-    layoutNote: "Seis camarotes, capacidad para doce y ambiente multiple.",
+    layoutNote: "Seis camarotes, capacidad para doce y ambiente múltiple.",
     tags: ["12 personas", "6 camarotes", "Grupo amplio"],
     images: [
       roomDemoImageLibrary.hostelBunk,

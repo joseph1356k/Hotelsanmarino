@@ -24,7 +24,7 @@ export function BrandLogo({
     >
       <div
         className={cn(
-          "relative shrink-0 overflow-hidden rounded-full border border-[#880c04]/12 bg-white shadow-[0_12px_34px_rgba(24,79,95,0.08)]",
+          "relative shrink-0 overflow-hidden rounded-full border border-[var(--coral)]/18 bg-white shadow-[0_12px_34px_rgba(21,59,82,0.08)]",
           compact ? "size-10 sm:size-11 md:size-12" : "size-12 sm:size-14 md:size-[3.7rem]",
         )}
       >

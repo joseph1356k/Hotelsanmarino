@@ -4,7 +4,7 @@ import { ArrowRight, Users } from "lucide-react";
 import { resolveEntityImage } from "@/lib/media";
 import { cn, formatRoomPrice } from "@/lib/utils";
 import type { RoomWithRelations, WhatsappCta } from "@/types/domain";
-import { WhatsappCta as WhatsappButton } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 
 export function RoomCard({
   room,
@@ -78,14 +78,17 @@ export function RoomCard({
               href={`/habitaciones/${room.slug}`}
               className="inline-flex items-center gap-2 rounded-full border border-primary/16 bg-white px-5 py-3 text-sm font-semibold text-primary transition duration-300 hover:-translate-y-[1px] hover:border-primary hover:bg-primary hover:text-white"
             >
-              Conocer habitacion
+              Conocer habitación
               <ArrowRight className="size-4 transition duration-300 group-hover:translate-x-1" />
             </Link>
             {primaryCta ? (
-              <WhatsappButton
+              <TrackedWhatsappCta
                 phoneNumber={primaryCta.phone_number}
                 message={`${primaryCta.message} para ${room.name}`}
                 label="Consultar"
+                trackingSource="room_card"
+                trackingLabel="Consultar"
+                trackingDetail={room.name}
                 variant="default"
               />
             ) : null}

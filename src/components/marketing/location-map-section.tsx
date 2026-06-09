@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ExternalLink, MapPin, Navigation } from "lucide-react";
 import { Reveal } from "@/components/marketing/reveal";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import { buttonVariants } from "@/components/ui/button";
 import { siteMaps } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
@@ -30,9 +30,9 @@ export function LocationMapSection({
 
             <div className="relative space-y-6">
               <SectionHeading
-                eyebrow="Ubicacion"
+                eyebrow="Ubicación"
                 title="Estamos en El Morro"
-                description="Encuentranos en una ubicacion comoda para llegar al hotel y moverte con mas facilidad entre Tumaco, playa y descanso."
+                description="Encuéntranos en una ubicación cómoda para llegar al hotel y moverte con más facilidad entre Tumaco, playa y descanso."
                 className="max-w-none [&_h2]:text-white [&_p]:text-white/78 [&_span]:text-[var(--sun-soft)]"
               />
 
@@ -42,7 +42,7 @@ export function LocationMapSection({
                     <MapPin className="size-5" />
                   </div>
                   <p className="mt-4 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/62">
-                    Direccion
+                    Dirección
                   </p>
                   <p className="mt-3 text-lg leading-7 text-white">{address}</p>
                 </div>
@@ -75,10 +75,12 @@ export function LocationMapSection({
                 <ExternalLink className="size-4" />
                 Abrir en Google Maps
               </Link>
-              <WhatsappCta
+              <TrackedWhatsappCta
                 phoneNumber={phoneNumber}
                 message={whatsappMessage}
                 label="Pedir referencia"
+                trackingSource="mapa_referencia"
+                trackingLabel="Pedir referencia"
                 variant="secondary"
                 size="lg"
                 className="justify-center border-white/24 bg-white/10 text-white hover:border-white hover:bg-white hover:text-primary"
@@ -108,7 +110,7 @@ export function LocationMapSection({
                   Google Maps
                 </p>
                 <p className="mt-2 max-w-xl text-sm leading-7 text-muted-foreground">
-                  Mira la ubicacion exacta del hotel en el mapa y abre la ruta
+                  Mira la ubicación exacta del hotel en el mapa y abre la ruta
                   completa cuando la necesites.
                 </p>
               </div>

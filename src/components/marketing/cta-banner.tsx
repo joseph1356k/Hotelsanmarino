@@ -20,10 +20,8 @@ export function CtaBanner({
   return (
     <section id={id} className={cn("container-shell", className)}>
       <Reveal>
-        <div className="interactive-frame relative overflow-hidden rounded-[30px] border border-[#184f5f] bg-[linear-gradient(140deg,#184f5f_0%,#23687d_54%,#102f3c_100%)] px-5 py-8 text-white shadow-[0_34px_100px_rgba(24,79,95,0.25)] sm:px-6 md:rounded-[38px] md:px-10 md:py-12 lg:px-14">
+        <div className="interactive-frame relative overflow-hidden rounded-[22px] border border-[#2d5365] bg-[linear-gradient(140deg,#153b52_0%,#24566a_54%,#1f2a30_100%)] px-5 py-8 text-white shadow-[0_34px_100px_rgba(21,59,82,0.25)] sm:px-6 md:px-10 md:py-12 lg:px-14">
           <div className="absolute inset-0">
-            <div className="scene-orb absolute left-10 top-8 h-36 w-36 rounded-full bg-white/10 blur-3xl" />
-            <div className="scene-orb absolute bottom-[-2rem] right-10 h-40 w-40 rounded-full bg-[var(--sun)]/14 blur-3xl" />
             <div className="absolute right-[16%] top-10 h-px w-20 bg-[linear-gradient(90deg,transparent,var(--sun),transparent)]" />
           </div>
 

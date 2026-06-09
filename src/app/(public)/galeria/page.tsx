@@ -25,9 +25,9 @@ export default async function GalleryPage() {
   return (
     <div className="pb-16 md:pb-24">
       <PageHero
-        eyebrow="Galeria"
-        title="Mira San Marino, El Morro y Tumaco desde una misma atmosfera."
-        description="Una galeria para conocer mejor el hotel, su entorno y la energia costera que acompana cada estadia."
+        eyebrow="Galería"
+        title="Mira San Marino, El Morro y Tumaco desde una misma atmósfera."
+        description="Una galería para conocer mejor el hotel, su entorno y la energía costera que acompaña cada estadía."
         imageSrc={coastalScenes.homeHero.src}
         imageAlt={coastalScenes.homeHero.alt}
       />
@@ -35,9 +35,9 @@ export default async function GalleryPage() {
       <section className="section-shell">
         <Reveal className="mb-10">
           <SectionHeading
-            eyebrow="Galeria"
-            title="Una seleccion visual para sentir mejor el lugar antes de llegar."
-            description="Entre espacios del hotel y escenas de Tumaco, esta galeria te ayuda a imaginar la experiencia con mas claridad."
+            eyebrow="Galería"
+            title="Una selección visual para sentir mejor el lugar antes de llegar."
+            description="Entre espacios del hotel y escenas de Tumaco, esta galería te ayuda a imaginar la experiencia con más claridad."
           />
         </Reveal>
         <Reveal>

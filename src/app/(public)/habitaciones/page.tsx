@@ -1,8 +1,9 @@
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
+import { RoomComparison } from "@/components/marketing/room-comparison";
 import { RoomCatalogExperience } from "@/components/marketing/room-catalog-experience";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import {
   roomCatalog,
   roomCatalogOverview,
@@ -14,20 +15,23 @@ export default async function RoomsPage() {
   const content = await getPublicSiteContent();
   const primaryCta =
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
+  const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
 
   return (
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Habitaciones"
-        title="Elige la habitacion que mejor va con tu viaje."
-        description="Revisa por capacidad, tipo de clima y formato. Abre cada opcion, mira fotos mas grandes y escribe por WhatsApp cuando encuentres la indicada."
+        title="Elige la habitación que mejor va con tu viaje."
+        description="Revisa por capacidad, tipo de clima y formato. Abre cada opción, mira fotos más grandes y escribe por WhatsApp cuando encuentres la indicada."
         imageSrc={roomDemoImageLibrary.hotelWoodKing}
-        imageAlt="Referencia visual de una habitacion del Hotel San Marino"
+        imageAlt="Referencia visual de una habitación del Hotel San Marino"
         actions={
-          <WhatsappCta
-            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
+          <TrackedWhatsappCta
+            phoneNumber={whatsappPhone}
             message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
             label="Hablar sobre habitaciones"
+            trackingSource="habitaciones_hero"
+            trackingLabel="Hablar sobre habitaciones"
           />
         }
         aside={
@@ -64,9 +68,9 @@ export default async function RoomsPage() {
         <div className="mb-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <Reveal>
             <SectionHeading
-              eyebrow="Como recorrerlas"
-              title="Una vista mas clara para comparar, elegir y consultar mejor."
-              description="Organizamos las habitaciones por tipo de viaje y clima para que encuentres mas rapido la opcion que te sirve."
+              eyebrow="Cómo recorrerlas"
+              title="Una vista más clara para comparar, elegir y consultar mejor."
+              description="Organizamos las habitaciones por tipo de viaje y clima para que encuentres más rápido la opción que te sirve."
             />
           </Reveal>
           <Reveal delay={100}>
@@ -75,17 +79,16 @@ export default async function RoomsPage() {
                 Antes de escribir
               </p>
               <p className="mt-4 text-lg leading-8 text-foreground/84">
-                Abre cada habitacion para ver fotos mas grandes, capacidad, tipo de clima y cuantas opciones de ese formato tiene hoy el hotel.
+                Abre cada habitación para ver fotos más grandes, capacidad, tipo de clima y cuántas opciones de ese formato tiene hoy el hotel.
               </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <RoomCatalogExperience
-        rooms={roomCatalog}
-        phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-      />
+      <RoomComparison rooms={roomCatalog} phoneNumber={whatsappPhone} />
+
+      <RoomCatalogExperience rooms={roomCatalog} phoneNumber={whatsappPhone} />
     </div>
   );
 }

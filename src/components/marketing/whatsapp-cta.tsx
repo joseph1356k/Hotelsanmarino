@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface WhatsappCtaProps {
+export interface WhatsappCtaProps {
   phoneNumber: string;
   message: string;
   label?: ReactNode;

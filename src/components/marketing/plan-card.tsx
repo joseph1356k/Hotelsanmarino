@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 import { resolveEntityImage } from "@/lib/media";
 import { cn } from "@/lib/utils";
 import type { Plan, WhatsappCta } from "@/types/domain";
-import { WhatsappCta as WhatsappButton } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 
 export function PlanCard({
   plan,
@@ -59,10 +59,13 @@ export function PlanCard({
             </p>
           </div>
           {primaryCta ? (
-            <WhatsappButton
+            <TrackedWhatsappCta
               phoneNumber={primaryCta.phone_number}
               message={`${primaryCta.message} sobre ${plan.name}`}
               label="Consultar plan"
+              trackingSource="plan_card"
+              trackingLabel="Consultar plan"
+              trackingDetail={plan.name}
               variant="secondary"
             />
           ) : null}

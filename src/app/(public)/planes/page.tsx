@@ -3,7 +3,7 @@ import { PageHero } from "@/components/marketing/page-hero";
 import { PlanCard } from "@/components/marketing/plan-card";
 import { Reveal } from "@/components/marketing/reveal";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import { coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 
@@ -11,20 +11,24 @@ export default async function PlansPage() {
   const content = await getPublicSiteContent();
   const primaryCta =
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
+  const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
+  const whatsappMessage = primaryCta?.message ?? content.contactInfo.whatsapp_default_message;
 
   return (
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Planes"
         title="Planes pensados para que tu visita tenga un motivo extra."
-        description="Descubre opciones para escapadas, viajes de trabajo o estadias con mas contexto, y conversemos la mejor alternativa para ti."
+        description="Descubre opciones para escapadas, viajes de trabajo o estadías con más contexto, y conversemos la mejor alternativa para ti."
         imageSrc={coastalScenes.aerial.src}
         imageAlt={coastalScenes.aerial.alt}
         actions={
-          <WhatsappCta
-            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-            message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+          <TrackedWhatsappCta
+            phoneNumber={whatsappPhone}
+            message={whatsappMessage}
             label="Preguntar por planes"
+            trackingSource="planes_hero"
+            trackingLabel="Preguntar por planes"
           />
         }
         aside={
@@ -37,7 +41,7 @@ export default async function PlansPage() {
             </div>
             <div className="mist-panel px-5 py-5">
               <p className="text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground">
-                Atencion directa
+                Atención directa
               </p>
               <p className="mt-3 text-2xl text-primary">WhatsApp</p>
             </div>
@@ -51,7 +55,7 @@ export default async function PlansPage() {
             <SectionHeading
               eyebrow="Escapadas y opciones"
               title="Una forma simple de encontrar un plan que vaya con tu viaje."
-              description="Aqui reunimos ideas para quedarte, celebrar o resolver una visita con mas facilidad."
+              description="Aquí reunimos ideas para quedarte, celebrar o resolver una visita con más facilidad."
             />
           </Reveal>
           <Reveal delay={120}>
@@ -60,8 +64,8 @@ export default async function PlansPage() {
                 Para que te sirva
               </p>
               <p className="mt-4 text-lg leading-8 text-foreground/84">
-                Si algun plan te interesa, lo revisamos contigo por WhatsApp y te
-                ayudamos a ver la opcion que mejor encaja.
+                Si algún plan te interesa, lo revisamos contigo por WhatsApp y te
+                ayudamos a ver la opción que mejor encaja.
               </p>
             </div>
           </Reveal>
@@ -78,13 +82,15 @@ export default async function PlansPage() {
 
       <CtaBanner
         eyebrow="WhatsApp"
-        title="Si un plan te llama la atencion, conversemos."
-        description="Escribenos por WhatsApp y te contamos detalles, condiciones y la mejor forma de aprovecharlo."
+        title="Si un plan te llama la atención, conversemos."
+        description="Escríbenos por WhatsApp y te contamos detalles, condiciones y la mejor forma de aprovecharlo."
         actions={
-          <WhatsappCta
-            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-            message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+          <TrackedWhatsappCta
+            phoneNumber={whatsappPhone}
+            message={whatsappMessage}
             label="Consultar este plan"
+            trackingSource="planes_cta_final"
+            trackingLabel="Consultar este plan"
           />
         }
       />

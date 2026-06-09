@@ -1,11 +1,14 @@
 import Image from "next/image";
 import { Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { BookingAssistant } from "@/components/marketing/booking-assistant";
 import { CtaBanner } from "@/components/marketing/cta-banner";
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { SocialLinks } from "@/components/marketing/social-links";
-import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
+import { experiencePackages } from "@/content/commercial-content";
+import { roomCatalog } from "@/content/room-catalog";
 import { coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 
@@ -13,10 +16,12 @@ export default async function ContactPage() {
   const content = await getPublicSiteContent();
   const primaryCta =
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
+  const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
+  const whatsappMessage = primaryCta?.message ?? content.contactInfo.whatsapp_default_message;
 
   const contactBlocks = [
     {
-      title: "Telefono",
+      title: "Teléfono",
       value: content.contactInfo.phone,
       icon: Phone,
     },
@@ -26,7 +31,7 @@ export default async function ContactPage() {
       icon: MessageCircle,
     },
     {
-      title: "Direccion",
+      title: "Dirección",
       value: content.contactInfo.address,
       icon: MapPin,
     },
@@ -51,17 +56,26 @@ export default async function ContactPage() {
     <div className="pb-16 md:pb-24">
       <PageHero
         eyebrow="Contacto"
-        title="Habla con nosotros y resuelve tu estadia sin vueltas."
-        description="Estamos para orientarte, compartir informacion y ayudarte a elegir la opcion que mejor te quede en San Marino."
+        title="Habla con nosotros y resuelve tu estadía sin vueltas."
+        description="Estamos para orientarte, compartir información y ayudarte a elegir la opción que mejor te quede en San Marino."
         imageSrc={coastalScenes.homeHero.src}
         imageAlt={coastalScenes.homeHero.alt}
         actions={
-          <WhatsappCta
-            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-            message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+          <TrackedWhatsappCta
+            phoneNumber={whatsappPhone}
+            message={whatsappMessage}
             label={primaryCta?.label ?? "Consultar por WhatsApp"}
+            trackingSource="contacto_hero"
+            trackingLabel={primaryCta?.label ?? "Consultar por WhatsApp"}
           />
         }
+      />
+
+      <BookingAssistant
+        rooms={roomCatalog}
+        packages={experiencePackages}
+        phoneNumber={whatsappPhone}
+        trackingSource="reserva_guiada_contacto"
       />
 
       <section className="section-shell">
@@ -70,8 +84,8 @@ export default async function ContactPage() {
             <Reveal>
               <SectionHeading
                 eyebrow="Contacto directo"
-                title="Toda la informacion que necesitas para escribirnos con confianza."
-                description="Telefono, direccion, horarios y redes para que te comuniques con el hotel de la forma que te resulte mas comoda."
+                title="Toda la información que necesitas para escribirnos con confianza."
+                description="Teléfono, dirección, horarios y redes para que te comuniques con el hotel de la forma que te resulte más cómoda."
               />
             </Reveal>
             <div className="grid gap-5 sm:grid-cols-2">
@@ -100,16 +114,18 @@ export default async function ContactPage() {
             <Reveal>
               <div className="mist-panel p-6 md:p-7">
                 <p className="text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground">
-                  Atencion por WhatsApp
+                  Atención por WhatsApp
                 </p>
                 <p className="mt-4 text-2xl leading-8 text-foreground/86">
-                  Escribenos y te ayudamos a revisar habitaciones, tarifas y cualquier duda antes de tu llegada.
+                  Escríbenos y te ayudamos a revisar habitaciones, tarifas y cualquier duda antes de tu llegada.
                 </p>
                 <div className="mt-6">
-                  <WhatsappCta
-                    phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-                    message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+                  <TrackedWhatsappCta
+                    phoneNumber={whatsappPhone}
+                    message={whatsappMessage}
                     label="Escribir por WhatsApp"
+                    trackingSource="contacto_panel"
+                    trackingLabel="Escribir por WhatsApp"
                     className="w-full justify-center"
                   />
                 </div>
@@ -137,7 +153,7 @@ export default async function ContactPage() {
                   Redes sociales
                 </p>
                 <p className="mt-4 text-lg leading-8 text-foreground/86">
-                  Conoce mas del hotel, su ambiente y el ritmo de El Morro en nuestras redes.
+                  Conoce más del hotel, su ambiente y el ritmo de El Morro en nuestras redes.
                 </p>
                 <SocialLinks className="mt-6" />
               </div>
@@ -148,13 +164,15 @@ export default async function ContactPage() {
 
       <CtaBanner
         eyebrow="Canal principal"
-        title="Tu proxima conversacion con San Marino empieza aqui."
-        description="Escribenos por WhatsApp y te ayudamos a resolver tu estadia de forma rapida, clara y cercana."
+        title="Tu próxima conversación con San Marino empieza aquí."
+        description="Escríbenos por WhatsApp y te ayudamos a resolver tu estadía de forma rápida, clara y cercana."
         actions={
-          <WhatsappCta
-            phoneNumber={primaryCta?.phone_number ?? content.contactInfo.whatsapp_number}
-            message={primaryCta?.message ?? content.contactInfo.whatsapp_default_message}
+          <TrackedWhatsappCta
+            phoneNumber={whatsappPhone}
+            message={whatsappMessage}
             label="Quiero escribir"
+            trackingSource="contacto_cta_final"
+            trackingLabel="Quiero escribir"
           />
         }
       />

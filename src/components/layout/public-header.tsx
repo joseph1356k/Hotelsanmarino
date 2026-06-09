@@ -8,7 +8,7 @@ import { publicNavigation } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { SocialLinks } from "@/components/marketing/social-links";
-import { WhatsappCta } from "@/components/marketing/whatsapp-cta";
+import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import type {
   ContactInfo,
   SiteSettings,
@@ -79,7 +79,7 @@ export function PublicHeader({
           : "shadow-[0_14px_34px_rgba(24,79,95,0.05)]",
       )}
     >
-      <div className="hidden border-b border-white/12 bg-[linear-gradient(90deg,#184f5f_0%,#2b6d80_100%)] md:block">
+      <div className="hidden border-b border-white/12 bg-[linear-gradient(90deg,#153b52_0%,#24566a_100%)] md:block">
         <div className="container-shell flex items-center justify-between gap-4 py-2 text-[11px] text-white/88">
           <p className="min-w-0 truncate uppercase tracking-[0.32em]">
             {contactInfo.city} - {siteSettings.site_tagline}
@@ -140,7 +140,7 @@ export function PublicHeader({
         </nav>
 
         <div className="hidden shrink-0 lg:block">
-          <WhatsappCta
+          <TrackedWhatsappCta
             phoneNumber={whatsappPhone}
             message={whatsappMessage}
             label={
@@ -149,24 +149,28 @@ export function PublicHeader({
                 <span className="hidden 2xl:inline">{whatsappLabel}</span>
               </>
             }
+            trackingSource="header_desktop"
+            trackingLabel="WhatsApp header"
             size="sm"
-            className="px-3 transition duration-300 hover:-translate-y-[1px] hover:shadow-[0_18px_48px_rgba(211,15,8,0.24)] xl:px-4"
+            className="px-3 transition duration-300 hover:-translate-y-[1px] hover:shadow-[0_18px_48px_rgba(201,110,87,0.24)] xl:px-4"
           />
         </div>
 
         <div className="lg:hidden">
-          <WhatsappCta
+          <TrackedWhatsappCta
             phoneNumber={whatsappPhone}
             message={whatsappMessage}
             label={<span className="sr-only">WhatsApp</span>}
+            trackingSource="header_mobile"
+            trackingLabel="WhatsApp header móvil"
             size="sm"
-            className="size-10 rounded-full px-0 shadow-[0_14px_34px_rgba(211,15,8,0.22)]"
+            className="size-10 rounded-full px-0 shadow-[0_14px_34px_rgba(201,110,87,0.22)]"
           />
         </div>
       </div>
 
       {isOpen ? (
-        <div className="border-t border-primary/12 bg-[linear-gradient(180deg,#184f5f_0%,#112f3b_100%)] lg:hidden">
+        <div className="border-t border-primary/12 bg-[linear-gradient(180deg,#153b52_0%,#1f2a30_100%)] lg:hidden">
           <div className="container-shell max-h-[calc(100svh-var(--public-header-offset))] space-y-4 overflow-y-auto py-4 pb-6">
             <nav className="grid gap-2">
               {publicNavigation.map((item) => {
@@ -196,11 +200,13 @@ export function PublicHeader({
               </p>
               <SocialLinks variant="dark" size="compact" className="mt-4 gap-2" />
             </div>
-            <WhatsappCta
+            <TrackedWhatsappCta
               phoneNumber={whatsappPhone}
               message={whatsappMessage}
               label={whatsappLabel}
               onClick={() => setIsOpen(false)}
+              trackingSource="menu_mobile"
+              trackingLabel="WhatsApp menú móvil"
               className="w-full justify-center"
             />
           </div>

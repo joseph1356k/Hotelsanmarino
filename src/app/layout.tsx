@@ -15,18 +15,35 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.hoteltumacosanmarino.com"),
   title: {
-    default: "Hotel San Marino Tumaco",
+    default: "Hotel San Marino Tumaco | El Morro se vive aquí",
     template: "%s | Hotel San Marino Tumaco",
   },
   description:
-    "Hotel San Marino Tumaco. Una forma clara, comoda y cercana de vivir El Morro, con atencion directa por WhatsApp.",
+    "Hotel en El Morro Tumaco cerca al mar, con restaurante, piscina, parqueadero, habitaciones familiares y reserva directa por WhatsApp.",
+  applicationName: "Hotel San Marino Tumaco",
+  category: "travel",
+  keywords: [
+    "hotel en Tumaco",
+    "hotel en El Morro Tumaco",
+    "hotel cerca al mar en Tumaco",
+    "hotel con piscina en Tumaco",
+    "hotel con restaurante en Tumaco",
+  ],
+  openGraph: {
+    title: "Hotel San Marino Tumaco | El Morro se vive aquí",
+    description:
+      "Hospédate cerca del mar y descubre Tumaco desde una estadía cómoda, cálida y con sabor local.",
+    locale: "es_CO",
+    type: "website",
+  },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#184F5F",
+  themeColor: "#153B52",
 };
 
 export default function RootLayout({
