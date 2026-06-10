@@ -3,11 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, Users } from "lucide-react";
 import { CtaBanner } from "@/components/marketing/cta-banner";
+import { JsonLdScript } from "@/components/marketing/json-ld-script";
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
 import { RoomCard } from "@/components/marketing/room-card";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
+import { buildBreadcrumbJsonLd } from "@/content/ai-answer-content";
 import { coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 import { resolveEntityImage } from "@/lib/media";
@@ -46,9 +48,16 @@ export default async function RoomDetailPage({
             created_at: room.created_at,
           },
         ];
+  const jsonLd = buildBreadcrumbJsonLd([
+    { name: "Inicio", path: "/" },
+    { name: "Habitaciones", path: "/habitaciones" },
+    { name: room.name, path: `/habitaciones/${room.slug}` },
+  ]);
 
   return (
     <div className="pb-16 md:pb-24">
+      <JsonLdScript data={jsonLd} />
+
       <section className="container-shell pt-6">
         <Reveal>
           <Link

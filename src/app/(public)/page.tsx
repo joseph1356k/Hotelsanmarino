@@ -19,8 +19,10 @@ import {
   Waves,
   type LucideIcon,
 } from "lucide-react";
+import { AiAnswerSection } from "@/components/marketing/ai-answer-section";
 import { GalleryGrid } from "@/components/marketing/gallery-grid";
 import { BookingAssistant } from "@/components/marketing/booking-assistant";
+import { JsonLdScript } from "@/components/marketing/json-ld-script";
 import { Reveal } from "@/components/marketing/reveal";
 import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import {
@@ -30,6 +32,7 @@ import {
   restaurantMenuHighlights,
   trustFaqItems,
 } from "@/content/commercial-content";
+import { buildHotelJsonLd, getAiAnswersByIds } from "@/content/ai-answer-content";
 import { coastalScenes } from "@/content/static-marketing";
 import { roomCatalog } from "@/content/room-catalog";
 import { getPublicSiteContent } from "@/lib/content/public-content";
@@ -218,45 +221,14 @@ const fallbackStories = [
 
 const roomMetaBySlug = new Map(roomCatalog.map((room) => [room.slug, room]));
 
-function buildJsonLd({
-  phone,
-  address,
-  city,
-}: {
-  phone: string;
-  address: string;
-  city: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Hotel",
-    name: "Hotel San Marino Tumaco",
-    slogan: "El Morro se vive aquí",
-    description:
-      "Hotel en El Morro Tumaco cerca al mar, con restaurante, piscina, parqueadero, habitaciones familiares y reserva directa por WhatsApp.",
-    image: coastalScenes.homeHero.src,
-    telephone: phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: address,
-      addressLocality: city,
-      addressRegion: "Nariño",
-      addressCountry: "CO",
-    },
-    amenityFeature: [
-      "Recepción 24 horas",
-      "Restaurante",
-      "Piscina",
-      "Parqueadero",
-      "Gimnasio",
-      "WiFi",
-    ].map((name) => ({
-      "@type": "LocationFeatureSpecification",
-      name,
-      value: true,
-    })),
-  };
-}
+const homeAiAnswers = getAiAnswersByIds([
+  "donde-queda-hotel-san-marino-tumaco",
+  "hotel-san-marino-esta-en-el-morro",
+  "hotel-con-piscina-en-tumaco",
+  "hotel-con-restaurante-en-tumaco",
+  "habitacion-para-familias",
+  "como-reservar-por-whatsapp",
+]);
 
 function getReviewStories(testimonials: Testimonial[]) {
   if (testimonials.length === 0) {
@@ -433,20 +405,11 @@ export default async function HomePage() {
     { id: "tumaco-aereo", src: coastalScenes.aerial.src, alt: coastalScenes.aerial.alt },
     ...galleryItems,
   ];
-  const jsonLd = buildJsonLd({
-    phone: content.contactInfo.phone,
-    address: content.contactInfo.address,
-    city: content.contactInfo.city,
-  });
+  const jsonLd = buildHotelJsonLd(content.contactInfo);
 
   return (
     <div className="overflow-hidden">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
+      <JsonLdScript data={jsonLd} />
 
       <section className="relative min-h-[calc(100svh-var(--public-header-offset))] overflow-hidden bg-[#153b52] text-white">
         <Image
@@ -852,6 +815,18 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <AiAnswerSection
+        id="respuestas-rapidas"
+        eyebrow="Respuestas puntuales"
+        title="Lo que una IA y una persona deben entender sin adivinar."
+        description="Respuestas cortas, visibles y alineadas con el contenido real del hotel: ubicación, servicios, habitaciones y reserva directa."
+        answers={homeAiAnswers}
+        phoneNumber={whatsappPhone}
+        trackingSource="home_respuestas_rapidas"
+        ctaLabel="Resolver por WhatsApp"
+        variant="ivory"
+      />
 
       <section className="bg-[#f7f3ec] py-16 md:py-24">
         <div className="container-shell">

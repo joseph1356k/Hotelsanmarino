@@ -1,3 +1,5 @@
+import { AiAnswerSection } from "@/components/marketing/ai-answer-section";
+import { JsonLdScript } from "@/components/marketing/json-ld-script";
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
 import { RoomComparison } from "@/components/marketing/room-comparison";
@@ -9,16 +11,39 @@ import {
   roomCatalogOverview,
   roomDemoImageLibrary,
 } from "@/content/room-catalog";
+import {
+  buildBreadcrumbJsonLd,
+  buildRoomItemListJsonLd,
+  getAiAnswersByIds,
+} from "@/content/ai-answer-content";
 import { getPublicSiteContent } from "@/lib/content/public-content";
+
+const roomsAiAnswers = getAiAnswersByIds([
+  "habitacion-para-familias",
+  "habitacion-para-parejas",
+  "habitacion-para-grupos",
+  "viaje-trabajo-hotel-tumaco",
+  "consultar-disponibilidad-precios",
+  "como-reservar-por-whatsapp",
+]);
 
 export default async function RoomsPage() {
   const content = await getPublicSiteContent();
   const primaryCta =
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
   const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
+  const jsonLd = [
+    buildBreadcrumbJsonLd([
+      { name: "Inicio", path: "/" },
+      { name: "Habitaciones", path: "/habitaciones" },
+    ]),
+    buildRoomItemListJsonLd(roomCatalog),
+  ];
 
   return (
     <div className="pb-16 md:pb-24">
+      <JsonLdScript data={jsonLd} />
+
       <PageHero
         eyebrow="Habitaciones"
         title="Elige la habitación que mejor va con tu viaje."
@@ -85,6 +110,18 @@ export default async function RoomsPage() {
           </Reveal>
         </div>
       </section>
+
+      <AiAnswerSection
+        id="respuestas-habitaciones"
+        eyebrow="Respuestas sobre habitaciones"
+        title="Decide por capacidad, intención y disponibilidad real."
+        description="Las respuestas están escritas para resolver dudas puntuales antes de abrir WhatsApp o comparar el catálogo completo."
+        answers={roomsAiAnswers}
+        phoneNumber={whatsappPhone}
+        trackingSource="habitaciones_respuestas"
+        ctaLabel="Consultar habitación"
+        variant="sand"
+      />
 
       <RoomComparison rooms={roomCatalog} phoneNumber={whatsappPhone} />
 

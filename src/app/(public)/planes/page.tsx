@@ -1,11 +1,27 @@
+import { AiAnswerSection } from "@/components/marketing/ai-answer-section";
 import { CtaBanner } from "@/components/marketing/cta-banner";
+import { JsonLdScript } from "@/components/marketing/json-ld-script";
 import { PageHero } from "@/components/marketing/page-hero";
 import { PlanCard } from "@/components/marketing/plan-card";
 import { Reveal } from "@/components/marketing/reveal";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
+import {
+  buildBreadcrumbJsonLd,
+  buildPlanItemListJsonLd,
+  getAiAnswersByIds,
+} from "@/content/ai-answer-content";
 import { coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
+
+const plansAiAnswers = getAiAnswersByIds([
+  "planes-desde-san-marino",
+  "habitacion-para-parejas",
+  "hotel-familiar-en-tumaco",
+  "consultar-disponibilidad-precios",
+  "como-reservar-por-whatsapp",
+  "recorridos-aliados-tumaco",
+]);
 
 export default async function PlansPage() {
   const content = await getPublicSiteContent();
@@ -13,9 +29,18 @@ export default async function PlansPage() {
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
   const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
   const whatsappMessage = primaryCta?.message ?? content.contactInfo.whatsapp_default_message;
+  const jsonLd = [
+    buildBreadcrumbJsonLd([
+      { name: "Inicio", path: "/" },
+      { name: "Planes", path: "/planes" },
+    ]),
+    buildPlanItemListJsonLd(content.plans),
+  ];
 
   return (
     <div className="pb-16 md:pb-24">
+      <JsonLdScript data={jsonLd} />
+
       <PageHero
         eyebrow="Planes"
         title="Planes pensados para que tu visita tenga un motivo extra."
@@ -79,6 +104,18 @@ export default async function PlansPage() {
           ))}
         </div>
       </section>
+
+      <AiAnswerSection
+        id="respuestas-planes"
+        eyebrow="Respuestas sobre planes"
+        title="Planes conversados según fechas, personas y disponibilidad."
+        description="No se prometen paquetes cerrados sin validar: cada opción se ajusta por WhatsApp al tipo de viaje."
+        answers={plansAiAnswers}
+        phoneNumber={whatsappPhone}
+        trackingSource="planes_respuestas"
+        ctaLabel="Consultar plan"
+        variant="sand"
+      />
 
       <CtaBanner
         eyebrow="WhatsApp"

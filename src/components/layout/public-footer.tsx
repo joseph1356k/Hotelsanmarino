@@ -95,6 +95,18 @@ export function PublicFooter({
                   {item.label}
                 </Link>
               ))}
+              <Link
+                href="/preguntas-frecuentes"
+                className="transition hover:text-[var(--sun)]"
+              >
+                Preguntas frecuentes
+              </Link>
+              <Link
+                href="/datos-del-hotel"
+                className="transition hover:text-[var(--sun)]"
+              >
+                Datos del hotel
+              </Link>
             </div>
           </div>
 

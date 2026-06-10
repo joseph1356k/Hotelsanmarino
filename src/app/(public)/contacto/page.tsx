@@ -1,16 +1,28 @@
 import Image from "next/image";
 import { Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { AiAnswerSection } from "@/components/marketing/ai-answer-section";
 import { BookingAssistant } from "@/components/marketing/booking-assistant";
 import { CtaBanner } from "@/components/marketing/cta-banner";
+import { JsonLdScript } from "@/components/marketing/json-ld-script";
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { SocialLinks } from "@/components/marketing/social-links";
 import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import { experiencePackages } from "@/content/commercial-content";
+import { buildBreadcrumbJsonLd, getAiAnswersByIds } from "@/content/ai-answer-content";
 import { roomCatalog } from "@/content/room-catalog";
 import { coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
+
+const contactAiAnswers = getAiAnswersByIds([
+  "como-reservar-por-whatsapp",
+  "consultar-disponibilidad-precios",
+  "donde-queda-hotel-san-marino-tumaco",
+  "recepcion-24-horas",
+  "hotel-con-parqueadero-en-tumaco",
+  "menu-del-dia-restaurante",
+]);
 
 export default async function ContactPage() {
   const content = await getPublicSiteContent();
@@ -18,6 +30,10 @@ export default async function ContactPage() {
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
   const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
   const whatsappMessage = primaryCta?.message ?? content.contactInfo.whatsapp_default_message;
+  const jsonLd = buildBreadcrumbJsonLd([
+    { name: "Inicio", path: "/" },
+    { name: "Contacto", path: "/contacto" },
+  ]);
 
   const contactBlocks = [
     {
@@ -54,6 +70,8 @@ export default async function ContactPage() {
 
   return (
     <div className="pb-16 md:pb-24">
+      <JsonLdScript data={jsonLd} />
+
       <PageHero
         eyebrow="Contacto"
         title="Habla con nosotros y resuelve tu estadía sin vueltas."
@@ -161,6 +179,18 @@ export default async function ContactPage() {
           </div>
         </div>
       </section>
+
+      <AiAnswerSection
+        id="respuestas-contacto"
+        eyebrow="Antes de escribir"
+        title="Preguntas que WhatsApp puede resolver más rápido."
+        description="Estas respuestas preparan una conversación útil: fechas, número de personas, habitación, servicios y referencia de llegada."
+        answers={contactAiAnswers}
+        phoneNumber={whatsappPhone}
+        trackingSource="contacto_respuestas"
+        ctaLabel="Escribir con contexto"
+        variant="ivory"
+      />
 
       <CtaBanner
         eyebrow="Canal principal"

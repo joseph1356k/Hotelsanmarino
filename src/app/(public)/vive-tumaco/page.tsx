@@ -2,11 +2,19 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
+import { AiAnswerSection } from "@/components/marketing/ai-answer-section";
+import { JsonLdScript } from "@/components/marketing/json-ld-script";
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { TrackedWhatsappCta } from "@/components/marketing/tracked-whatsapp-cta";
 import { destinationExperiences, experiencePackages } from "@/content/commercial-content";
+import {
+  buildBreadcrumbJsonLd,
+  buildExperienceItemListJsonLd,
+  buildPackageItemListJsonLd,
+  getAiAnswersByIds,
+} from "@/content/ai-answer-content";
 import { coastalScenes } from "@/content/static-marketing";
 import { getPublicSiteContent } from "@/lib/content/public-content";
 import { siteMaps } from "@/lib/constants/site";
@@ -24,14 +32,33 @@ export const metadata: Metadata = {
   ],
 };
 
+const viveTumacoAiAnswers = getAiAnswersByIds([
+  "hotel-san-marino-esta-en-el-morro",
+  "hotel-cerca-al-mar-en-tumaco",
+  "planes-desde-san-marino",
+  "recorridos-aliados-tumaco",
+  "hotel-con-restaurante-en-tumaco",
+  "como-reservar-por-whatsapp",
+]);
+
 export default async function ViveTumacoPage() {
   const content = await getPublicSiteContent();
   const primaryCta =
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
   const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
+  const jsonLd = [
+    buildBreadcrumbJsonLd([
+      { name: "Inicio", path: "/" },
+      { name: "Vive Tumaco", path: "/vive-tumaco" },
+    ]),
+    buildExperienceItemListJsonLd(),
+    buildPackageItemListJsonLd(),
+  ];
 
   return (
     <div className="pb-16 md:pb-24">
+      <JsonLdScript data={jsonLd} />
+
       <PageHero
         eyebrow="Vive Tumaco"
         title="Pacífico que se vive, no solo se mira."
@@ -113,6 +140,18 @@ export default async function ViveTumacoPage() {
           })}
         </div>
       </section>
+
+      <AiAnswerSection
+        id="respuestas-vive-tumaco"
+        eyebrow="Respuestas para vivir Tumaco"
+        title="Qué puedes hacer desde San Marino y qué debes confirmar."
+        description="La experiencia se cuenta con respuestas útiles para personas y motores de IA: ubicación, planes, gastronomía y recorridos aliados."
+        answers={viveTumacoAiAnswers}
+        phoneNumber={whatsappPhone}
+        trackingSource="vive_tumaco_respuestas"
+        ctaLabel="Pedir recomendación"
+        variant="sand"
+      />
 
       <section className="bg-[#153b52] py-16 text-white md:py-24">
         <div className="container-shell">

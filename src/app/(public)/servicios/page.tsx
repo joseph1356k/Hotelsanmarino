@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { AiAnswerSection } from "@/components/marketing/ai-answer-section";
 import { CtaBanner } from "@/components/marketing/cta-banner";
+import { JsonLdScript } from "@/components/marketing/json-ld-script";
 import { PageHero } from "@/components/marketing/page-hero";
 import { Reveal } from "@/components/marketing/reveal";
 import { SectionHeading } from "@/components/marketing/section-heading";
@@ -11,7 +13,21 @@ import {
   restaurantHighlights,
   servicesCatalog,
 } from "@/content/static-marketing";
+import {
+  buildBreadcrumbJsonLd,
+  buildItemListJsonLd,
+  getAiAnswersByIds,
+} from "@/content/ai-answer-content";
 import { getPublicSiteContent } from "@/lib/content/public-content";
+
+const servicesAiAnswers = getAiAnswersByIds([
+  "hotel-con-piscina-en-tumaco",
+  "hotel-con-restaurante-en-tumaco",
+  "menu-del-dia-restaurante",
+  "hotel-con-parqueadero-en-tumaco",
+  "hotel-con-gimnasio-en-tumaco",
+  "recepcion-24-horas",
+]);
 
 export default async function ServicesPage() {
   const content = await getPublicSiteContent();
@@ -19,9 +35,27 @@ export default async function ServicesPage() {
     content.whatsappCtas.find((cta) => cta.is_primary) ?? content.whatsappCtas[0] ?? null;
   const whatsappPhone = primaryCta?.phone_number ?? content.contactInfo.whatsapp_number;
   const whatsappMessage = primaryCta?.message ?? content.contactInfo.whatsapp_default_message;
+  const jsonLd = [
+    buildBreadcrumbJsonLd([
+      { name: "Inicio", path: "/" },
+      { name: "Servicios", path: "/servicios" },
+    ]),
+    buildItemListJsonLd({
+      name: "Servicios de Hotel San Marino Tumaco",
+      description:
+        "Servicios disponibles para una estadía cómoda en El Morro: restaurante, piscina, gimnasio, parqueadero y apoyos de viaje.",
+      items: servicesCatalog.map((service) => ({
+        name: service.title,
+        description: service.description,
+        path: "/servicios",
+      })),
+    }),
+  ];
 
   return (
     <div className="pb-16 md:pb-24">
+      <JsonLdScript data={jsonLd} />
+
       <PageHero
         eyebrow="Servicios"
         title="Todo lo que hace tu estadía más cómoda, en un solo lugar."
@@ -127,6 +161,18 @@ export default async function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <AiAnswerSection
+        id="respuestas-servicios"
+        eyebrow="Respuestas sobre servicios"
+        title="Servicios explicados como respuestas, no como una lista suelta."
+        description="Este bloque deja claro qué puede afirmar el hotel y qué conviene confirmar por WhatsApp antes de viajar."
+        answers={servicesAiAnswers}
+        phoneNumber={whatsappPhone}
+        trackingSource="servicios_respuestas"
+        ctaLabel="Consultar servicio"
+        variant="ivory"
+      />
 
       <CtaBanner
         eyebrow="WhatsApp"
